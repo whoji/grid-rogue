@@ -9,7 +9,7 @@ var grid_position = Vector2(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	grid_position = position / TILE_SIZE
 
 func _input(event):
 	if !event.is_pressed(): 
