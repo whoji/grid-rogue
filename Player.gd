@@ -6,6 +6,8 @@ const TILE_SIZE = 32
 
 var grid_position = Vector2(0,0)
 
+onready var tween = get_node("Tween")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +28,12 @@ func _input(event):
 func move_grid(dx, dy):
 	grid_position.x += dx 
 	grid_position.y += dy
+	
+	tween.interpolate_property(self, "position",
+		position, grid_position * TILE_SIZE, 0.1,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+	
 	position = grid_position * TILE_SIZE
 
 
