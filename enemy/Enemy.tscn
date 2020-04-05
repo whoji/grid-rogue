@@ -11,3 +11,11 @@ region_enabled = true
 region_rect = Rect2( 256, 96, 32, 32 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "hp"
+__meta__ = {
+"_edit_use_anchors_": false
+}

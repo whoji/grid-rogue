@@ -7,10 +7,13 @@ var grid_position = Vector2(0,0)
 onready var tween = get_node("Tween")
 onready var game = get_tree().get_root().get_node("Game")
 
+var hp = 5
+var atk = 2
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# grid_position = position / TILE_SIZE
-	pass
+	$Label.text = str(hp)
 
 func move_grid_simple(dir):
 	if dir == "left":

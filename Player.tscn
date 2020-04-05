@@ -13,3 +13,14 @@ region_enabled = true
 region_rect = Rect2( 256, 96, 32, 32 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Label" type="Label" parent="."]
+margin_left = -0.122086
+margin_top = 17.9467
+margin_right = 15.8779
+margin_bottom = 31.9467
+custom_colors/font_color = Color( 0.247059, 1, 0.027451, 1 )
+text = "99"
+__meta__ = {
+"_edit_use_anchors_": false
+}

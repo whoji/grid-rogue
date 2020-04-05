@@ -9,10 +9,13 @@ var grid_position = Vector2(0,0)
 onready var tween = get_node("Tween")
 onready var game = get_tree().get_root().get_node("Game")
 
+var hp = 16
+var atk = 4
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# grid_position = position / TILE_SIZE
-	pass
+	$Label.text = str(hp)
 
 func _input(event):
 	if !event.is_pressed(): 
