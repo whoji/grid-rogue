@@ -7,7 +7,7 @@ extends Node2D
 
 const MAP_SIZE = Vector2(4,4)
 const MAP_OFFSET = Vector2(3,2)
-onready var map = []
+onready var map = [] # 1 for player 2 for enemy
 onready var player = $Player
 
 # Called when the node enters the scene tree for the first time.

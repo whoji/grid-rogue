@@ -39,6 +39,9 @@ func move_grid(dx, dy):
 	tween.start()
 	
 	position = grid_position * TILE_SIZE
+	
+	game.map[grid_position.x][grid_position.y] = 2
+	game.map[grid_position.x-dx][grid_position.y-dy] = 0 # FIXME
 
 func check_move_valid(dx, dy):
 	var _dest_grid_position = grid_position + Vector2(dx, dy)
