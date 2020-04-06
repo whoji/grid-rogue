@@ -7,8 +7,12 @@ extends Node2D
 
 const MAP_SIZE = Vector2(4,4)
 const MAP_OFFSET = Vector2(3,2)
+const ENEMY = [1, 2, 4, 8]
+ 
 onready var map = [] # 1 for player 2 for enemy
 onready var player = $Player
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,3 +28,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func fill_enemy_to_map():
+	pass
+	
+func render_board():
+	pass
