@@ -25,24 +25,22 @@ func _ready():
 
 	fill_enemy_to_map()
 	print(map)
-	render_board()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	pass
 
 func fill_enemy_to_map():
 	for i in range(MAP_SIZE.x):
 		for j in range(MAP_SIZE.y):
 			if map[i][j] == 0:
-				map[i][j] = ENEMY[randi()%4]
+				#map[i][j] = ENEMY[randi()%4]
+				add_rand_enemy(i,j)
 	
-func render_board():
-	for i in range(MAP_SIZE.x):
-		for j in range(MAP_SIZE.y):
-			if map[i][j] > 0:
-				var enemy_node = EnemyScene.instance()
-				enemy_node.enemy_type = map[i][j]
-				enemy_node.grid_position = Vector2(i,j)
-				add_child(enemy_node)
-				
+func add_rand_enemy(i,j):
+	var enemy_type = ENEMY[randi()%4]
+	var enemy_node = EnemyScene.instance()
+	map[i][j] = enemy_type
+	enemy_node.enemy_type = enemy_type
+	enemy_node.grid_position = Vector2(i,j)
+	add_child(enemy_node)
