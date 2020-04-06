@@ -16,8 +16,8 @@ func _ready():
 	# grid_position = position / TILE_SIZE
 	$Label.text = str(hp)
 	if enemy_type != 0:
-		$Sprite.texture = load("res://asset/enemy/enemy_"+str(enemy_type))
-		
+		$Sprite.texture = load("res://asset/enemy/enemy_"+str(enemy_type)+".png")
+		position = (grid_position + game.MAP_OFFSET) * TILE_SIZE
 
 func move_grid_simple(dir):
 	if dir == "left":
