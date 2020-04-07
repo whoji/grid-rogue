@@ -6,10 +6,10 @@ a game for practicing GODOT, by whoji
 - [ ] liscense
 - [x] character movement
 - [x] character movement animation
-- [ ] base class for player and ememy
-- [ ] enemy class
+- [x] base class for player and ememy
+- [ ] different enemy class
 - [ ] combat mechanism (win/loss)
-- [ ] player and enemy stats and display
+- [x] player and enemy stats and display
 - [ ] game progression design
 - [ ] game progression implement
 - [ ] UI
