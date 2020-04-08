@@ -12,6 +12,9 @@ onready var game = get_tree().get_root().get_node("Game")
 var hp = 16
 var atk = 4
 
+signal player_moved
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# grid_position = position / TILE_SIZE
@@ -33,6 +36,8 @@ func move_grid(dx, dy):
 	
 	if not check_move_valid(dx, dy):
 		return
+	
+	emit_signal("player_moved",grid_position.x, grid_position.y, dx, dy)
 	
 	grid_position.x += dx 
 	grid_position.y += dy
