@@ -11,7 +11,11 @@ a game for practicing GODOT, by whoji
 - [ ] combat mechanism (win/loss)
 - [x] player and enemy stats and display
 - [ ] game progression design
-- [ ] game progression implement
+- [ ] game progression implement (level to level)
+- [ ] game progression implement (run to run)
+- [ ] item system design
+- [ ] item system implementation
+- [ ] encyclopedia
 - [ ] UI
 - [ ] title screen
 - [ ] game over screen
