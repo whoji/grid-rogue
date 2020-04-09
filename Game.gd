@@ -55,7 +55,22 @@ func add_rand_enemy(i,j):
 func post_player_move_fill(x,y, dx, dy):
 	# get enemie grid_pos behind player.
 	var enemy_behind_gpos = [] # xxx
-	
+	if dx == -1 and dy == 0: # left
+		for _x in range(x+1,MAP_SIZE.x):
+			enemy_behind_gpos.append(Vector2(_x,y))
+	elif dx == 1 and dy == 0: # right
+		for _x in range(0,x):
+			enemy_behind_gpos.append(Vector2(_x,y))	
+	elif dx == 0 and dy == -1: # up
+		for _y in range(y+1,MAP_SIZE.y):
+			enemy_behind_gpos.append(Vector2(x,_y))
+	elif dx == 0 and dy == 1: # down
+		for _y in range(0,y):
+			enemy_behind_gpos.append(Vector2(x,_y))
+	else:
+		print("ERROR !!")
+
+	print(enemy_behind_gpos)
 
 	for enemy_gpos in enemy_behind_gpos:
 		var enemy = map_enemy[enemy_gpos.x][enemy_gpos.y]
@@ -64,6 +79,8 @@ func post_player_move_fill(x,y, dx, dy):
 	
 	for i in range(MAP_SIZE.x):
 		for j in range(MAP_SIZE.y):
-			if map[i][j] == 0:
+			#if map[i][j] == 0:
+			if map_enemy[i][j] == null:
+				print("adding enemy at ",i,j)
 				add_rand_enemy(i,j)
 
