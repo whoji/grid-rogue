@@ -13,6 +13,8 @@ a game for practicing GODOT, by whoji
 - [ ] game progression design
 - [ ] game progression implement (level to level)
 - [ ] game progression implement (run to run)
+- [ ] character design
+- [ ] character implementation
 - [ ] item system design
 - [ ] item system implementation
 - [ ] encyclopedia
@@ -25,3 +27,4 @@ a game for practicing GODOT, by whoji
 * 3/25/2020 | initial setup
 * 3/27/2020 | added very basic player movement
 * 3/31/2020 | improved player movement
+* 4/10/2020 | improving board dynamics
