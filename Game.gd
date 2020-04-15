@@ -72,15 +72,22 @@ func post_player_move_fill(x,y, dx, dy):
 
 	print(enemy_behind_gpos)
 
-	for enemy_gpos in enemy_behind_gpos:
-		var enemy = map_enemy[enemy_gpos.x][enemy_gpos.y]
-		enemy.move_grid(dx, dy)
-		map_enemy[enemy.grid_position.x][enemy.grid_position.y] = enemy
+#	for enemy_gpos in enemy_behind_gpos:
+#		var enemy = map_enemy[enemy_gpos.x][enemy_gpos.y]
+#		map_enemy[enemy.grid_position.x][enemy.grid_position.y] = null		
+#		enemy.move_grid(dx, dy)
+#		map_enemy[enemy.grid_position.x][enemy.grid_position.y] = enemy
+#
+#	
+	if map_enemy[player.grid_position.x+dx][player.grid_position.y+dy]:
+		map_enemy[player.grid_position.x+dx][player.grid_position.y+dy].die()
+		map_enemy[player.grid_position.x+dx][player.grid_position.y+dy] = null
 	
-	for i in range(MAP_SIZE.x):
-		for j in range(MAP_SIZE.y):
-			#if map[i][j] == 0:
-			if map_enemy[i][j] == null:
-				print("adding enemy at ",i,j)
-				add_rand_enemy(i,j)
+	
+#	for i in range(MAP_SIZE.x):
+#		for j in range(MAP_SIZE.y):
+#			#if map[i][j] == 0:
+#			if map_enemy[i][j] == null:
+#				print("adding enemy at ",i,j)
+#				add_rand_enemy(i,j)
 

@@ -63,3 +63,6 @@ func check_move_valid(dx, dy):
 	else:
 		return true
 
+func die():
+	queue_free()
+
