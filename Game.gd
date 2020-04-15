@@ -60,34 +60,36 @@ func post_player_move_fill(x,y, dx, dy):
 			enemy_behind_gpos.append(Vector2(_x,y))
 	elif dx == 1 and dy == 0: # right
 		for _x in range(0,x):
-			enemy_behind_gpos.append(Vector2(_x,y))	
+			enemy_behind_gpos.push_front(Vector2(_x,y))	
 	elif dx == 0 and dy == -1: # up
 		for _y in range(y+1,MAP_SIZE.y):
 			enemy_behind_gpos.append(Vector2(x,_y))
 	elif dx == 0 and dy == 1: # down
 		for _y in range(0,y):
-			enemy_behind_gpos.append(Vector2(x,_y))
+			enemy_behind_gpos.push_front(Vector2(x,_y))
 	else:
 		print("ERROR !!")
 
 	print(enemy_behind_gpos)
 
-#	for enemy_gpos in enemy_behind_gpos:
-#		var enemy = map_enemy[enemy_gpos.x][enemy_gpos.y]
-#		map_enemy[enemy.grid_position.x][enemy.grid_position.y] = null		
-#		enemy.move_grid(dx, dy)
-#		map_enemy[enemy.grid_position.x][enemy.grid_position.y] = enemy
-#
-#	
+	for enemy_gpos in enemy_behind_gpos:
+		var enemy = map_enemy[enemy_gpos.x][enemy_gpos.y]
+		map_enemy[enemy.grid_position.x][enemy.grid_position.y] = null		
+		enemy.move_grid(dx, dy)
+		map_enemy[enemy.grid_position.x][enemy.grid_position.y] = enemy
+
+	var player_dest_grid_pos = Vector2(player.grid_position.x+dx, player.grid_position.y+dy)
 	if map_enemy[player.grid_position.x+dx][player.grid_position.y+dy]:
 		map_enemy[player.grid_position.x+dx][player.grid_position.y+dy].die()
 		map_enemy[player.grid_position.x+dx][player.grid_position.y+dy] = null
 	
 	
-#	for i in range(MAP_SIZE.x):
-#		for j in range(MAP_SIZE.y):
-#			#if map[i][j] == 0:
-#			if map_enemy[i][j] == null:
-#				print("adding enemy at ",i,j)
-#				add_rand_enemy(i,j)
+	for i in range(MAP_SIZE.x):
+		for j in range(MAP_SIZE.y):
+			#if map[i][j] == 0:
+			if map_enemy[i][j] == null and Vector2(i,j)!= player_dest_grid_pos:
+				print("adding enemy at ",i,j)
+				add_rand_enemy(i,j)
+	
+	print("---------------------")
 
