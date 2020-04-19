@@ -1,0 +1,43 @@
+[gd_scene format=2]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 320.0
+margin_bottom = 24.0
+color = Color( 0, 0, 0, 0.356863 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_top = 8.0
+margin_right = 64.0
+margin_bottom = 24.0
+text = "Level: "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 88.0
+margin_top = 8.0
+margin_right = 128.0
+margin_bottom = 24.0
+text = "Gold:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 176.0
+margin_top = 8.0
+margin_right = 216.0
+margin_bottom = 24.0
+text = "Exp:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

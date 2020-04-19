@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://asset/default_tiles_x.png" type="Texture" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=3]
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "default_tiles_x.png 0"
@@ -92,3 +93,5 @@ position = Vector2( 128, 64 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 96, 64 )
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
