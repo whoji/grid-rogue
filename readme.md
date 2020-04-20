@@ -28,3 +28,5 @@ a game for practicing GODOT, by whoji
 * 3/27/2020 | added very basic player movement
 * 3/31/2020 | improved player movement
 * 4/10/2020 | improving board dynamics
+* 4/18/2020 | improved overall board movements
+* 4/19/2020 | more on the design doc.
