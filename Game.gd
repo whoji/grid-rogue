@@ -89,32 +89,29 @@ func post_player_move_fill(x,y, dx, dy):
 		map_enemy[enemy.grid_position.x][enemy.grid_position.y] = enemy
 	
 	# STEP 2: with 50% chance. move the other enemies.
-	assert(empty_gpos.x == 0 or empty_gpos.y == 0 or 
-		empty_gpos.x == MAP_SIZE.x-1 or empty_gpos.y == MAP_SIZE.y-1)
-	var enemy_behind_gpos_orth = [] # xxx
-	var _temp_gpos_list_1 = []
-	var _temp_gpos_list_2 = []	
-	var dx_orth = 0
-	var dy_orth = 0
-		
-	#enemy_behind_gpos_orth = get_valid_enemy_behind_gpos_orth_set(empty_gpos, player_dest_grid_pos)
-	print(enemy_behind_gpos_orth)	
+	if randi() % 2 == 0:
+		assert(empty_gpos.x == 0 or empty_gpos.y == 0 or 
+			empty_gpos.x == MAP_SIZE.x-1 or empty_gpos.y == MAP_SIZE.y-1)
+		var _ret_val = get_valid_enemy_behind_gpos_orth_set(empty_gpos, player_dest_grid_pos)
+		var enemy_behind_gpos_orth = _ret_val[0] 
+		var dir_orth = _ret_val[1]
+		print(enemy_behind_gpos_orth)	
+		print(dir_orth)	
+		print("wwwwwwwwwwwwwwwwwwwwww")	
+	
+		#STEP 2b: move the orth token.
+		for enemy_gpos in enemy_behind_gpos_orth:
+			var enemy = map_enemy[enemy_gpos.x][enemy_gpos.y]
+			map_enemy[enemy.grid_position.x][enemy.grid_position.y] = null		
+			enemy.move_grid(dir_orth.x, dir_orth.y)
+			map_enemy[enemy.grid_position.x][enemy.grid_position.y] = enemy
 
-			
-#	#STEP 2b: move the orth token.
-#	for enemy_gpos in enemy_behind_gpos_orth:
-#		var enemy = map_enemy[enemy_gpos.x][enemy_gpos.y]
-#		map_enemy[enemy.grid_position.x][enemy.grid_position.y] = null		
-#		enemy.move_grid(dx_orth, dy_orth)
-#		map_enemy[enemy.grid_position.x][enemy.grid_position.y] = enemy
-##
-##
-#
+	# STEP 3: handle the map_enemy
 	if map_enemy[player.grid_position.x+dx][player.grid_position.y+dy]:
 		map_enemy[player.grid_position.x+dx][player.grid_position.y+dy].die()
 		map_enemy[player.grid_position.x+dx][player.grid_position.y+dy] = null
 	
-	# ADD NEW TOKEN (ENMEY or ITEMS, etc) to the board
+	# STEP 4: ADD NEW TOKEN (ENMEY or ITEMS, etc) to the board
 	for i in range(MAP_SIZE.x):
 		for j in range(MAP_SIZE.y):
 			#if map[i][j] == 0:
@@ -124,3 +121,48 @@ func post_player_move_fill(x,y, dx, dy):
 	
 	print("---------------------")
 
+func get_valid_enemy_behind_gpos_orth_set(empty_gpos, player_dest_grid_pos):
+	var dir_orth_0 = Vector2.DOWN
+	var dir_orth_1 = Vector2.UP
+	var dir_orth_2 = Vector2.RIGHT
+	var dir_orth_3 = Vector2.LEFT
+	
+	var set_0 =  []
+	var set_1 =  []
+	var set_2 =  []
+	var set_3 =  []
+	
+	for _y in range(0, empty_gpos.y):
+		set_0.push_front(Vector2(empty_gpos.x, _y))
+	for _y in range(empty_gpos.y+1, MAP_SIZE.y):
+		set_1.append(Vector2(empty_gpos.x, _y))
+	for _x in range(0, empty_gpos.x):
+		set_2.push_front(Vector2(_x, empty_gpos.y))
+	for _x in range(empty_gpos.x+1, MAP_SIZE.x):
+		set_3.append(Vector2(_x, empty_gpos.y))
+	
+	if player_dest_grid_pos in set_0:
+		set_0 = []
+	if player_dest_grid_pos in set_1:
+		set_1 = []
+	if player_dest_grid_pos in set_2:
+		set_2 = []
+	if player_dest_grid_pos in set_3:
+		set_3 = []
+		
+	var max_set_size = 0
+	max_set_size = max(max_set_size, set_0.size())
+	max_set_size = max(max_set_size, set_1.size())
+	max_set_size = max(max_set_size, set_2.size())
+	max_set_size = max(max_set_size, set_3.size())
+
+	if max_set_size == set_0.size():
+		return [set_0, dir_orth_0]
+	elif  max_set_size == set_1.size():
+		return [set_1, dir_orth_1]
+	elif  max_set_size == set_2.size():
+		return [set_2, dir_orth_2]
+	elif  max_set_size == set_3.size():
+		return [set_3, dir_orth_3]
+	else:
+		assert(1 == 0)
