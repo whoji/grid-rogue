@@ -38,6 +38,8 @@ func move_grid(dx, dy):
 	if not check_move_valid(dx, dy):
 		return
 	
+	fight_with(grid_position.x+dx, grid_position.y+dy)
+	
 	emit_signal("player_moved",grid_position.x, grid_position.y, dx, dy)
 	
 	grid_position.x += dx 
@@ -69,5 +71,13 @@ func check_move_valid(dx, dy):
 	else:
 		return true
 
+func fight_with(tgpos_x, tgpos_y):
+	var enemy = game.map_enemy[tgpos_x][tgpos_y]
+	hp -= enemy.atk
+	$HP_Label.text = str(hp)
+
+
 func die():
 	emit_signal("dead")
+	yield(get_tree().create_timer(1.0), "timeout")
+	queue_free()

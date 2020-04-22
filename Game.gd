@@ -54,6 +54,8 @@ func add_rand_enemy(i,j):
 
 func post_player_move_fill(x,y, dx, dy):
 	var player_dest_grid_pos = Vector2(player.grid_position.x+dx, player.grid_position.y+dy)
+	# STEP -1: check if player_die
+	#fight_with(player_dest_grid_pos)
 	
 	# STEP 0: Get enemie grid_pos behind player.
 	var enemy_behind_gpos = [] # xxx
@@ -119,6 +121,9 @@ func post_player_move_fill(x,y, dx, dy):
 				print("adding enemy at ",i,j)
 				add_rand_enemy(i,j)
 	
+	# STEP 5: check if player die
+	if player.hp <= 0:
+		player.die()
 	print("---------------------")
 
 func get_valid_enemy_behind_gpos_orth_set(empty_gpos, player_dest_grid_pos):
@@ -169,4 +174,5 @@ func get_valid_enemy_behind_gpos_orth_set(empty_gpos, player_dest_grid_pos):
 
 
 func _on_Player_dead():
-	Global.restart()
+	yield(get_tree().create_timer(1.0), "timeout")
+	Global.game_over()
