@@ -14,13 +14,23 @@ region_rect = Rect2( 256, 96, 32, 32 )
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Label" type="Label" parent="."]
+[node name="HP_Label" type="Label" parent="."]
 margin_left = -0.122086
 margin_top = 17.9467
 margin_right = 15.8779
 margin_bottom = 31.9467
 custom_colors/font_color = Color( 0.247059, 1, 0.027451, 1 )
 text = "99"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATK_Label" type="Label" parent="."]
+margin_right = 16.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.00392157, 0.643137, 0.92549, 1 )
+text = "10
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }

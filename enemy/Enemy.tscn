@@ -13,10 +13,22 @@ region_rect = Rect2( 256, 96, 32, 32 )
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+[node name="HP_Label" type="Label" parent="."]
+anchor_bottom = 1.0
+margin_top = 17.7904
+margin_right = 16.0
+margin_bottom = 31.7904
 text = "hp"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATK_Label" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_right = 19.0
+margin_bottom = 14.0
+text = "atk"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -6,6 +6,7 @@ var exp_ = 0
 var levels = [0, 1, 2, 3, 4]
 var TitleScreen = "res://TitleScreen.tscn"
 var GameOverScreen = "res://GameOverScreen.tscn"
+var GameScene = "res://Game.tscn"
 
 func restart():
 	current_level = 0

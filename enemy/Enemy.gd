@@ -14,7 +14,8 @@ var enemy_type = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# grid_position = position / TILE_SIZE
-	$Label.text = str(hp)
+	$HP_Label.text = str(hp)
+	$ATK_Label.text = str(atk)
 	if enemy_type != 0:
 		$Sprite.texture = load("res://asset/enemy/enemy_"+str(enemy_type)+".png")
 		position = (grid_position + game.MAP_OFFSET) * TILE_SIZE

@@ -18,7 +18,8 @@ signal dead
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# grid_position = position / TILE_SIZE
-	$Label.text = str(hp)
+	$HP_Label.text = str(hp)
+	$ATK_Label.text = str(atk)
 
 func _input(event):
 	if !event.is_pressed(): 
