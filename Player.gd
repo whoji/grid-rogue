@@ -13,7 +13,7 @@ var hp = 16
 var atk = 4
 
 signal player_moved
-
+signal dead
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -68,3 +68,5 @@ func check_move_valid(dx, dy):
 	else:
 		return true
 
+func die():
+	emit_signal("dead")

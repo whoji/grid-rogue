@@ -166,3 +166,7 @@ func get_valid_enemy_behind_gpos_orth_set(empty_gpos, player_dest_grid_pos):
 		return [set_3, dir_orth_3]
 	else:
 		assert(1 == 0)
+
+
+func _on_Player_dead():
+	Global.restart()

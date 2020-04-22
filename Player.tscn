@@ -24,3 +24,4 @@ text = "99"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="dead" from="." to="." method="_on_Player_dead"]
