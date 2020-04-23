@@ -4,9 +4,9 @@ var current_level = 0
 var gold = 0
 var exp_ = 0
 var levels = [0, 1, 2, 3, 4]
-var TitleScreen = "res://TitleScreen.tscn"
-var GameOverScreen = "res://GameOverScreen.tscn"
-var GameScene = "res://Game.tscn"
+var TitleScreen = "res://UI/TitleScreen.tscn"
+var GameOverScreen = "res://UI/GameOverScreen.tscn"
+var GameScene = "res://board/Game.tscn"
 
 func restart():
 	current_level = 0
