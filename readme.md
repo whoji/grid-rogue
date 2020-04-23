@@ -18,10 +18,13 @@ a game for practicing GODOT, by whoji
 - [ ] item system design
 - [ ] item system implementation
 - [ ] encyclopedia
-- [ ] UI
-- [ ] title screen
-- [ ] game over screen
-- [ ] game win screen
+- [x] UI
+- [x] title screen
+- [x] game over screen
+- [x] game win screen
+- [ ] BUG: fight -> no move
+- [ ] respawn system
+
 
 ## Dev & Changelog
 * 3/25/2020 | initial setup
@@ -30,3 +33,4 @@ a game for practicing GODOT, by whoji
 * 4/10/2020 | improving board dynamics
 * 4/18/2020 | improved overall board movements
 * 4/19/2020 | more on the design doc.
+* 4/22/2020 | major refact with dir str. added item
