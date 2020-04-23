@@ -175,4 +175,5 @@ func get_valid_enemy_behind_gpos_orth_set(empty_gpos, player_dest_grid_pos):
 
 func _on_Player_dead():
 	yield(get_tree().create_timer(1.0), "timeout")
+	player.queue_free()
 	Global.game_over()

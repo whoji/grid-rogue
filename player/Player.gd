@@ -8,6 +8,7 @@ var grid_position = Vector2(0,0)
 
 onready var tween = get_node("Tween")
 onready var game = get_tree().get_root().get_node("Game")
+onready var is_alive = true
 
 var hp = 16
 var atk = 4
@@ -59,6 +60,8 @@ func move_grid(dx, dy):
 	print(game.map)
 
 func check_move_valid(dx, dy):
+	if not is_alive:
+		return false
 	var _dest_grid_position = grid_position + Vector2(dx, dy)
 	if _dest_grid_position.x < 0:
 		return false
@@ -78,6 +81,7 @@ func fight_with(tgpos_x, tgpos_y):
 
 
 func die():
+	is_alive = false
 	emit_signal("dead")
-	yield(get_tree().create_timer(1.0), "timeout")
-	queue_free()
+	#yield(get_tree().create_timer(1.0), "timeout")
+	#queue_free()
