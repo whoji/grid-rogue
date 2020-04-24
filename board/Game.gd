@@ -9,6 +9,9 @@ const MAP_SIZE = Vector2(4,4)
 const MAP_OFFSET = Vector2(3,2)
 const ENEMY = [1, 2, 4, 8]
 const EnemyScene = preload("res://enemy/Enemy.tscn")
+const BujiScene = preload("res://item/buji.tscn")
+#const SPAWN_CHANCE = [10, 5, 5, 1] # enemy / HP / gold / relic
+const SPAWN_CHANCE = [10, 5] # enemy / HP / gold / relic
 
 onready var map = [] # 1 for player 2 for enemy
 onready var map_enemy = []
@@ -51,6 +54,15 @@ func add_rand_enemy(i,j):
 	enemy_node.grid_position = Vector2(i,j)
 	add_child(enemy_node)
 	map_enemy[i][j] = enemy_node
+
+func add_buji(i,j):
+	var buji_type = 0 # ENEMY[randi()%4]
+	var buji_node = BujiScene.instance()
+	map[i][j] = 1000 + buji_type
+	buji_node.buji_type = buji_type
+	buji_node.grid_position = Vector2(i,j)
+	add_child(buji_node)
+	map_enemy[i][j] = buji_node
 
 func post_player_move_fill(x,y, dx, dy):
 	var player_dest_grid_pos = Vector2(player.grid_position.x+dx, player.grid_position.y+dy)
@@ -118,8 +130,12 @@ func post_player_move_fill(x,y, dx, dy):
 		for j in range(MAP_SIZE.y):
 			#if map[i][j] == 0:
 			if map_enemy[i][j] == null and Vector2(i,j)!= player_dest_grid_pos:
-				print("adding enemy at ",i,j)
-				add_rand_enemy(i,j)
+				var token_type = get_random_spawn_type()
+				print("adding token type-",token_type," at ",i,j)
+				if token_type == 0: # for enemy
+					add_rand_enemy(i,j)
+				elif token_type == 1: # for buji
+					add_buji(i,j)
 	
 	# STEP 5: check if player die
 	if player.hp <= 0:
@@ -172,6 +188,20 @@ func get_valid_enemy_behind_gpos_orth_set(empty_gpos, player_dest_grid_pos):
 	else:
 		assert(1 == 0)
 
+func get_random_spawn_type():
+	var chance_sum = 0
+	for chance_weight in SPAWN_CHANCE:
+		chance_sum += chance_weight
+	var random_int = randi() % chance_sum
+	
+	var SPAWN_CHANCE_cumulative = [SPAWN_CHANCE[0]]
+	for i in range(1,SPAWN_CHANCE.size()):
+		SPAWN_CHANCE_cumulative.append(SPAWN_CHANCE_cumulative[-1] + SPAWN_CHANCE[i])
+	
+	for i in range(SPAWN_CHANCE_cumulative.size()):
+		if random_int < SPAWN_CHANCE_cumulative[i]:
+			return i
+	return SPAWN_CHANCE_cumulative.size() - 1
 
 func _on_Player_dead():
 	yield(get_tree().create_timer(1.0), "timeout")

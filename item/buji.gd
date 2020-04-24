@@ -1,6 +1,7 @@
 extends Node2D
 
 const TILE_SIZE = 32
+const token_type = "Buji"
 
 var grid_position = Vector2(0,0)
 
@@ -19,7 +20,8 @@ func _ready():
 	elif buji_type == 1:
 		$Label.text = str(val)
 		$Sprite.region_rect = Rect2(128, 224, 32, 32)
-		
+	position = (grid_position + game.MAP_OFFSET) * TILE_SIZE
+	
 func move_grid_simple(dir):
 	if dir == "left":
 		move_grid(-1, 0)
