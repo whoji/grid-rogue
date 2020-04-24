@@ -23,8 +23,8 @@ a game for practicing GODOT, by whoji
 - [x] game over screen
 - [x] game win screen
 - [ ] BUG: fight -> no move
-- [ ] respawn system
-
+- [ ] spawn system
+- [ ] spawn location refine
 
 ## Dev & Changelog
 * 3/25/2020 | initial setup

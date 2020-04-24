@@ -1,7 +1,7 @@
 extends Node2D
 
 const TILE_SIZE = 32
-const token_type = "Buji"
+var token_type = 1
 
 var grid_position = Vector2(0,0)
 
@@ -9,15 +9,15 @@ onready var tween = get_node("Tween")
 onready var game = get_tree().get_root().get_node("Game")
 
 var val = 5
-var buji_type = 0 # FIXME: later change to enum type. [0 hp; 1 gold]
+var buji_type = 1 # FIXME: later change to enum type. [1 hp; 2 gold]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# grid_position = position / TILE_SIZE
-	if buji_type == 0:
+	if buji_type == 1:
 		$Label.text = str(val)
 		$Sprite.region_rect = Rect2(32, 224, 32, 32)
-	elif buji_type == 1:
+	elif buji_type == 2:
 		$Label.text = str(val)
 		$Sprite.region_rect = Rect2(128, 224, 32, 32)
 	position = (grid_position + game.MAP_OFFSET) * TILE_SIZE

@@ -11,8 +11,11 @@ func _ready():
 	$LevelLabel.text = "Level: "+str(Global.current_level)
 	$GoldLabel.text = "Gold: "+str(Global.gold)
 	$ExpLabel.text = "Exp: "+str(Global.exp_)
-
+	Global.connect("gold_changed", self,"set_GoldLabel")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func set_GoldLabel(val):
+	$GoldLabel.text = "Gold: "+str(Global.gold)

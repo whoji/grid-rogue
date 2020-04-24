@@ -1,7 +1,7 @@
 extends Node2D
 
 const TILE_SIZE = 32
-const token_type = "Enemy"
+const token_type = 0
 
 var grid_position = Vector2(0,0)
 

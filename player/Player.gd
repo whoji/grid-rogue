@@ -77,12 +77,16 @@ func check_move_valid(dx, dy):
 func fight_with(tgpos_x, tgpos_y):
 	var token = game.map_enemy[tgpos_x][tgpos_y]
 	print("token type :", token.token_type)
-	if token.token_type == "Enemy":
+	if token.token_type == 0: # enemy
 		hp -= token.atk
 		$HP_Label.text = str(hp)
-	elif token.token_type == "Buji":
+	elif token.token_type == 1: # red potion
 		hp += token.val
 		$HP_Label.text = str(hp)
+	elif token.token_type == 2: # gold
+		Global.gold += token.val
+		#$HP_Label.text = str(hp)
+			
 			
 func die():
 	is_alive = false

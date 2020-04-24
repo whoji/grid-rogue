@@ -11,7 +11,7 @@ const ENEMY = [1, 2, 4, 8]
 const EnemyScene = preload("res://enemy/Enemy.tscn")
 const BujiScene = preload("res://item/buji.tscn")
 #const SPAWN_CHANCE = [10, 5, 5, 1] # enemy / HP / gold / relic
-const SPAWN_CHANCE = [10, 5] # enemy / HP / gold / relic
+const SPAWN_CHANCE = [10, 5, 2] # enemy / HP / gold / relic
 
 onready var map = [] # 1 for player 2 for enemy
 onready var map_enemy = []
@@ -55,10 +55,11 @@ func add_rand_enemy(i,j):
 	add_child(enemy_node)
 	map_enemy[i][j] = enemy_node
 
-func add_buji(i,j):
-	var buji_type = 0 # ENEMY[randi()%4]
+func add_buji(i,j, token_type):
+	var buji_type = token_type # ENEMY[randi()%4]
 	var buji_node = BujiScene.instance()
 	map[i][j] = 1000 + buji_type
+	buji_node.token_type = token_type
 	buji_node.buji_type = buji_type
 	buji_node.grid_position = Vector2(i,j)
 	add_child(buji_node)
@@ -134,8 +135,8 @@ func post_player_move_fill(x,y, dx, dy):
 				print("adding token type-",token_type," at ",i,j)
 				if token_type == 0: # for enemy
 					add_rand_enemy(i,j)
-				elif token_type == 1: # for buji
-					add_buji(i,j)
+				elif token_type == 1 or token_type == 2: # for buji (HP)
+					add_buji(i,j,token_type)
 	
 	# STEP 5: check if player die
 	if player.hp <= 0:
