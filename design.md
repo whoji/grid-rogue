@@ -46,6 +46,15 @@
 	* stairs: to next level
 * if a move doesn't kill an enemies, deduct the HP.
 
+## 战斗机理 3
+* similar to 2, but enemies will not respawn.
+* go upstair for 0 to 99, with higher and higher difficulties.
+* your goal is to reach 99, or die
+* you can even go back to previous level to do whatever you want
+	* pick something. or heal at fountain.
+	* fight boss
+* need a vertical mini-map like visualization to highlight fountain.shop.etc
+
 ## 物品概念
 * 有n个格子的物品槽，里面可以放入收集到的物品
 * 物品一般提供被动的效果的
