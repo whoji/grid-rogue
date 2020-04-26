@@ -24,15 +24,29 @@ func _ready():
 	restart_board()
 	player.connect("player_moved",self, "post_player_move_fill")
 	
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+# FOR test and debug only !!!
+func _input(event):
+	if event.is_action_pressed("ui_test"):
+		#get_tree().reload_current_scene()
+		clear_board()
+		restart_board()
+
+func clear_board():
+	map = []
+	for i in range(MAP_SIZE.x):
+		for j in range(MAP_SIZE.y):
+			if map_enemy[i][j] != null:
+				map_enemy[i][j].die()
+
 #func restart_board(player.gpos): # restart or initialize the board when the game start. or next level
 func restart_board(): # restart or initialize the board when the game start. or next level
-	player = $Player	
-	player.grid_position = Global.get_rand_gpos()
+	if player == null:
+		player = $Player
+		player.grid_position = Global.get_rand_gpos()
 	map = []
 	for i in range(MAP_SIZE.x):
 		map.append([])
