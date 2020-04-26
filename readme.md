@@ -25,7 +25,8 @@ a game for practicing GODOT, by whoji
 - [ ] BUG: fight -> no move
 - [ ] spawn system
 - [ ] spawn location refine
-- [ ] add reset the board
+- [ ] add reset/restart the board
+- [ ] external conf file. load into game
 
 ## Dev & Changelog
 * 3/25/2020 | initial setup

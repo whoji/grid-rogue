@@ -55,6 +55,13 @@
 	* fight boss
 * need a vertical mini-map like visualization to highlight fountain.shop.etc
 
+## 战斗机理 4
+* make it a pokemon-like game
+* collecting enemies
+* enemies can be combined and crafted into bigger monsters / relics.
+* if killed two same type enemies. than you captured it.
+* at the end of each run. you can pick 1 (or more) to add to your monster book
+
 ## 物品概念
 * 有n个格子的物品槽，里面可以放入收集到的物品
 * 物品一般提供被动的效果的
