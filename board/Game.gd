@@ -15,29 +15,34 @@ const SPAWN_CHANCE = [10, 5, 2] # enemy / HP / gold / relic
 
 onready var map = [] # 1 for player 2 for enemy
 onready var map_enemy = []
-onready var player = $Player
+onready var player
+# onready var player = $Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	randomize() #seed
-	for i in range(MAP_SIZE.x):
-		map.append([])
-		map_enemy.append([])
-		for j in range(MAP_SIZE.y):
-			map[i].append(0)
-			map_enemy[i].append(null)
-
-	map[player.grid_position.x][player.grid_position.y] = -1
-
-	fill_enemy_to_map()
-	print(map)
-	
+	randomize() #seed	
+	restart_board()
 	player.connect("player_moved",self, "post_player_move_fill")
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+#func restart_board(player.gpos): # restart or initialize the board when the game start. or next level
+func restart_board(): # restart or initialize the board when the game start. or next level
+	player = $Player	
+	player.grid_position = Global.get_rand_gpos()
+	map = []
+	for i in range(MAP_SIZE.x):
+		map.append([])
+		map_enemy.append([])
+		for j in range(MAP_SIZE.y):
+			map[i].append(0)
+			map_enemy[i].append(null)
+	map[player.grid_position.x][player.grid_position.y] = -1
+	fill_enemy_to_map()
+	print(map)
 
 func fill_enemy_to_map():
 	for i in range(MAP_SIZE.x):
@@ -208,3 +213,4 @@ func _on_Player_dead():
 	yield(get_tree().create_timer(1.0), "timeout")
 	player.queue_free()
 	Global.game_over()
+	
