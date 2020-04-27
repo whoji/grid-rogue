@@ -33,8 +33,8 @@ func _process(delta):
 func _input(event):
 	if event.is_action_pressed("ui_test"):
 		#get_tree().reload_current_scene()
-		clear_board()
-		restart_board()
+		#clear_board(); restart_board()
+		Global.next_level()
 
 func clear_board():
 	steps = 0

@@ -11,6 +11,7 @@ func _ready():
 	$ExpLabel.text = "Exp: "+str(Global.exp_)
 	$StepLabel.text = "Step: "+str(game.steps)
 	Global.connect("gold_changed", self,"set_GoldLabel")
+	Global.connect("level_changed", self,"set_LevelLabel")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -18,3 +19,6 @@ func _ready():
 
 func set_GoldLabel(val):
 	$GoldLabel.text = "Gold: "+str(Global.gold)
+
+func set_LevelLabel(val):
+	$LevelLabel.text = "Level: "+str(Global.current_level)
