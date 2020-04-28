@@ -13,31 +13,53 @@ const BujiScene = preload("res://item/buji.tscn")
 #const SPAWN_CHANCE = [10, 5, 5, 1] # enemy / HP / gold / relic
 const SPAWN_CHANCE = [10, 5, 2] # enemy / HP / gold / relic
 
+var steps = 0
 onready var map = [] # 1 for player 2 for enemy
 onready var map_enemy = []
-onready var player = $Player
+onready var player
+# onready var player = $Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	randomize() #seed
+	randomize() #seed	
+	restart_board()
+	player.connect("player_moved",self, "post_player_move_fill")
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+# FOR test and debug only !!!
+func _input(event):
+	if event.is_action_pressed("ui_test"):
+		#get_tree().reload_current_scene()
+		#clear_board(); restart_board()
+		Global.next_level()
+
+func clear_board():
+	steps = 0
+	$HUD/StepLabel.text = "Step: "+str(steps)
+	map = []
+	for i in range(MAP_SIZE.x):
+		for j in range(MAP_SIZE.y):
+			if map_enemy[i][j] != null:
+				map_enemy[i][j].die()
+
+#func restart_board(player.gpos): # restart or initialize the board when the game start. or next level
+func restart_board(): # restart or initialize the board when the game start. or next level
+	if player == null:
+		player = $Player
+		player.grid_position = Global.get_rand_gpos()
+	map = []
 	for i in range(MAP_SIZE.x):
 		map.append([])
 		map_enemy.append([])
 		for j in range(MAP_SIZE.y):
 			map[i].append(0)
 			map_enemy[i].append(null)
-
 	map[player.grid_position.x][player.grid_position.y] = -1
-
 	fill_enemy_to_map()
 	print(map)
-	
-	player.connect("player_moved",self, "post_player_move_fill")
-	
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func fill_enemy_to_map():
 	for i in range(MAP_SIZE.x):
@@ -66,6 +88,9 @@ func add_buji(i,j, token_type):
 	map_enemy[i][j] = buji_node
 
 func post_player_move_fill(x,y, dx, dy):
+	steps +=  1
+	$HUD/StepLabel.text = "Step: "+str(steps)
+	print("steps:  "+str(steps))
 	var player_dest_grid_pos = Vector2(player.grid_position.x+dx, player.grid_position.y+dy)
 	# STEP -1: check if player_die
 	#fight_with(player_dest_grid_pos)
@@ -208,3 +233,4 @@ func _on_Player_dead():
 	yield(get_tree().create_timer(1.0), "timeout")
 	player.queue_free()
 	Global.game_over()
+	

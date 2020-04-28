@@ -4,7 +4,7 @@ extends Node2D
 
 const TILE_SIZE = 32
 
-var grid_position = Vector2(0,0)
+var grid_position = Vector2(1,1) setget set_grid_position
 
 onready var tween = get_node("Tween")
 onready var game = get_tree().get_root().get_node("Game")
@@ -21,6 +21,7 @@ func _ready():
 	# grid_position = position / TILE_SIZE
 	$HP_Label.text = str(hp)
 	$ATK_Label.text = str(atk)
+	position = (grid_position + game.MAP_OFFSET) * TILE_SIZE
 
 func _input(event):
 	if !event.is_pressed(): 
@@ -93,3 +94,7 @@ func die():
 	emit_signal("dead")
 	#yield(get_tree().create_timer(1.0), "timeout")
 	#queue_free()
+
+func set_grid_position(gpos):
+	grid_position = gpos
+	position = (gpos + game.MAP_OFFSET) * TILE_SIZE

@@ -24,9 +24,9 @@ __meta__ = {
 }
 
 [node name="GoldLabel" type="Label" parent="."]
-margin_left = 88.0
+margin_left = 80.0
 margin_top = 8.0
-margin_right = 128.0
+margin_right = 120.0
 margin_bottom = 24.0
 text = "Gold:"
 valign = 1
@@ -35,11 +35,22 @@ __meta__ = {
 }
 
 [node name="ExpLabel" type="Label" parent="."]
-margin_left = 176.0
+margin_left = 160.0
 margin_top = 8.0
-margin_right = 216.0
+margin_right = 200.0
 margin_bottom = 24.0
 text = "Exp:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StepLabel" type="Label" parent="."]
+margin_left = 240.0
+margin_top = 8.0
+margin_right = 280.0
+margin_bottom = 24.0
+text = "Step:"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
