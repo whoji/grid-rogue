@@ -1,7 +1,7 @@
 extends Node2D
 
 const TILE_SIZE = 32
-var token_type = 3
+var token_type = 4
 
 var grid_position = Vector2(0,0)
 
@@ -41,7 +41,7 @@ func move_grid(dx, dy):
 	
 	position = grid_position * TILE_SIZE
 	
-	game.map[grid_position.x][grid_position.y] = 2 #FIXME
+	game.map[grid_position.x][grid_position.y] = 2000 #FIXME
 	game.map[grid_position.x-dx][grid_position.y-dy] = 0 # FIXME
 
 func check_move_valid(dx, dy):

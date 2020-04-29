@@ -31,11 +31,12 @@ func next_level():
 func game_restart():
 	print("game restarting ...")
 	current_level = 0
-	emit_signal("level_changed", current_level)	
 	gold = 0
 	exp_ = 0
-	game.clear_board()
-	game.restart_board()
+	emit_signal("level_changed", current_level)	
+	get_tree().change_scene(GameScene)	
+	#game.clear_board()
+	#game.restart_board()
 	print("game restarted")
 	print(game)
 	

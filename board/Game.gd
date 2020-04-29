@@ -10,10 +10,12 @@ const MAP_OFFSET = Vector2(3,2)
 const ENEMY = [1, 2, 4, 8]
 const EnemyScene = preload("res://enemy/Enemy.tscn")
 const BujiScene = preload("res://item/buji.tscn")
+const StairScene = preload("res://item/Stair.tscn")
 #const SPAWN_CHANCE = [10, 5, 5, 1] # enemy / HP / gold / relic
-const SPAWN_CHANCE = [10, 5, 2] # enemy / HP / gold / relic
+const SPAWN_CHANCE = [10, 0, 0, 0, 20] # enemy / HP / gold / relic / stair
 
 var steps = 0
+onready var has_stair = 0
 onready var map = [] # 1 for player 2 for enemy
 onready var map_enemy = []
 onready var player
@@ -69,6 +71,7 @@ func fill_enemy_to_map():
 				add_rand_enemy(i,j)
 	
 func add_rand_enemy(i,j):
+	print("adding enemey ...")
 	var enemy_type = ENEMY[randi()%4]
 	var enemy_node = EnemyScene.instance()
 	map[i][j] = enemy_type
@@ -78,6 +81,7 @@ func add_rand_enemy(i,j):
 	map_enemy[i][j] = enemy_node
 
 func add_buji(i,j, token_type):
+	print("adding buji ...")	
 	var buji_type = token_type # ENEMY[randi()%4]
 	var buji_node = BujiScene.instance()
 	map[i][j] = 1000 + buji_type
@@ -86,6 +90,14 @@ func add_buji(i,j, token_type):
 	buji_node.grid_position = Vector2(i,j)
 	add_child(buji_node)
 	map_enemy[i][j] = buji_node
+
+func add_stair(i,j):
+	print("adding stair !!!")
+	var stair_node = StairScene.instance()
+	map[i][j] = 2000
+	stair_node.grid_position = Vector2(i,j)
+	add_child(stair_node)
+	map_enemy[i][j] = stair_node
 
 func post_player_move_fill(x,y, dx, dy):
 	steps +=  1
@@ -162,6 +174,12 @@ func post_player_move_fill(x,y, dx, dy):
 					add_rand_enemy(i,j)
 				elif token_type == 1 or token_type == 2: # for buji (HP)
 					add_buji(i,j,token_type)
+				elif token_type == 4 and not has_stair: # for stair
+					has_stair = 1
+					add_stair(i,j)
+				else:
+					add_rand_enemy(i,j)
+					
 	
 	# STEP 5: check if player die
 	if player.hp <= 0:
@@ -228,6 +246,16 @@ func get_random_spawn_type():
 		if random_int < SPAWN_CHANCE_cumulative[i]:
 			return i
 	return SPAWN_CHANCE_cumulative.size() - 1
+
+#func has_stair_on_board():
+#	print("checking if already has stair ...")
+#	for i in range(MAP_SIZE.x):
+#		for j in range(MAP_SIZE.y):
+#			print( map_enemy[i][j])
+#			if map_enemy[i][j] != null and map_enemy[i][i].token_type == 4:
+#				print("already 1 stair on board !!!")
+#				return true
+#	return false
 
 func _on_Player_dead():
 	yield(get_tree().create_timer(1.0), "timeout")
