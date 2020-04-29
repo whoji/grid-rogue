@@ -24,6 +24,7 @@ func next_level():
 		# get_tree().change_scene(levels[current_level])
 		game.clear_board()
 		game.restart_board()
+		game.steps = -1		
 	else:
 		game_restart()
 

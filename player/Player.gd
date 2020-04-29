@@ -87,7 +87,9 @@ func fight_with(tgpos_x, tgpos_y):
 	elif token.token_type == 2: # gold
 		Global.gold += token.val
 		#$HP_Label.text = str(hp)
-			
+	elif token.token_type == 4: # stair
+		game.has_stair = false
+		Global.next_level()
 			
 func die():
 	is_alive = false
