@@ -16,6 +16,8 @@ signal level_changed
 onready var game = get_tree().get_root().get_node("Game")
 
 func next_level():
+	print(game)
+	
 	current_level += 1
 	emit_signal("level_changed", current_level)
 	if current_level < levels.size():
@@ -27,11 +29,16 @@ func next_level():
 
 
 func game_restart():
+	print("game restarting ...")
 	current_level = 0
+	emit_signal("level_changed", current_level)	
 	gold = 0
 	exp_ = 0
-#	get_tree().change_scene(TitleScreen)	
-	get_tree().change_scene(GameScene)
+	game.clear_board()
+	game.restart_board()
+	print("game restarted")
+	print(game)
+	
 
 func game_over():
 	
