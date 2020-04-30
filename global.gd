@@ -13,9 +13,10 @@ var GameScene = "res://board/Game.tscn"
 signal gold_changed
 signal level_changed
 
-onready var game = get_tree().get_root().get_node("Game")
+var game 
 
 func next_level():
+	game = get_tree().get_root().get_node("Game")
 	print(game)
 	
 	current_level += 1
@@ -28,19 +29,12 @@ func next_level():
 	else:
 		game_restart()
 
-
 func game_restart():
 	print("game restarting ...")
 	current_level = 0
 	gold = 0
 	exp_ = 0
-	emit_signal("level_changed", current_level)	
-	get_tree().change_scene(GameScene)	
-	#game.clear_board()
-	#game.restart_board()
-	print("game restarted")
-	print(game)
-	
+	get_tree().change_scene(GameOverScreen)
 
 func game_over():
 	
