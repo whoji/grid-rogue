@@ -8,6 +8,7 @@ var exp_ = 0
 var levels = [0, 1, 2, 3, 4]
 var TitleScreen = "res://UI/TitleScreen.tscn"
 var GameOverScreen = "res://UI/GameOverScreen.tscn"
+var GameFinishedScreen = "res://UI/GameFinishedScreen.tscn"
 var GameScene = "res://board/Game.tscn"
 
 signal gold_changed
@@ -27,7 +28,14 @@ func next_level():
 		game.restart_board()
 		game.steps = -1		
 	else:
-		game_restart()
+		game_finish()
+
+func game_finish():
+	print("game finished ...")
+	current_level = 0
+	gold = 0
+	exp_ = 0
+	get_tree().change_scene(GameFinishedScreen)
 
 func game_restart():
 	print("game restarting ...")
@@ -37,7 +45,10 @@ func game_restart():
 	get_tree().change_scene(GameOverScreen)
 
 func game_over():
-	
+	print("game over ...")	
+	current_level = 0
+	gold = 0
+	exp_ = 0
 	get_tree().change_scene(GameOverScreen)
 	
 func set_gold(val):
