@@ -86,4 +86,27 @@
 ## Enemies
 * all kinds of enmies just like HS creatures.
 * enemies no passives. just ATK and HP
+* enemies has passives, but simple ?
+	* tuant
+	* windfury
+	* divine shield
+* general rule: hp = 2 * atk
+* the danger zone concept
+	* all like the reaper in persona game
+	* prevent player grind at a low level too long
+	* reaper can be an unlockable!
 
+## between runs player progression
+* level up all from the shop.
+* or buy power-up for owned heroes
+* buy new hero
+* find blueprint/card, then you know it, then can unlock it.
+
+## hero design concept
+* not upgrade, but different!
+	* different growth
+	* different playstyle
+* or a 2 dimension matrix.
+	* 1 dim: different hero: barb, warrior, mage, beserk
+	* 1 dim: just power up that hero. but with sight difference
+		* swordman, knight, champ, blademaster
