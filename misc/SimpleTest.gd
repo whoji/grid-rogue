@@ -11,7 +11,8 @@ extends Node
 func _ready():
 	var a = [1, 2 ,3 ]
 	print(a) 
-
+	print(len(a))
+	print(a.size())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

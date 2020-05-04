@@ -13,8 +13,8 @@ var err = conf.load(conf_file)
 var err_enemy = conf_enemy.load(conf_file_enemy)
 var err_level = conf_level.load(conf_file_level)
 
-var level = []
-var enemy = []
+var level = {}
+var enemy = {}
 
 func _ready():
 	if err != OK or err_enemy != OK or err_level != OK:
@@ -50,8 +50,8 @@ func load_enemy_conf():
 		var lvl = conf_enemy.get_value(section_key, "level" , -1)
 		var atk = conf_enemy.get_value(section_key, "atk" , -1)
 		var hp  = conf_enemy.get_value(section_key, "hp" , -1)
-		#self.enemy[i] = {"level":lvl, "atk":atk, "hp":hp}
-		self.enemy.append({"level":lvl, "atk":atk, "hp":hp})
+		#self.enemy.append({"level":lvl, "atk":atk, "hp":hp})
+		self.enemy[i] = {"level":lvl, "atk":atk, "hp":hp}
 		
 func load_level_conf():
 	var sections = conf_level.get_sections()
@@ -59,6 +59,6 @@ func load_level_conf():
 		var section_key = "level_"+str(i+1)
 		var spawn_enemy = conf_level.get_value(section_key, "spawn_enemy" , [])
 		var spawn_chance= conf_level.get_value(section_key, "spawn_chance" , [])
-		#self.enemy[i] = {"level":lvl, "atk":atk, "hp":hp}
-		self.level.append({"spawn_enemy":spawn_enemy, "spawn_chance":spawn_chance})
+		#self.level.append({"spawn_enemy":spawn_enemy, "spawn_chance":spawn_chance})
+		self.level[i+1] = {"spawn_enemy":spawn_enemy, "spawn_chance":spawn_chance}
 		
