@@ -54,8 +54,8 @@ func clear_board():
 #func restart_board(player.gpos): # restart or initialize the board when the game start. or next level
 func restart_board(): # restart or initialize the board when the game start. or next level
 	# load the enemy spawn conf
-	
-	
+	enemy_spawn = Conf.level[Global.current_level]["spawn_enemy"]
+	enemy_spawn_chance = Conf.level[Global.current_level]["spawn_chance"]
 	# fill the player
 	if player == null:
 		player = $Player
@@ -80,7 +80,8 @@ func fill_enemy_to_map():
 	
 func add_rand_enemy(i,j):
 	print("adding enemey ...")
-	var enemy_type = ENEMY[randi()%4]
+	#var enemy_type = ENEMY[randi()%4]
+	var enemy_type = get_random_spawn_type(enemy_spawn, enemy_spawn_chance)
 	var enemy_node = EnemyScene.instance()
 	map[i][j] = enemy_type
 	enemy_node.enemy_type = enemy_type
@@ -241,7 +242,7 @@ func get_valid_enemy_behind_gpos_orth_set(empty_gpos, player_dest_grid_pos):
 		assert(1 == 0)
 
 func get_random_spawn_type(spawn_type, spawn_chance):
-	assert (len(spawn_type) == len(spawn_chance))
+	assert (len(spawn_type) == len(spawn_chance),	"%d != %d " % [len(spawn_type),len(spawn_chance)])
 	var chance_sum = 0
 	for chance_weight in spawn_chance:
 		chance_sum += chance_weight

@@ -56,9 +56,9 @@ func load_enemy_conf():
 func load_level_conf():
 	var sections = conf_level.get_sections()
 	for i in range(sections.size()):
-		var section_key = "level_"+str(i+1)
+		var section_key = "level_"+str(i)
 		var spawn_enemy = conf_level.get_value(section_key, "spawn_enemy" , [])
 		var spawn_chance= conf_level.get_value(section_key, "spawn_chance" , [])
 		#self.level.append({"spawn_enemy":spawn_enemy, "spawn_chance":spawn_chance})
-		self.level[i+1] = {"spawn_enemy":spawn_enemy, "spawn_chance":spawn_chance}
+		self.level[i] = {"spawn_enemy":spawn_enemy, "spawn_chance":spawn_chance}
 		

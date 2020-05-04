@@ -13,6 +13,9 @@ func _ready():
 	print(a) 
 	print(len(a))
 	print(a.size())
+	var str11 = "%d != %d " % [1,2]
+	print(str11)
+	print("%d != %d " % [1,2])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
