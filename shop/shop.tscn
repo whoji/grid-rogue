@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://board/GameTileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://asset/hero/hero_0.png" type="Texture" id=2]
+
+[node name="shop" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0, 0, 0, 0.352941 )
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 296.0
+margin_bottom = 232.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Labels" type="Node" parent="."]
+
+[node name="Heroes" type="Node" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Heroes"]
+position = Vector2( 64, 56 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="Heroes"]
+position = Vector2( 256, 56 )
+texture = ExtResource( 2 )
+
+[node name="Sprite4" type="Sprite" parent="Heroes"]
+position = Vector2( 208, 56 )
+texture = ExtResource( 2 )
+
+[node name="Sprite5" type="Sprite" parent="Heroes"]
+position = Vector2( 160, 56 )
+texture = ExtResource( 2 )
+
+[node name="Sprite6" type="Sprite" parent="Heroes"]
+position = Vector2( 112, 56 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Heroes"]
+position = Vector2( 64, 104 )
+texture = ExtResource( 2 )
+
+[node name="Sprite10" type="Sprite" parent="Heroes"]
+position = Vector2( 256, 104 )
+texture = ExtResource( 2 )
+
+[node name="Sprite9" type="Sprite" parent="Heroes"]
+position = Vector2( 208, 104 )
+texture = ExtResource( 2 )
+
+[node name="Sprite8" type="Sprite" parent="Heroes"]
+position = Vector2( 160, 104 )
+texture = ExtResource( 2 )
+
+[node name="Sprite7" type="Sprite" parent="Heroes"]
+position = Vector2( 112, 104 )
+texture = ExtResource( 2 )
+
+[node name="Sprite15" type="Sprite" parent="Heroes"]
+position = Vector2( 64, 152 )
+texture = ExtResource( 2 )
+
+[node name="Sprite14" type="Sprite" parent="Heroes"]
+position = Vector2( 256, 152 )
+texture = ExtResource( 2 )
+
+[node name="Sprite13" type="Sprite" parent="Heroes"]
+position = Vector2( 208, 152 )
+texture = ExtResource( 2 )
+
+[node name="Sprite12" type="Sprite" parent="Heroes"]
+position = Vector2( 160, 152 )
+texture = ExtResource( 2 )
+
+[node name="Sprite11" type="Sprite" parent="Heroes"]
+position = Vector2( 112, 152 )
+texture = ExtResource( 2 )
+
+[node name="Sprite20" type="Sprite" parent="Heroes"]
+position = Vector2( 64, 200 )
+texture = ExtResource( 2 )
+
+[node name="Sprite19" type="Sprite" parent="Heroes"]
+position = Vector2( 256, 200 )
+texture = ExtResource( 2 )
+
+[node name="Sprite18" type="Sprite" parent="Heroes"]
+position = Vector2( 208, 200 )
+texture = ExtResource( 2 )
+
+[node name="Sprite17" type="Sprite" parent="Heroes"]
+position = Vector2( 160, 200 )
+texture = ExtResource( 2 )
+
+[node name="Sprite16" type="Sprite" parent="Heroes"]
+position = Vector2( 112, 200 )
+texture = ExtResource( 2 )
