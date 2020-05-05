@@ -14,12 +14,16 @@ var enemy_type = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hp = Conf.enemy[enemy_type]["hp"]
+	atk = Conf.enemy[enemy_type]["atk"]
 	# grid_position = position / TILE_SIZE
 	$HP_Label.text = str(hp)
 	$ATK_Label.text = str(atk)
-	if enemy_type != 0:
-		$Sprite.texture = load("res://asset/enemy/enemy_"+str(enemy_type)+".png")
-		position = (grid_position + game.MAP_OFFSET) * TILE_SIZE
+	$Sprite.texture = load("res://asset/enemy/enemy_"+str(enemy_type)+".png")
+	print(enemy_type)
+	if $Sprite.texture == null:
+		$Sprite.texture = load("res://asset/enemy/enemy_0.png")	
+	position = (grid_position + game.MAP_OFFSET) * TILE_SIZE
 
 func move_grid_simple(dir):
 	if dir == "left":
