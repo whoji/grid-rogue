@@ -6,15 +6,19 @@ extends Node2D
 var conf_file = "res://misc/everything.cfg"
 var conf_file_enemy = "res://conf/enemy.cfg"
 var conf_file_level = "res://conf/level.cfg"
+var save_file = "res://misc/save_file.cfg" # for player progression only
 var conf = ConfigFile.new()
 var conf_enemy = ConfigFile.new()
 var conf_level = ConfigFile.new()
+var player_progression = ConfigFile.new()
 var err = conf.load(conf_file)
 var err_enemy = conf_enemy.load(conf_file_enemy)
 var err_level = conf_level.load(conf_file_level)
+var err_save = player_progression.load(save_file)
 
 var level = {}
 var enemy = {}
+var progression = {}
 
 func _ready():
 	if err != OK or err_enemy != OK or err_level != OK:
@@ -34,6 +38,11 @@ func _ready():
 		print("ConfDataCenter LOADING ... FINISHED !")
 		print("==========")
 		
+	if err_save != OK:
+		print("CANNOT OPEN THE PLAYER SAVE FILE !!!!!!")
+		print(err_save)
+	else:
+		load_save_file()
 
 func saveValue(_conf, section, key, value):
 	_conf.set_value(section, key, value)
@@ -62,3 +71,6 @@ func load_level_conf():
 		#self.level.append({"spawn_enemy":spawn_enemy, "spawn_chance":spawn_chance})
 		self.level[i] = {"spawn_enemy":spawn_enemy, "spawn_chance":spawn_chance}
 		
+func load_save_file():
+	print("NOT IMPLEMENTED YET: LOAD SAVE FILE...")
+	pass
