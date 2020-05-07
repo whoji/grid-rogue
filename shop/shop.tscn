@@ -254,3 +254,27 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="PopupDialog" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="PopupDialog"]
+visible = false
+margin_left = 70.0
+margin_top = 70.0
+margin_right = 245.0
+margin_bottom = 175.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PopupDialog/ColorRect"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 146.0
+margin_bottom = 63.0
+text = "You DO NOT have
+enough gold..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
