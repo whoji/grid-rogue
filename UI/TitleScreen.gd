@@ -23,13 +23,10 @@ func _input(event):
 		cursor_pos_idx = min(cursor_pos_idx, 3)
 		move_rect()		
 	elif event.is_action("ui_select"):
+		if cursor_pos_idx == 0:
+			Global.game_start()
 		if cursor_pos_idx == 3:
 			get_tree().quit()
-#		if flag_if_dialog_on:
-#			$PopupDialog/ColorRect.visible = false
-#			flag_if_dialog_on = false	
-#		else:
-#			buy_hero()
 
 func move_rect():
 	print(cursor_pos_idx)

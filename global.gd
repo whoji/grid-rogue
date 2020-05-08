@@ -30,6 +30,13 @@ func next_level():
 	else:
 		game_finish()
 
+func game_start():
+	print("game starting ...")
+	current_level = 0
+	gold = 0
+	exp_ = 0
+	get_tree().change_scene(GameScene)
+
 func game_finish():
 	print("game finished ...")
 	current_level = 0
