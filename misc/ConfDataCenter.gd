@@ -10,15 +10,15 @@ var save_file = "res://misc/save_file.cfg" # for player progression only
 var conf = ConfigFile.new()
 var conf_enemy = ConfigFile.new()
 var conf_level = ConfigFile.new()
-var player_progression = ConfigFile.new()
+var player_save = ConfigFile.new()
 var err = conf.load(conf_file)
 var err_enemy = conf_enemy.load(conf_file_enemy)
 var err_level = conf_level.load(conf_file_level)
-var err_save = player_progression.load(save_file)
+var err_save = player_save.load(save_file)
 
 var level = {}
 var enemy = {}
-var progression = {}
+var player_progression = {}
 
 func _ready():
 	if err != OK or err_enemy != OK or err_level != OK:
@@ -72,5 +72,16 @@ func load_level_conf():
 		self.level[i] = {"spawn_enemy":spawn_enemy, "spawn_chance":spawn_chance}
 		
 func load_save_file():
-	print("NOT IMPLEMENTED YET: LOAD SAVE FILE...")
-	pass
+	# print("NOT IMPLEMENTED YET: LOAD SAVE FILE...")
+	# pass
+	var sections = player_save.get_sections()
+	var owned_heroes = player_save.get_value("unlocks", "owned_heroes" , get_default_owned_heroes_string())
+	player_progression["owned_heroes"] = owned_heroes
+	#print("xx")
+	#print(player_progression)
+
+func get_default_owned_heroes_string():
+	var _ret = ""
+	for i in range(Global.TOTAL_HEROES_NUM):
+		_ret += "0"
+	return _ret

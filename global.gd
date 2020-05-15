@@ -1,6 +1,7 @@
 extends Node
 
 const MAP_SIZE = Vector2(4,4)
+const TOTAL_HEROES_NUM = 25
 
 var current_level = 0 #setget set_current_level
 var gold = 0 setget set_gold
