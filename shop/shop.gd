@@ -2,6 +2,8 @@ extends Control
 
 const TILE_SIZE = 35
 const TILE_OFFSET = Vector2(1,1)
+const ROWS = 5
+const COLS = 7
 onready var selector = $SelectorRect
 onready var selector_gpos = Vector2(1,1)
 onready var tween = get_node("Tween")
@@ -40,13 +42,28 @@ func move_grid(dx, dy):
 	
 func buy_hero():
 	var hero_id = get_hero_id(selector_gpos)
-#	if Global.gold >= Conf.heroes[hero_id]["gold"]:
-#		pass
-#	else:
-#		print("YOU CANNOT AFFORD BUY THIS THING !!!...")
-#		$PopupDialog/ColorRect.visible = true
-	$PopupDialog/ColorRect.visible = true
-	flag_if_dialog_on = true
+	#print(hero_id)
+	#return 
+	
+#	print("XXXXXXXXXXXXXXXXX")
+#	print(Conf.hero)
+#	print(Conf.hero[0])
+#	print("XXXXXXXXXXXXXXXXX")
+#
+	# Global.gold = 200
+
+	var hero = Conf.hero[hero_id]
+	if Global.gold >= Conf.hero[hero_id]["cost"]:
+		print("YOU BOUGHT THIS SHITTY HERO !!!...")
+		Global.gold -= hero["cost"]
+		Global.player_progression["owned_heroes"][hero_id] = "1"
+		print(Global.player_progression)
+		## TODO check if already bought....
+	else:
+		print("YOU CANNOT AFFORD BUY THIS THING !!!...")
+		$PopupDialog/ColorRect.visible = true
+		flag_if_dialog_on = true
 	
 func get_hero_id(selector_gpos):
-	pass
+	var adj_selector_gpos = selector_gpos - TILE_OFFSET
+	return int(adj_selector_gpos.y  * COLS + adj_selector_gpos.x)
