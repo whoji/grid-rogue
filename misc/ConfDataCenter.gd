@@ -6,26 +6,31 @@ extends Node2D
 var conf_file = "res://misc/everything.cfg"
 var conf_file_enemy = "res://conf/enemy.cfg"
 var conf_file_level = "res://conf/level.cfg"
+var conf_file_hero = "res://conf/hero.cfg"
 var save_file = "res://misc/save_file.cfg" # for player progression only
 var conf = ConfigFile.new()
 var conf_enemy = ConfigFile.new()
 var conf_level = ConfigFile.new()
+var conf_hero = ConfigFile.new()
 var player_save = ConfigFile.new()
 var err = conf.load(conf_file)
 var err_enemy = conf_enemy.load(conf_file_enemy)
 var err_level = conf_level.load(conf_file_level)
+var err_hero = conf_hero.load(conf_file_hero)
 var err_save = player_save.load(save_file)
 
 var level = {}
 var enemy = {}
+var hero = {}
 var player_progression = {}
 
 func _ready():
-	if err != OK or err_enemy != OK or err_level != OK:
+	if err != OK or err_enemy != OK or err_level != OK or err_hero != OK:
 		print("CANNOT OPEN THE config file !!!")
 		print(err)
 		print(err_enemy)
 		print(err_level)
+		print(err_hero)
 	else:
 		loadConf(conf, "section_example_003", "some_key")
 		print(conf)
@@ -33,8 +38,11 @@ func _ready():
 		
 		load_enemy_conf()
 		load_level_conf()
+		load_hero_conf()
+
 		print(enemy)
 		print(level)
+		print(hero)
 		print("ConfDataCenter LOADING ... FINISHED !")
 		print("==========")
 		
@@ -70,7 +78,20 @@ func load_level_conf():
 		var spawn_chance= conf_level.get_value(section_key, "spawn_chance" , [])
 		#self.level.append({"spawn_enemy":spawn_enemy, "spawn_chance":spawn_chance})
 		self.level[i] = {"spawn_enemy":spawn_enemy, "spawn_chance":spawn_chance}
-		
+	
+func load_hero_conf():
+	var sections = conf_hero.get_sections()
+	print(sections)
+	for i in range(sections.size()):
+		var section_key = "hero_"+str(i)
+		#var lvl = conf_hero.get_value(section_key, "level" , -1)
+		var id = conf_hero.get_value(section_key, "id" , -1)
+		var atk = conf_hero.get_value(section_key, "atk" , -1)
+		var hp  = conf_hero.get_value(section_key, "hp" , -1)
+		var cost  = conf_hero.get_value(section_key, "cost" , -1)
+		#self.enemy.append({"level":lvl, "atk":atk, "hp":hp})
+		self.hero[id] = {"id":id, "atk":atk, "hp":hp, "cost":cost}
+			
 func load_save_file():
 	# print("NOT IMPLEMENTED YET: LOAD SAVE FILE...")
 	# pass
