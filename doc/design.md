@@ -101,6 +101,13 @@
 * or buy power-up for owned heroes
 * buy new hero
 * find blueprint/card, then you know it, then can unlock it.
+	* so from the UI view. all with [?], if with blueprint grayed out hero, full color if bought
+* how about instead of blueprint, drop some niudan (gashapon), with unknown content?
+	* content will be revealed once the run is over
+	* if you got duplicated blueprint. 
+		* then you discard them
+		* or you can upgrade once got three same item. (<--- if go that route then no need to purchase the hero, then what's the point of gold ????)
+		* all convert to the same gold amount . or 50% gold amount
 
 ## hero design concept
 * not upgrade, but different!
