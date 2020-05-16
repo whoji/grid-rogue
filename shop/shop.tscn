@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://board/GameTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://asset/hero/hero_0.png" type="Texture" id=2]
 [ext_resource path="res://shop/shop.gd" type="Script" id=3]
+[ext_resource path="res://UI/ShopHUD.tscn" type="PackedScene" id=4]
 
 [node name="shop" type="Control"]
 anchor_right = 1.0
@@ -20,10 +21,10 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color( 0, 0, 0, 0.352941 )
-margin_left = 22.2066
-margin_top = 16.7793
-margin_right = 294.207
-margin_bottom = 224.779
+margin_left = 22.0
+margin_top = 24.0
+margin_right = 294.0
+margin_bottom = 225.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -278,3 +279,5 @@ enough gold..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ShopHUD" parent="." instance=ExtResource( 4 )]
