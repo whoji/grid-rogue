@@ -59,6 +59,7 @@ func buy_hero():
 		Global.player_progression["owned_heroes"][hero_id] = "1"
 		print(Global.player_progression)
 		## TODO check if already bought....
+		Conf.save_player_progression()	
 	else:
 		print("YOU CANNOT AFFORD BUY THIS THING !!!...")
 		$PopupDialog/ColorRect.visible = true

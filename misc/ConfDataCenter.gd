@@ -106,3 +106,7 @@ func get_default_owned_heroes_string():
 	for i in range(Global.TOTAL_HEROES_NUM):
 		_ret += "0"
 	return _ret
+
+func save_player_progression():
+	print("save_player_progression() NOT YET IMPLEMENTED")
+	pass

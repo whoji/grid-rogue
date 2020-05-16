@@ -31,6 +31,7 @@ func next_level():
 		game.clear_board()
 		game.restart_board()
 		game.steps = -1		
+		Conf.save_player_progression()	
 	else:
 		game_finish()
 
@@ -50,6 +51,7 @@ func game_finish():
 
 func game_restart():
 	print("game restarting ...")
+	Conf.save_player_progression()
 	current_level = 0
 	gold = 0
 	exp_ = 0
@@ -57,6 +59,7 @@ func game_restart():
 
 func game_over():
 	print("game over ...")	
+	Conf.save_player_progression()		
 	current_level = 0
 	gold = 0
 	exp_ = 0
@@ -78,5 +81,6 @@ func get_rand_gpos():
 
 func go_to_shop(from_scene="title"):
 	print("Go to shop from :" + from_scene)
+	Conf.save_player_progression()	
 	get_tree().change_scene(ShopScene)
 
