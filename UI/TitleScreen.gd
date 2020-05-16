@@ -25,8 +25,10 @@ func _input(event):
 	elif event.is_action("ui_select"):
 		if cursor_pos_idx == 0:
 			Global.game_start()
-		if cursor_pos_idx == 3:
+		elif cursor_pos_idx == 3:
 			get_tree().quit()
+		elif cursor_pos_idx == 1:
+			Global.go_to_shop("title")
 
 func move_rect():
 	print(cursor_pos_idx)

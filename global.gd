@@ -11,6 +11,7 @@ var TitleScreen = "res://UI/TitleScreen.tscn"
 var GameOverScreen = "res://UI/GameOverScreen.tscn"
 var GameFinishedScreen = "res://UI/GameFinishedScreen.tscn"
 var GameScene = "res://board/Game.tscn"
+var ShopScene = "res://shop/Shop.tscn"
 
 onready var player_progression = Conf.player_progression
 
@@ -74,3 +75,8 @@ func get_rand_gpos():
 	var x = randi() % int(MAP_SIZE.x)
 	var y = randi() % int(MAP_SIZE.y)
 	return Vector2(x,y)
+
+func go_to_shop(from_scene="title"):
+	print("Go to shop from :" + from_scene)
+	get_tree().change_scene(ShopScene)
+
