@@ -84,3 +84,8 @@ func go_to_shop(from_scene="title"):
 	Conf.save_player_progression()	
 	get_tree().change_scene(ShopScene)
 
+func go_to_title_screen(from_scene=""):
+	print("Go to title screen from :" + from_scene)
+	Conf.save_player_progression()		
+	get_tree().change_scene(TitleScreen)
+	
