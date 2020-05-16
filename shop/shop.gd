@@ -5,7 +5,7 @@ const TILE_OFFSET = Vector2(1,1)
 const ROWS = 5
 const COLS = 7
 onready var selector = $SelectorRect
-onready var selector_gpos = Vector2(1,1)
+onready var selector_gpos = Vector2(0,0)
 onready var tween = get_node("Tween")
 onready var flag_if_dialog_on = false
 
@@ -36,7 +36,7 @@ func move_grid(dx, dy):
 	selector_gpos.x += dx 
 	selector_gpos.y += dy
 	var dest_position = (selector_gpos + TILE_OFFSET) * TILE_SIZE
-	tween.interpolate_property(selector, "position",
+	tween.interpolate_property(selector, "rect_position",
 		selector.rect_position, dest_position, 0.1,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
