@@ -40,9 +40,9 @@ func _ready():
 		load_level_conf()
 		load_hero_conf()
 
-		print(enemy)
-		print(level)
-		print(hero)
+		#print(enemy)
+		#print(level)
+		#print(hero)
 		print("ConfDataCenter LOADING ... FINISHED !")
 		print("==========")
 		
@@ -81,7 +81,7 @@ func load_level_conf():
 	
 func load_hero_conf():
 	var sections = conf_hero.get_sections()
-	print(sections)
+	#print(sections)
 	for i in range(sections.size()):
 		var section_key = "hero_"+str(i)
 		#var lvl = conf_hero.get_value(section_key, "level" , -1)
@@ -91,6 +91,7 @@ func load_hero_conf():
 		var cost  = conf_hero.get_value(section_key, "cost" , -1)
 		#self.enemy.append({"level":lvl, "atk":atk, "hp":hp})
 		self.hero[id] = {"id":id, "atk":atk, "hp":hp, "cost":cost}
+	#print(self.hero.size())
 			
 func load_save_file():
 	# print("NOT IMPLEMENTED YET: LOAD SAVE FILE...")

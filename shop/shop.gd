@@ -4,18 +4,23 @@ const TILE_SIZE = 35
 const TILE_OFFSET = Vector2(1,1)
 const ROWS = 5
 const COLS = 7
-const TOTAL_ITEMS = 20
-#const TOTAL_ITEMS = Conf.hero.size()
+onready var total_items = Conf.hero.size()
 onready var selector = $SelectorRect
 onready var selector_gpos = Vector2(0,0)
 onready var tween = get_node("Tween")
 onready var flag_if_dialog_on = false
 
 func _ready():
+	
+	print("XXXX")
+	print("XXXX")
+	print(Conf.hero.size())
+	print(total_items)
+	
 	#pass # Replace with function body.
 	var i = 0
 	var j = 0
-	for x in range(TOTAL_ITEMS):
+	for x in range(total_items):
 		add_item(i,j)
 		i += 1
 		if i >= COLS:
