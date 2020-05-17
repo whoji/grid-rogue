@@ -4,14 +4,29 @@ const TILE_SIZE = 35
 const TILE_OFFSET = Vector2(1,1)
 const ROWS = 5
 const COLS = 7
+const TOTAL_ITEMS = 20
+#const TOTAL_ITEMS = Conf.hero.size()
 onready var selector = $SelectorRect
 onready var selector_gpos = Vector2(0,0)
 onready var tween = get_node("Tween")
 onready var flag_if_dialog_on = false
 
 func _ready():
-	pass # Replace with function body.
+	#pass # Replace with function body.
+	var i = 0
+	var j = 0
+	for x in range(TOTAL_ITEMS):
+		add_item(i,j)
+		i += 1
+		if i >= COLS:
+			j += 1
+			i = 0
 
+# grid position to read pixel position
+func gpos_2_pos(gpos):
+	var pos = (gpos + TILE_OFFSET) * TILE_SIZE
+	return pos
+	
 func _input(event):
 	if !event.is_pressed(): 
 		return
@@ -35,7 +50,8 @@ func _input(event):
 func move_grid(dx, dy):
 	selector_gpos.x += dx 
 	selector_gpos.y += dy
-	var dest_position = (selector_gpos + TILE_OFFSET) * TILE_SIZE
+	#var dest_position = (selector_gpos + TILE_OFFSET) * TILE_SIZE
+	var dest_position = gpos_2_pos(selector_gpos)
 	tween.interpolate_property(selector, "rect_position",
 		selector.rect_position, dest_position, 0.1,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -70,3 +86,14 @@ func buy_hero():
 func get_hero_id(selector_gpos):
 	var adj_selector_gpos = selector_gpos - TILE_OFFSET
 	return int(adj_selector_gpos.y  * COLS + adj_selector_gpos.x)
+	
+	
+func add_item(i,j,texture_path="res://asset/hero/hero_0.png"):
+	print("adding shop item ...")
+	var item_node = Sprite.new()
+	var item_gpos = Vector2(i,j)
+	item_node.centered = false
+	item_node.position = gpos_2_pos(item_gpos)
+	item_node.texture = load(texture_path)
+	$DisplayedItems.add_child(item_node)
+
