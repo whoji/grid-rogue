@@ -68,6 +68,7 @@ func move_grid(dx, dy):
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 	selector.rect_position = selector_gpos * TILE_SIZE
+	# print(get_hero_id(selector_gpos))
 	
 func buy_hero():
 	var hero_id = get_hero_id(selector_gpos)
@@ -82,20 +83,28 @@ func buy_hero():
 	# Global.gold = 200
 
 	var hero = Conf.hero[hero_id]
-	if Global.gold >= Conf.hero[hero_id]["cost"]:
-		print("YOU BOUGHT THIS SHITTY HERO !!!...")
-		Global.gold -= hero["cost"]
-		Global.player_progression["owned_heroes"][hero_id] = "1"
-		print(Global.player_progression)
-		## TODO check if already bought....
-		Conf.save_player_progression()	
-	else:
-		print("YOU CANNOT AFFORD BUY THIS THING !!!...")
-		$PopupDialog/ColorRect.visible = true
-		flag_if_dialog_on = true
+	
+	if int(Conf.player_progression["owned_heroes"][hero_id]):
+		# Equip hero
+		equip_hero(hero_id)
+		print("hero equiped: " + str(hero_id))
+	elif int(Conf.player_progression["found_heroes"][hero_id]) and \
+		int(Conf.player_progression["owned_heroes"][hero_id]) == 0:
+		# Buy hero
+		if Global.gold >= Conf.hero[hero_id]["cost"]:
+			print("YOU BOUGHT THIS SHITTY HERO !!!...")
+			Global.gold -= hero["cost"]
+			Global.player_progression["owned_heroes"][hero_id] = "1"
+			print(Global.player_progression)
+			## TODO check if already bought....
+			Conf.save_player_progression()	
+		else:
+			print("YOU CANNOT AFFORD BUY THIS THING !!!...")
+			$PopupDialog/ColorRect.visible = true
+			flag_if_dialog_on = true
 	
 func get_hero_id(selector_gpos):
-	var adj_selector_gpos = selector_gpos - TILE_OFFSET
+	var adj_selector_gpos = selector_gpos #- TILE_OFFSET
 	return int(adj_selector_gpos.y  * COLS + adj_selector_gpos.x)
 	
 func add_item(i,j,texture_path="res://asset/hero/hero_0.png",greyed_out=false):
@@ -114,3 +123,12 @@ func add_item(i,j,texture_path="res://asset/hero/hero_0.png",greyed_out=false):
 	
 	$DisplayedItems.add_child(item_node)
 
+func equip_hero(hero_id):
+	if Global.equiped_hero != null:
+		var prev_equipied_hero_id = Global.equiped_hero
+		#$DisplayedItems.get_child(prev_equipied_hero_id).flip_v = false
+		$DisplayedItems.get_child(prev_equipied_hero_id).set_scale(Vector2(1,1))
+	Global.equiped_hero = hero_id
+	#$DisplayedItems.get_child(hero_id).flip_v = true
+	$DisplayedItems.get_child(hero_id).set_scale(Vector2(1.2,1.2))
+	
