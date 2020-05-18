@@ -5,6 +5,7 @@ const TILE_OFFSET = Vector2(1,1)
 const ROWS = 5
 const COLS = 7
 const ShopItemGrayOutBox = preload("res://UI/ShopItemGrayOutBox.tscn")
+const EquipedFrame = preload("res://UI/EquipedFrame.tscn")
 onready var total_items = Conf.hero.size()
 onready var selector = $SelectorRect
 onready var selector_gpos = Vector2(0,0)
@@ -126,9 +127,16 @@ func add_item(i,j,texture_path="res://asset/hero/hero_0.png",greyed_out=false):
 func equip_hero(hero_id):
 	if Global.equiped_hero != null:
 		var prev_equipied_hero_id = Global.equiped_hero
-		#$DisplayedItems.get_child(prev_equipied_hero_id).flip_v = false
-		$DisplayedItems.get_child(prev_equipied_hero_id).set_scale(Vector2(1,1))
+		var prev_equipied_hero_display_node = $DisplayedItems.get_child(prev_equipied_hero_id)
+		# prev_equipied_hero_display_node.flip_v = false
+		# prev_equipied_hero_display_node.set_scale(Vector2(1,1))
+		for n in prev_equipied_hero_display_node.get_children():
+			#if n.get_type() == EquipedFrame:
+			prev_equipied_hero_display_node.remove_child(n)
+			n.queue_free()
+		#prev_equipied_hero_display_node.remove_child()
 	Global.equiped_hero = hero_id
 	#$DisplayedItems.get_child(hero_id).flip_v = true
-	$DisplayedItems.get_child(hero_id).set_scale(Vector2(1.2,1.2))
+	# $DisplayedItems.get_child(hero_id).set_scale(Vector2(1.2,1.2))
+	$DisplayedItems.get_child(hero_id).add_child(EquipedFrame.instance())
 	
