@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://board/GameTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://asset/hero/hero_0.png" type="Texture" id=2]
 [ext_resource path="res://shop/shop.gd" type="Script" id=3]
 [ext_resource path="res://UI/ShopHUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/ShopItemGrayOutBox.tscn" type="PackedScene" id=5]
 
 [node name="shop" type="Control"]
 anchor_right = 1.0
@@ -254,12 +253,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SelectorRect" parent="." instance=ExtResource( 5 )]
+[node name="SelectorRect" type="ColorRect" parent="."]
 margin_left = 35.0
 margin_top = 35.0
-margin_right = 69.0
-margin_bottom = 69.0
-color = Color( 0.576471, 0.552941, 0.552941, 0.305882 )
+margin_right = 67.0
+margin_bottom = 67.0
+color = Color( 0.741176, 0.552941, 0.552941, 0.266667 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tween" type="Tween" parent="."]
 
