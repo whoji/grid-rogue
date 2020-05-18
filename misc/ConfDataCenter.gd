@@ -98,7 +98,9 @@ func load_save_file():
 	# pass
 	var sections = player_save.get_sections()
 	var owned_heroes = player_save.get_value("unlocks", "owned_heroes" , get_default_owned_heroes_string())
+	var found_heroes = player_save.get_value("unlocks", "found_heroes" , get_default_owned_heroes_string())
 	player_progression["owned_heroes"] = owned_heroes
+	player_progression["found_heroes"] = found_heroes
 	#print("xx")
 	#print(player_progression)
 

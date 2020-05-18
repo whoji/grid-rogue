@@ -4,6 +4,7 @@ const TILE_SIZE = 35
 const TILE_OFFSET = Vector2(1,1)
 const ROWS = 5
 const COLS = 7
+const ShopItemGrayOutBox = preload("res://UI/ShopItemGrayOutBox.tscn")
 onready var total_items = Conf.hero.size()
 onready var selector = $SelectorRect
 onready var selector_gpos = Vector2(0,0)
@@ -20,8 +21,13 @@ func _ready():
 	#pass # Replace with function body.
 	var i = 0
 	var j = 0
-	for x in range(total_items):
-		add_item(i,j)
+	for item_id in range(total_items):
+		if int(Conf.player_progression["found_heroes"][item_id]) == 0:
+			add_item(i,j, "res://asset/enemy/enemy_0.png", false)
+		elif int(Conf.player_progression["owned_heroes"][item_id]) == 0:
+			add_item(i,j,"",true)
+		else:
+			add_item(i,j)			
 		i += 1
 		if i >= COLS:
 			j += 1
@@ -92,13 +98,19 @@ func get_hero_id(selector_gpos):
 	var adj_selector_gpos = selector_gpos - TILE_OFFSET
 	return int(adj_selector_gpos.y  * COLS + adj_selector_gpos.x)
 	
-	
-func add_item(i,j,texture_path="res://asset/hero/hero_0.png"):
+func add_item(i,j,texture_path="res://asset/hero/hero_0.png",greyed_out=false):
+	if texture_path == "":
+		texture_path = "res://asset/hero/hero_0.png"
 	print("adding shop item ...")
 	var item_node = Sprite.new()
 	var item_gpos = Vector2(i,j)
 	item_node.centered = false
 	item_node.position = gpos_2_pos(item_gpos)
 	item_node.texture = load(texture_path)
+	if greyed_out:
+		var graybox = ShopItemGrayOutBox.instance()
+		#graybox.rect_position = item_node.position
+		item_node.add_child(graybox)
+	
 	$DisplayedItems.add_child(item_node)
 
