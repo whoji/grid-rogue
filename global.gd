@@ -13,6 +13,7 @@ var GameFinishedScreen = "res://UI/GameFinishedScreen.tscn"
 var GameScene = "res://board/Game.tscn"
 var ShopScene = "res://shop/Shop.tscn"
 var equiped_hero
+var prevous_scene = ""
 
 onready var player_progression = Conf.player_progression
 
@@ -82,6 +83,7 @@ func get_rand_gpos():
 
 func go_to_shop(from_scene="title"):
 	print("Go to shop from :" + from_scene)
+	self.prevous_scene = from_scene
 	Conf.save_player_progression()	
 	get_tree().change_scene(ShopScene)
 

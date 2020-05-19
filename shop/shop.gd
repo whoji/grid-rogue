@@ -33,6 +33,10 @@ func _ready():
 		if i >= COLS:
 			j += 1
 			i = 0
+			
+	if Global.prevous_scene == "game_board":
+		$ShopHUD.queue_free()
+		$SelectorRect.visible = false
 
 # grid position to read pixel position
 func gpos_2_pos(gpos):
@@ -40,25 +44,26 @@ func gpos_2_pos(gpos):
 	return pos
 	
 func _input(event):
-	if !event.is_pressed(): 
-		return
-	if event.is_action("ui_left"):
-		move_grid(-1, 0)
-	elif event.is_action("ui_right"):
-		move_grid(1, 0)
-	elif event.is_action("ui_up"):
-		move_grid(0, -1)
-	elif event.is_action("ui_down"):
-		move_grid(0, 1)
-	elif event.is_action("ui_select"):
-		if flag_if_dialog_on:
-			$PopupDialog/ColorRect.visible = false
-			flag_if_dialog_on = false	
-		else:
-			buy_hero()
-	elif event.is_action("ui_cancel"):
-		Global.go_to_title_screen()
-		
+	if Global.prevous_scene != "game_board":
+		if !event.is_pressed(): 
+			return
+		if event.is_action("ui_left"):
+			move_grid(-1, 0)
+		elif event.is_action("ui_right"):
+			move_grid(1, 0)
+		elif event.is_action("ui_up"):
+			move_grid(0, -1)
+		elif event.is_action("ui_down"):
+			move_grid(0, 1)
+		elif event.is_action("ui_select"):
+			if flag_if_dialog_on:
+				$PopupDialog/ColorRect.visible = false
+				flag_if_dialog_on = false	
+			else:
+				buy_hero()
+		elif event.is_action("ui_cancel"):
+			Global.go_to_title_screen()
+			
 func move_grid(dx, dy):
 	selector_gpos.x += dx 
 	selector_gpos.y += dy
