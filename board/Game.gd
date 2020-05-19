@@ -41,6 +41,8 @@ func _input(event):
 		#get_tree().reload_current_scene()
 		#clear_board(); restart_board()
 		Global.next_level()
+	elif event.is_action_pressed("ui_shop"):
+		Global.go_to_shop("game_board")
 
 func clear_board():
 	steps = 0

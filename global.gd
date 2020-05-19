@@ -85,10 +85,12 @@ func go_to_shop(from_scene="title"):
 	print("Go to shop from :" + from_scene)
 	self.prevous_scene = from_scene
 	Conf.save_player_progression()	
-	get_tree().change_scene(ShopScene)
+	print(get_tree().change_scene(ShopScene))
 
 func go_to_title_screen(from_scene=""):
 	print("Go to title screen from :" + from_scene)
 	Conf.save_player_progression()		
 	get_tree().change_scene(TitleScreen)
 	
+func go_back_to_game_board():
+	get_tree().change_scene(GameScene)
