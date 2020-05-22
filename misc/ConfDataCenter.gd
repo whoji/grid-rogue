@@ -96,7 +96,7 @@ func load_hero_conf():
 func load_save_file():
 	# print("NOT IMPLEMENTED YET: LOAD SAVE FILE...")
 	# pass
-	var sections = player_save.get_sections()
+	var _sections = player_save.get_sections()
 	var owned_heroes = player_save.get_value("unlocks", "owned_heroes" , get_default_owned_heroes_string())
 	var found_heroes = player_save.get_value("unlocks", "found_heroes" , get_default_owned_heroes_string())
 	player_progression["owned_heroes"] = owned_heroes
@@ -106,7 +106,7 @@ func load_save_file():
 
 func get_default_owned_heroes_string():
 	var _ret = ""
-	for i in range(Global.TOTAL_HEROES_NUM):
+	for _i in range(Global.TOTAL_HEROES_NUM):
 		_ret += "0"
 	return _ret
 

@@ -11,7 +11,7 @@ var TitleScreen = "res://UI/TitleScreen.tscn"
 var GameOverScreen = "res://UI/GameOverScreen.tscn"
 var GameFinishedScreen = "res://UI/GameFinishedScreen.tscn"
 var GameScene = "res://board/Game.tscn"
-var ShopScene = "res://shop/Shop.tscn"
+var ShopScene = "res://shop/shop.tscn"
 var equiped_hero
 var prevous_scene = ""
 
