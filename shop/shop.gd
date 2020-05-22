@@ -61,11 +61,7 @@ func _input(event):
 				flag_if_dialog_on = false	
 			else:
 				buy_hero()
-		elif event.is_action("ui_cancel"):
-			Global.go_to_title_screen()
-	else:
-		if event.is_action("ui_cancel"):
-			Global.go_back_to_game_board()
+
 			
 func move_grid(dx, dy):
 	selector_gpos.x += dx 

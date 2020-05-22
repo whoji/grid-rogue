@@ -92,5 +92,3 @@ func go_to_title_screen(from_scene=""):
 	Conf.save_player_progression()		
 	get_tree().change_scene(TitleScreen)
 	
-func go_back_to_game_board():
-	get_tree().change_scene(GameScene)

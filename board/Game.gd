@@ -15,6 +15,10 @@ const StairScene = preload("res://item/Stair.tscn")
 const SPAWN_TYPE = [0, 1, 2, 3, 4] # enemy / HP / gold / relic / stair
 const SPAWN_CHANCE = [10, 0, 0, 0, 20] # enemy / HP / gold / relic / stair
 
+var ShopScene = preload("res://shop/shop.tscn")
+var shop_on = false
+var shop
+
 var steps = 0
 onready var has_stair = 0
 onready var map = [] # 1 for player 2 for enemy
@@ -37,12 +41,14 @@ func _process(delta):
 
 # FOR test and debug only !!!
 func _input(event):
-	if event.is_action_pressed("ui_test"):
+	if event.is_action_pressed("ui_test") and not shop_on:
 		#get_tree().reload_current_scene()
 		#clear_board(); restart_board()
 		Global.next_level()
-	elif event.is_action_pressed("ui_shop"):
-		Global.go_to_shop("game_board")
+	elif event.is_action_pressed("ui_shop") and not shop_on:
+		show_shop()
+	elif event.is_action_pressed("ui_cancel") and shop_on:
+		close_shop()
 
 func clear_board():
 	steps = 0
@@ -275,3 +281,21 @@ func _on_Player_dead():
 	player.queue_free()
 	Global.game_over()
 	
+func show_shop():
+	shop_on = true
+	$Enemy.set_process(false)
+	$Player.set_process(false)
+	$Enemy.set_process_input(false)
+	$Player.set_process_input(false)
+	Global.prevous_scene = "game_board"
+	shop = ShopScene.instance()
+	add_child(shop)
+
+func close_shop():
+	print("Closing the SHOP display...")
+	$Enemy.set_process(true)
+	$Player.set_process(true)
+	$Enemy.set_process_input(true)
+	$Player.set_process_input(true)	
+	self.shop.queue_free()
+	shop_on = false
