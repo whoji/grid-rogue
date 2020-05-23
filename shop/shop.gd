@@ -61,6 +61,8 @@ func _input(event):
 				flag_if_dialog_on = false	
 			else:
 				buy_hero()
+		elif event.is_action("ui_cancel"):
+			Global.go_to_title_screen()
 
 			
 func move_grid(dx, dy):
