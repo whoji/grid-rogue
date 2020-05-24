@@ -105,13 +105,14 @@ func buy_hero():
 			print(Global.player_progression)
 			## TODO check if already bought....
 			Conf.save_player_progression()	
+			remove_grey_out(hero_id)
 		else:
 			print("YOU CANNOT AFFORD BUY THIS THING !!!...")
 			$PopupDialog/ColorRect.visible = true
 			flag_if_dialog_on = true
 	
-func get_hero_id(selector_gpos):
-	var adj_selector_gpos = selector_gpos #- TILE_OFFSET
+func get_hero_id(_selector_gpos):
+	var adj_selector_gpos = _selector_gpos #- TILE_OFFSET
 	return int(adj_selector_gpos.y  * COLS + adj_selector_gpos.x)
 	
 func add_item(i,j,texture_path="res://asset/hero/hero_0.png",greyed_out=false):
@@ -146,3 +147,5 @@ func equip_hero(hero_id):
 	# $DisplayedItems.get_child(hero_id).set_scale(Vector2(1.2,1.2))
 	$DisplayedItems.get_child(hero_id).add_child(EquipedFrame.instance())
 	
+func remove_grey_out(hero_id):
+	$DisplayedItems.get_child(hero_id).get_child(0).queue_free()
