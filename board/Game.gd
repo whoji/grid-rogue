@@ -73,7 +73,7 @@ func restart_board(): # restart or initialize the board when the game start. or 
 	for i in range(MAP_SIZE.x):
 		map.append([])
 		map_enemy.append([])
-		for j in range(MAP_SIZE.y):
+		for _j in range(MAP_SIZE.y):
 			map[i].append(0)
 			map_enemy[i].append(null)
 	map[player.grid_position.x][player.grid_position.y] = -1

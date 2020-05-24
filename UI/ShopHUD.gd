@@ -10,5 +10,5 @@ func _ready():
 	Global.connect("gold_changed", self,"set_GoldLabel")
 	#Global.connect("level_changed", self,"set_LevelLabel")
 
-func set_GoldLabel(val):
-	$GoldLabel.text = "Gold: "+str(Global.gold)
+func set_GoldLabel(val=Global.gold):
+	$GoldLabel.text = "Gold: "+str(val)

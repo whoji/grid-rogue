@@ -17,8 +17,8 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func set_GoldLabel(val):
+func set_GoldLabel(_val):
 	$GoldLabel.text = "Gold: "+str(Global.gold)
 
-func set_LevelLabel(val):
+func set_LevelLabel(_val):
 	$LevelLabel.text = "Level: "+str(Global.current_level)
