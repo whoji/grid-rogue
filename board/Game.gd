@@ -44,7 +44,8 @@ func _input(event):
 	if event.is_action_pressed("ui_test") and not shop_on:
 		#get_tree().reload_current_scene()
 		#clear_board(); restart_board()
-		Global.next_level()
+		#Global.next_level()
+		Global.gold += 10
 	elif event.is_action_pressed("ui_shop") and not shop_on:
 		show_shop()
 	elif event.is_action_pressed("ui_cancel") and shop_on:
