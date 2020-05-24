@@ -40,7 +40,8 @@ func _input(event):
 	if event.is_action_pressed("ui_test"):
 		#get_tree().reload_current_scene()
 		#clear_board(); restart_board()
-		Global.next_level()
+		#Global.next_level()
+		Global.gold += 10
 
 func clear_board():
 	steps = 0

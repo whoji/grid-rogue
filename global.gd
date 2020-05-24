@@ -45,9 +45,9 @@ func game_start():
 
 func game_finish():
 	print("game finished ...")
-	current_level = 0
-	gold = 0
-	exp_ = 0
+	# current_level = 0
+	# gold = 0
+	# exp_ = 0
 	get_tree().change_scene(GameFinishedScreen)
 
 func game_restart():
@@ -61,9 +61,9 @@ func game_restart():
 func game_over():
 	print("game over ...")	
 	Conf.save_player_progression()		
-	current_level = 0
-	gold = 0
-	exp_ = 0
+	# current_level = 0
+	# gold = 0
+	# exp_ = 0
 	get_tree().change_scene(GameOverScreen)
 	
 func set_gold(val):
