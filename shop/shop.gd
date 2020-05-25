@@ -6,6 +6,7 @@ const ROWS = 5
 const COLS = 7
 const ShopItemGrayOutBox = preload("res://UI/ShopItemGrayOutBox.tscn")
 const EquipedFrame = preload("res://UI/EquipedFrame.tscn")
+const HERO_TEXTURE_PATH_PREFIX = "res://asset/_hero_23x32_0525_PIPOYA/tile"
 onready var total_items = Conf.hero.size()
 onready var selector = $SelectorRect
 onready var selector_gpos = Vector2(0,0)
@@ -24,11 +25,18 @@ func _ready():
 	var j = 0
 	for item_id in range(total_items):
 		if int(Conf.player_progression["found_heroes"][item_id]) == 0:
+			# case 1: not found, not owned.
 			add_item(i,j, "res://asset/enemy/enemy_0.png", false)
 		elif int(Conf.player_progression["owned_heroes"][item_id]) == 0:
-			add_item(i,j,"",true)
+			# case 2:  found, but not owned yet.
+			var hero_id = get_hero_id(Vector2(i,j))
+			var hero_texure_path = HERO_TEXTURE_PATH_PREFIX + ("%03d"%hero_id) +".png"
+			add_item(i,j, hero_texure_path, true)
 		else:
-			add_item(i,j)			
+			# case3:  owned
+			var hero_id = get_hero_id(Vector2(i,j))
+			var hero_texure_path = HERO_TEXTURE_PATH_PREFIX + ("%03d"%hero_id) +".png"
+			add_item(i,j, hero_texure_path, false)			
 		i += 1
 		if i >= COLS:
 			j += 1
@@ -116,8 +124,6 @@ func get_hero_id(_selector_gpos):
 	return int(adj_selector_gpos.y  * COLS + adj_selector_gpos.x)
 	
 func add_item(i,j,texture_path="res://asset/hero/hero_0.png",greyed_out=false):
-	if texture_path == "":
-		texture_path = "res://asset/hero/hero_0.png"
 	print("adding shop item ...")
 	var item_node = Sprite.new()
 	var item_gpos = Vector2(i,j)
