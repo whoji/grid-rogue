@@ -36,7 +36,10 @@ func _ready():
 			# case3:  owned
 			var hero_id = get_hero_id(Vector2(i,j))
 			var hero_texure_path = HERO_TEXTURE_PATH_PREFIX + ("%03d"%hero_id) +".png"
-			add_item(i,j, hero_texure_path, false)			
+			if item_id == Global.equiped_hero:
+				add_item(i,j, hero_texure_path, false, true)
+			else:			
+				add_item(i,j, hero_texure_path, false, false)
 		i += 1
 		if i >= COLS:
 			j += 1
@@ -123,7 +126,7 @@ func get_hero_id(_selector_gpos):
 	var adj_selector_gpos = _selector_gpos #- TILE_OFFSET
 	return int(adj_selector_gpos.y  * COLS + adj_selector_gpos.x)
 	
-func add_item(i,j,texture_path="res://asset/hero/hero_0.png",greyed_out=false):
+func add_item(i,j,texture_path="res://asset/hero/hero_0.png",greyed_out=false,equiped=false):
 	print("adding shop item ...")
 	var item_node = Sprite.new()
 	var item_gpos = Vector2(i,j)
@@ -134,7 +137,9 @@ func add_item(i,j,texture_path="res://asset/hero/hero_0.png",greyed_out=false):
 		var graybox = ShopItemGrayOutBox.instance()
 		#graybox.rect_position = item_node.position
 		item_node.add_child(graybox)
-	
+	if equiped:
+		item_node.add_child(EquipedFrame.instance())
+		
 	$DisplayedItems.add_child(item_node)
 
 func equip_hero(hero_id):

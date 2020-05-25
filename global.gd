@@ -12,7 +12,7 @@ var GameOverScreen = "res://UI/GameOverScreen.tscn"
 var GameFinishedScreen = "res://UI/GameFinishedScreen.tscn"
 var GameScene = "res://board/Game.tscn"
 var ShopScene = "res://shop/shop.tscn"
-var equiped_hero
+var equiped_hero = 0 # this is hero_id
 var prevous_scene = ""
 
 onready var player_progression = Conf.player_progression
