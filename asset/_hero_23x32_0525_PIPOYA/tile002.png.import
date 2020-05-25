@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tile002.png-f99cad03eb311befa8d208eac68d13ed.stex"
+path="res://.import/tile002.png-d9921ebd21d49214e2240716d3e7f01b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/hero_23x32_0525_PIPOYA/tile002.png"
-dest_files=[ "res://.import/tile002.png-f99cad03eb311befa8d208eac68d13ed.stex" ]
+source_file="res://asset/_hero_23x32_0525_PIPOYA/tile002.png"
+dest_files=[ "res://.import/tile002.png-d9921ebd21d49214e2240716d3e7f01b.stex" ]
 
 [params]
 

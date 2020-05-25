@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tile312.png-c49ea1fbfa0a5e0d5d33d49cfdcb21d4.stex"
+path="res://.import/tile312.png-0bf9cc870105b168c72120bb00af5347.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/enemy_32x32_0525_andhegames/tile312.png"
-dest_files=[ "res://.import/tile312.png-c49ea1fbfa0a5e0d5d33d49cfdcb21d4.stex" ]
+source_file="res://asset/_enemy_32x32_0525_andhegames/tile312.png"
+dest_files=[ "res://.import/tile312.png-0bf9cc870105b168c72120bb00af5347.stex" ]
 
 [params]
 
