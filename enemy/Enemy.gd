@@ -2,6 +2,7 @@ extends Node2D
 
 const TILE_SIZE = 32
 const token_type = 0
+const ENEMY_TEXTURE_PATH_PREFIX = "res://asset/_enemy_32x32_0525_andhegames/tile"
 
 var grid_position = Vector2(0,0)
 
@@ -10,7 +11,7 @@ onready var game = get_tree().get_root().get_node("Game")
 
 var hp = 5
 var atk = 2
-var enemy_type = 0
+var enemy_type = 0 #TODO: later change this to enemy_id
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +20,7 @@ func _ready():
 	# grid_position = position / TILE_SIZE
 	$HP_Label.text = str(hp)
 	$ATK_Label.text = str(atk)
-	$Sprite.texture = load("res://asset/enemy/enemy_"+str(enemy_type)+".png")
+	$Sprite.texture = load(ENEMY_TEXTURE_PATH_PREFIX+str(enemy_type)+".png")
 	print(enemy_type)
 	if $Sprite.texture == null:
 		$Sprite.texture = load("res://asset/enemy/enemy_0.png")	
