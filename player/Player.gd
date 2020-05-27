@@ -3,6 +3,7 @@
 extends Node2D
 
 const TILE_SIZE = 32
+const HERO_TEXTURE_PATH_PREFIX = "res://asset/_hero_23x32_0525_PIPOYA/tile"
 
 var grid_position = Vector2(1,1) setget set_grid_position
 
@@ -12,12 +13,21 @@ onready var is_alive = true
 
 var hp = 16
 var atk = 4
+var hero_id = 0
 
 signal player_moved
 signal dead
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hero_id = Global.equiped_hero
+	hp = Conf.hero[hero_id]['hp']
+	atk = Conf.hero[hero_id]['atk']
+	print("Equiped hero: %d (atk: %d, hp: %d)" % [hero_id, atk, hp])
+	var texture_path="res://asset/hero/hero_0.png"
+	texture_path = HERO_TEXTURE_PATH_PREFIX + ("%03d"%hero_id) +".png"
+	print(texture_path)
+	$Sprite.texture = load(texture_path)
 	# grid_position = position / TILE_SIZE
 	$HP_Label.text = str(hp)
 	$ATK_Label.text = str(atk)
