@@ -10,9 +10,11 @@ a game for practicing GODOT, by whoji
 - [ ] different enemy class
 - [ ] combat mechanism (win/loss)
 - [x] player and enemy stats and display
-- [ ] game progression design
-- [ ] game progression implement (level to level)
-- [ ] game progression implement (run to run)
+- [x] game progression design
+- [x] game progression implement (level to level)
+- [x] game progression implement (run to run)
+- [ ] drop/respawn rate refine (design) 
+- [ ] drop/respawn rate refine (implement) 
 - [ ] character design
 - [ ] character implementation
 - [ ] item system design
@@ -23,10 +25,11 @@ a game for practicing GODOT, by whoji
 - [x] game over screen
 - [x] game win screen
 - [ ] BUG: fight -> no move
-- [ ] spawn system
-- [ ] spawn location refine
-- [ ] add reset/restart the board
-- [ ] external conf file. load into game
+- [x] add reset/restart the board
+- [x] external conf file. load into game
+- [ ] major overhaul of visual and arts
+- [ ] sound effects
+- [ ] bg music 
 
 ## Dev & Changelog
 * 3/25/2020 | initial setup
@@ -36,3 +39,4 @@ a game for practicing GODOT, by whoji
 * 4/18/2020 | improved overall board movements
 * 4/19/2020 | more on the design doc.
 * 4/22/2020 | major refact with dir str. added item
+* 5/27/2020 | many many changes in the last 1 month. updated doc
