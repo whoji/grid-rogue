@@ -70,6 +70,10 @@ func check_move_valid(dx, dy):
 	else:
 		return true
 
+func take_damage(val):
+	hp -= val
+	$HP_Label.text = str(hp)
+	
 func die():
 	queue_free()
 

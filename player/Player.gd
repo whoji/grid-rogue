@@ -50,8 +50,18 @@ func move_grid(dx, dy):
 	if not check_move_valid(dx, dy):
 		return
 	
-	fight_with(grid_position.x+dx, grid_position.y+dy)
+	var fight_result = fight_with(grid_position.x+dx, grid_position.y+dy)
 	
+	if fight_result == 2:
+		print("FIGHT_RESULT: TIE !!!!")
+		return	
+	elif fight_result == 0:
+		print("FIGHT_RESULT: LOSE !!!!")
+		die()
+		return	
+		
+	print("FIGHT_RESULT: WIN !!!!")
+		
 	emit_signal("player_moved",grid_position.x, grid_position.y, dx, dy)
 	
 	grid_position.x += dx 
@@ -86,20 +96,33 @@ func check_move_valid(dx, dy):
 		return true
 
 func fight_with(tgpos_x, tgpos_y):
+	# fight_result: [0,1,2,3] == player lose / player win / tie / other case
 	var token = game.map_enemy[tgpos_x][tgpos_y]
 	print("token type :", token.token_type)
 	if token.token_type == 0: # enemy
 		hp -= token.atk
 		$HP_Label.text = str(hp)
+		token.take_damage(atk)
+		
+		if hp > 0 and token.hp <=0: # case player win
+			return 1
+		elif hp > 0 and token.hp > 0: # case tie
+			return 2
+		elif hp <= 0: # player lose, but this case should trigger gg mechanism
+			return 0 
+		
 	elif token.token_type == 1: # red potion
 		hp += token.val
 		$HP_Label.text = str(hp)
+		return 1
 	elif token.token_type == 2: # gold
 		Global.gold += token.val
 		#$HP_Label.text = str(hp)
+		return 1
 	elif token.token_type == 4: # stair
 		game.has_stair = false
 		Global.next_level()
+		return 1
 			
 func die():
 	is_alive = false
