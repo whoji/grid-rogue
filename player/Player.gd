@@ -10,6 +10,7 @@ var grid_position = Vector2(1,1) setget set_grid_position
 onready var tween = get_node("Tween")
 onready var game = get_tree().get_root().get_node("Game")
 onready var is_alive = true
+onready var anim = $anim
 
 var hp = 16
 var atk = 4
@@ -54,9 +55,11 @@ func move_grid(dx, dy):
 	
 	if fight_result == 2:
 		print("FIGHT_RESULT: TIE !!!!")
+		play_shake_anim(dx, dy)
 		return	
 	elif fight_result == 0:
 		print("FIGHT_RESULT: LOSE !!!!")
+		play_shake_anim(dx, dy)
 		die()
 		return	
 		
@@ -133,3 +136,15 @@ func die():
 func set_grid_position(gpos):
 	grid_position = gpos
 	position = (gpos + game.MAP_OFFSET) * TILE_SIZE
+
+func play_shake_anim(dx, dy):
+	if dx == -1 and dy == 0:
+		anim.play("shake_left")
+	elif dx == 1 and dy == 0:
+		anim.play("shake_right")
+	elif dx == 0 and dy == -1:
+		anim.play("shake_up")
+	elif dx == 0 and dy == 1:
+		anim.play("shake_down")
+	yield(anim,"animation_finished")
+	return
