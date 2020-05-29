@@ -11,6 +11,7 @@ const ENEMY = [1, 2, 4, 8]
 const EnemyScene = preload("res://enemy/Enemy.tscn")
 const BujiScene = preload("res://item/buji.tscn")
 const StairScene = preload("res://item/Stair.tscn")
+const RandSpawnDecider = preload("res://RandSpawnDecider.gd")
 #const SPAWN_CHANCE = [10, 5, 5, 1] # enemy / HP / gold / relic
 const SPAWN_TYPE = [0, 1, 2, 3, 4] # enemy / HP / gold / relic / stair
 const SPAWN_CHANCE = [10, 0, 0, 0, 20] # enemy / HP / gold / relic / stair
@@ -20,6 +21,7 @@ var shop_on = false
 var shop
 
 var steps = 0
+onready var rand_spawn_decider = RandSpawnDecider.new()
 onready var has_stair = 0
 onready var map = [] # 1 for player 2 for enemy
 onready var map_enemy = []
@@ -90,7 +92,7 @@ func fill_enemy_to_map():
 func add_rand_enemy(i,j):
 	print("adding enemey ...")
 	#var enemy_type = ENEMY[randi()%4]
-	var enemy_type = get_random_spawn_type(enemy_spawn, enemy_spawn_chance)
+	var enemy_type = rand_spawn_decider.get_random_spawn_type(enemy_spawn, enemy_spawn_chance)
 	var enemy_node = EnemyScene.instance()
 	map[i][j] = enemy_type
 	enemy_node.enemy_type = enemy_type
@@ -186,7 +188,7 @@ func post_player_move_fill(x,y, dx, dy):
 		for j in range(MAP_SIZE.y):
 			#if map[i][j] == 0:
 			if map_enemy[i][j] == null and Vector2(i,j)!= player_dest_grid_pos:
-				var token_type = get_random_spawn_type(SPAWN_TYPE, SPAWN_CHANCE)
+				var token_type = rand_spawn_decider.get_random_spawn_type(SPAWN_TYPE, SPAWN_CHANCE)
 				print("adding token type-",token_type," at ",i,j)
 				if token_type == 0: # for enemy
 					add_rand_enemy(i,j)
@@ -249,23 +251,6 @@ func get_valid_enemy_behind_gpos_orth_set(empty_gpos, player_dest_grid_pos):
 		return [set_3, dir_orth_3]
 	else:
 		assert(1 == 0)
-
-func get_random_spawn_type(spawn_type, spawn_chance):
-	assert (len(spawn_type) == len(spawn_chance),	"%d != %d " % [len(spawn_type),len(spawn_chance)])
-	var chance_sum = 0
-	for chance_weight in spawn_chance:
-		chance_sum += chance_weight
-	var random_int = randi() % chance_sum
-	
-	var SPAWN_CHANCE_cumulative = [spawn_chance[0]]
-	for i in range(1,spawn_chance.size()):
-		SPAWN_CHANCE_cumulative.append(SPAWN_CHANCE_cumulative[-1] + spawn_chance[i])
-	
-	for i in range(SPAWN_CHANCE_cumulative.size()):
-		if random_int < SPAWN_CHANCE_cumulative[i]:
-			# return i
-			return spawn_type[i]
-	return spawn_type[SPAWN_CHANCE_cumulative.size() - 1]
 
 #func has_stair_on_board():
 #	print("checking if already has stair ...")
