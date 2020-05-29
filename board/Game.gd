@@ -12,9 +12,6 @@ const EnemyScene = preload("res://enemy/Enemy.tscn")
 const BujiScene = preload("res://item/buji.tscn")
 const StairScene = preload("res://item/Stair.tscn")
 const RandSpawnDecider = preload("res://RandSpawnDecider.gd")
-#const SPAWN_CHANCE = [10, 5, 5, 1] # enemy / HP / gold / relic
-const SPAWN_TYPE = [0, 1, 2, 3, 4] # enemy / HP / gold / relic / stair
-const SPAWN_CHANCE = [10, 0, 0, 0, 20] # enemy / HP / gold / relic / stair
 
 var ShopScene = preload("res://shop/shop.tscn")
 var shop_on = false
@@ -27,8 +24,6 @@ onready var map = [] # 1 for player 2 for enemy
 onready var map_enemy = []
 onready var player
 # onready var player = $Player
-var enemy_spawn
-var enemy_spawn_chance
 
 
 # Called when the node enters the scene tree for the first time.
@@ -64,9 +59,6 @@ func clear_board():
 
 #func restart_board(player.gpos): # restart or initialize the board when the game start. or next level
 func restart_board(): # restart or initialize the board when the game start. or next level
-	# load the enemy spawn conf
-	enemy_spawn = Conf.level[Global.current_level]["spawn_enemy"]
-	enemy_spawn_chance = Conf.level[Global.current_level]["spawn_chance"]
 	# fill the player
 	if player == null:
 		player = $Player
@@ -92,7 +84,7 @@ func fill_enemy_to_map():
 func add_rand_enemy(i,j):
 	print("adding enemey ...")
 	#var enemy_type = ENEMY[randi()%4]
-	var enemy_type = rand_spawn_decider.get_random_spawn_type(enemy_spawn, enemy_spawn_chance)
+	var enemy_type = rand_spawn_decider.get_random_spawn_enemy_type()
 	var enemy_node = EnemyScene.instance()
 	map[i][j] = enemy_type
 	enemy_node.enemy_type = enemy_type
@@ -188,7 +180,7 @@ func post_player_move_fill(x,y, dx, dy):
 		for j in range(MAP_SIZE.y):
 			#if map[i][j] == 0:
 			if map_enemy[i][j] == null and Vector2(i,j)!= player_dest_grid_pos:
-				var token_type = rand_spawn_decider.get_random_spawn_type(SPAWN_TYPE, SPAWN_CHANCE)
+				var token_type = rand_spawn_decider.get_random_spawn_token_type()
 				print("adding token type-",token_type," at ",i,j)
 				if token_type == 0: # for enemy
 					add_rand_enemy(i,j)

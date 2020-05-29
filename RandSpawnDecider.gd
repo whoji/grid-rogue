@@ -23,3 +23,11 @@ func get_random_spawn_type(spawn_type, spawn_chance):
 			# return i
 			return spawn_type[i]
 	return spawn_type[SPAWN_CHANCE_cumulative.size() - 1]
+
+func get_random_spawn_token_type():
+	return get_random_spawn_type(SPAWN_TYPE, SPAWN_CHANCE)
+
+func get_random_spawn_enemy_type():
+	var enemy_spawn = Conf.level[Global.current_level]["spawn_enemy"]
+	var enemy_spawn_chance = Conf.level[Global.current_level]["spawn_chance"]
+	return get_random_spawn_type(enemy_spawn, enemy_spawn_chance)
