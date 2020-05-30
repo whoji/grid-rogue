@@ -19,7 +19,9 @@ func _ready():
 		$Sprite.region_rect = Rect2(32, 224, 32, 32)
 	elif buji_type == 2:
 		$Label.text = str(val)
-		$Sprite.region_rect = Rect2(128, 224, 32, 32)
+		#$Sprite.region_rect = Rect2(128, 224, 32, 32)
+		$Sprite.visible = false
+		$SpriteGold.visible = true
 	position = (grid_position + game.MAP_OFFSET) * TILE_SIZE
 	
 func move_grid_simple(dir):
