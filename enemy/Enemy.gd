@@ -72,7 +72,7 @@ func check_move_valid(dx, dy):
 
 func take_damage(val):
 	hp -= val
-	$HP_Label.text = str(hp)
+	$HP_Label.text = str(max(0, hp))
 	
 func die():
 	queue_free()

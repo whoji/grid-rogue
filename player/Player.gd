@@ -104,7 +104,7 @@ func fight_with(tgpos_x, tgpos_y):
 	print("token type :", token.token_type)
 	if token.token_type == 0: # enemy
 		hp -= token.atk
-		$HP_Label.text = str(hp)
+		$HP_Label.text = str(max(0, hp))
 		token.take_damage(atk)
 		
 		if hp > 0 and token.hp <=0: # case player win
