@@ -4,7 +4,7 @@ class_name RandSpawnDecider
 
 #const SPAWN_CHANCE = [10, 5, 5, 1] # enemy / HP / gold / relic
 const SPAWN_TYPE = [0, 1, 2, 3, 4] # enemy / HP / gold / relic / stair
-const SPAWN_CHANCE = [10, 0, 0, 0, 20] # enemy / HP / gold / relic / stair
+const SPAWN_CHANCE = [10, 5, 5, 0, 5] # enemy / HP / gold / relic / stair
 
 
 func get_random_spawn_type(spawn_type, spawn_chance):
