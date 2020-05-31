@@ -23,6 +23,7 @@ onready var has_stair = 0
 onready var map = [] # 1 for player 2 for enemy
 onready var map_enemy = []
 onready var player
+onready var tween = get_node("CanvasLayer/Tween")
 # onready var player = $Player
 
 
@@ -89,7 +90,7 @@ func add_rand_enemy(i,j):
 	map[i][j] = enemy_type
 	enemy_node.enemy_type = enemy_type
 	enemy_node.grid_position = Vector2(i,j)
-	add_child(enemy_node)
+	$BoardItems.add_child(enemy_node)
 	map_enemy[i][j] = enemy_node
 
 func add_buji(i,j, token_type):
@@ -100,7 +101,7 @@ func add_buji(i,j, token_type):
 	buji_node.token_type = token_type
 	buji_node.buji_type = buji_type
 	buji_node.grid_position = Vector2(i,j)
-	add_child(buji_node)
+	$BoardItems.add_child(buji_node)
 	map_enemy[i][j] = buji_node
 
 func add_stair(i,j):
@@ -108,7 +109,7 @@ func add_stair(i,j):
 	var stair_node = StairScene.instance()
 	map[i][j] = 2000
 	stair_node.grid_position = Vector2(i,j)
-	add_child(stair_node)
+	$BoardItems.add_child(stair_node)
 	map_enemy[i][j] = stair_node
 
 func post_player_move_fill(x,y, dx, dy):
@@ -277,3 +278,20 @@ func close_shop():
 	$Player.set_process_input(true)	
 	self.shop.queue_free()
 	shop_on = false
+
+func dark_out():
+	#$CanvasLayer/ColorRect.color = Color(0,0,0,0.9)
+	#yield(get_tree().create_timer(1.0), "timeout")
+	tween.interpolate_property($CanvasLayer/ColorRect, "color",
+		Color(0,0,0,0), Color(0,0,0,0.9), 0.2,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+
+	
+func light_on():
+	#$CanvasLayer/ColorRect.color = Color(0,0,0,0)
+	# yield(get_tree().create_timer(1.0), "timeout")
+	tween.interpolate_property($CanvasLayer/ColorRect, "color",
+		Color(0,0,0,0.9), Color(0,0,0,0), 0.2,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()

@@ -30,8 +30,20 @@ func next_level():
 	emit_signal("level_changed", current_level)
 	if current_level < levels.size():
 		# get_tree().change_scene(levels[current_level])
+		
+		game.dark_out()
+		game.set_process_input(0)
+		game.player.set_process_input(0)
+		yield(game.tween, "tween_completed")
+		
 		game.clear_board()
 		game.restart_board()
+		
+		game.light_on()
+		yield(game.tween, "tween_completed")
+		game.set_process_input(1)
+		game.player.set_process_input(1)
+		
 		game.steps = -1		
 		Conf.save_player_progression()	
 	else:

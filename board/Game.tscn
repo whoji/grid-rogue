@@ -23,4 +23,19 @@ position = Vector2( 128, 64 )
 position = Vector2( 96, 64 )
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
+layer = 0
+
+[node name="BoardItems" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_right = 320.0
+margin_bottom = 256.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="CanvasLayer"]
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
