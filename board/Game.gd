@@ -74,6 +74,7 @@ func restart_board(): # restart or initialize the board when the game start. or 
 	map[player.grid_position.x][player.grid_position.y] = -1
 	fill_enemy_to_map()
 	print(map)
+	has_stair = 0
 
 func fill_enemy_to_map():
 	for i in range(MAP_SIZE.x):
