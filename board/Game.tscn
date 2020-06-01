@@ -38,4 +38,6 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="CanvasLayer"]
+
+[node name="ShopOverlay" type="Node" parent="."]
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]

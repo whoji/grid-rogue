@@ -271,7 +271,7 @@ func show_shop():
 	$Player.set_process_input(false)
 	Global.prevous_scene = "game_board"
 	shop = ShopScene.instance()
-	add_child(shop)
+	$ShopOverlay.add_child(shop)
 
 func close_shop():
 	print("Closing the SHOP display...")
