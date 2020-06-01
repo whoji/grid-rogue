@@ -16,6 +16,9 @@ func _ready():
 	var str11 = "%d != %d " % [1,2]
 	print(str11)
 	print("%d != %d " % [1,2])
+	
+	if 100 > 20:
+		print("xxxxx")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

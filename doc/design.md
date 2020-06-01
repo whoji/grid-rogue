@@ -117,3 +117,6 @@
 	* 1 dim: different hero: barb, warrior, mage, beserk
 	* 1 dim: just power up that hero. but with sight difference
 		* swordman, knight, champ, blademaster
+* a passive skill can be enhance stair chance
+	* hp chance / amount
+	* gold chance / amnout

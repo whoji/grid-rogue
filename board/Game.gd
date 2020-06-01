@@ -86,7 +86,7 @@ func fill_enemy_to_map():
 func add_rand_enemy(i,j):
 	print("adding enemey ...")
 	#var enemy_type = ENEMY[randi()%4]
-	var enemy_type = rand_spawn_decider.get_random_spawn_enemy_type()
+	var enemy_type = rand_spawn_decider.get_random_spawn_enemy_type(steps)
 	var enemy_node = EnemyScene.instance()
 	map[i][j] = enemy_type
 	enemy_node.enemy_type = enemy_type

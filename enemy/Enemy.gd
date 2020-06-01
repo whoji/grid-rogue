@@ -15,12 +15,18 @@ var enemy_type = 0 #TODO: later change this to enemy_id
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hp = Conf.enemy[enemy_type]["hp"]
-	atk = Conf.enemy[enemy_type]["atk"]
-	# grid_position = position / TILE_SIZE
+	if enemy_type == 1313:
+		hp = (Global.current_level+1) * 1313
+		atk = (Global.current_level+1) * 1313
+		# grid_position = position / TILE_SI
+		$Sprite.texture = load("res://asset/_enemy_32x32_0525_andhegames/reaper_1313.png")
+	else:
+		hp = Conf.enemy[enemy_type]["hp"]
+		atk = Conf.enemy[enemy_type]["atk"]
+		# grid_position = position / TILE_SIZE
+		$Sprite.texture = load(ENEMY_TEXTURE_PATH_PREFIX+str(enemy_type)+".png")
 	$HP_Label.text = str(hp)
 	$ATK_Label.text = str(atk)
-	$Sprite.texture = load(ENEMY_TEXTURE_PATH_PREFIX+str(enemy_type)+".png")
 	print(enemy_type)
 	if $Sprite.texture == null:
 		$Sprite.texture = load("res://asset/enemy/enemy_0.png")	
