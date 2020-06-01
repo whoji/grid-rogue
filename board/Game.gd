@@ -257,7 +257,9 @@ func get_valid_enemy_behind_gpos_orth_set(empty_gpos, player_dest_grid_pos):
 #	return false
 
 func _on_Player_dead():
-	yield(get_tree().create_timer(1.0), "timeout")
+	dark_out(0.6)
+	yield(tween, "tween_completed")
+	#yield(get_tree().create_timer(1.0), "timeout")
 	player.queue_free()
 	Global.game_over()
 	
@@ -280,19 +282,19 @@ func close_shop():
 	self.shop.queue_free()
 	shop_on = false
 
-func dark_out():
+func dark_out(sec=0.2):
 	#$CanvasLayer/ColorRect.color = Color(0,0,0,0.9)
 	#yield(get_tree().create_timer(1.0), "timeout")
 	tween.interpolate_property($CanvasLayer/ColorRect, "color",
-		Color(0,0,0,0), Color(0,0,0,0.9), 0.2,
+		Color(0,0,0,0), Color(0,0,0,1), sec,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
 	
-func light_on():
+func light_on(sec=0.2):
 	#$CanvasLayer/ColorRect.color = Color(0,0,0,0)
 	# yield(get_tree().create_timer(1.0), "timeout")
 	tween.interpolate_property($CanvasLayer/ColorRect, "color",
-		Color(0,0,0,0.9), Color(0,0,0,0), 0.2,
+		Color(0,0,0,1), Color(0,0,0,0), sec,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
