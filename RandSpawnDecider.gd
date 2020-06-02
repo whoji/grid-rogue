@@ -28,8 +28,10 @@ func get_random_spawn_token_type():
 	return get_random_spawn_type(SPAWN_TYPE, SPAWN_CHANCE)
 
 func get_random_spawn_enemy_type(steps=0):
-	var enemy_spawn = [] + Conf.level[Global.current_level]["spawn_enemy"]
-	var enemy_spawn_chance = [] + Conf.level[Global.current_level]["spawn_chance"]
+	#var enemy_spawn = [] + Conf.level[Global.current_level]["spawn_enemy"]
+	#var enemy_spawn_chance = [] + Conf.level[Global.current_level]["spawn_chance"]
+	var enemy_spawn = Conf.level[Global.current_level]["spawn_enemy"].duplicate()
+	var enemy_spawn_chance = Conf.level[Global.current_level]["spawn_chance"].duplicate()
 	if Global.IF_USE_GRIM_REAPER:
 		enemy_spawn.append(1313)
 		var reaper_spawn_chance = get_reaper_spawn_chance(steps)

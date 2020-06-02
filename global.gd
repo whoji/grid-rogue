@@ -45,7 +45,7 @@ func next_level():
 		game.set_process_input(1)
 		game.player.set_process_input(1)
 		
-		game.steps = -1		
+		game.steps = 0		
 		Conf.save_player_progression()	
 	else:
 		game_finish()
