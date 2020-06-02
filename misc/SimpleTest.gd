@@ -23,6 +23,9 @@ func _ready():
 	print(Conf.level)
 	print(Conf.level.keys())
 
+	print(rand_range(1.3,1.5))
+	print(pow(2,10))
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
