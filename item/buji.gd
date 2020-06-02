@@ -15,6 +15,7 @@ var buji_type = 1 # FIXME: later change to enum type. [1 hp; 2 gold]
 func _ready():
 	# grid_position = position / TILE_SIZE
 	if buji_type == 1:  # HP
+		val = get_hp_amount()
 		$Label.text = str(val)
 		$Sprite.region_rect = Rect2(32, 224, 32, 32)
 	elif buji_type == 2:  # GOLD
@@ -76,3 +77,9 @@ func get_gold_amount():
 	var a = 1.3
 	var b = 1.5
 	return int(1 + pow(rand_range(1.3,1.5), (Global.current_level+1)))
+
+func get_hp_amount():
+	var a = randi()%10+2
+	var b = randi()%3
+	var _hp = Global.game.player.hp
+	return int(_hp/a + b)

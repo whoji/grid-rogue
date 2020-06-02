@@ -32,6 +32,7 @@ func _ready():
 	randomize() #seed	
 	restart_board()
 	player.connect("player_moved",self, "post_player_move_fill")
+	Global.game = self
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
