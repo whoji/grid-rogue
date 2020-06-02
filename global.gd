@@ -7,7 +7,7 @@ const IF_USE_GRIM_REAPER = true
 var current_level = 0 #setget set_current_level
 var gold = 0 setget set_gold
 var exp_ = 0
-var levels = [0, 1, 2, 3, 4]
+var levels = null
 var TitleScreen = "res://UI/TitleScreen.tscn"
 var GameOverScreen = "res://UI/GameOverScreen.tscn"
 var GameFinishedScreen = "res://UI/GameFinishedScreen.tscn"
@@ -15,13 +15,13 @@ var GameScene = "res://board/Game.tscn"
 var ShopScene = "res://shop/shop.tscn"
 var equiped_hero = 0 # this is hero_id
 var prevous_scene = ""
+var game = null
 
 onready var player_progression = Conf.player_progression
 
 signal gold_changed
 signal level_changed
 
-var game 
 
 func next_level():
 	game = get_tree().get_root().get_node("Game")
@@ -45,7 +45,7 @@ func next_level():
 		game.set_process_input(1)
 		game.player.set_process_input(1)
 		
-		game.steps = 0		
+		game.steps = 0
 		Conf.save_player_progression()	
 	else:
 		game_finish()

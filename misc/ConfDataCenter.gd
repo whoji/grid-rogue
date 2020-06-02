@@ -77,6 +77,7 @@ func load_level_conf():
 		var spawn_chance= conf_level.get_value(section_key, "spawn_chance" , [])
 		#self.level.append({"spawn_enemy":spawn_enemy, "spawn_chance":spawn_chance})
 		self.level[i] = {"spawn_enemy":spawn_enemy, "spawn_chance":spawn_chance}
+	Global.levels = self.level.keys()
 	
 func load_hero_conf():
 	var sections = conf_hero.get_sections()

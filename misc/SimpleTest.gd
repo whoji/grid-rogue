@@ -19,6 +19,9 @@ func _ready():
 	
 	if 100 > 20:
 		print("xxxxx")
+	
+	print(Conf.level)
+	print(Conf.level.keys())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
