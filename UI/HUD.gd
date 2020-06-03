@@ -22,3 +22,9 @@ func set_GoldLabel(_val):
 
 func set_LevelLabel(_val):
 	$LevelLabel.text = "Level: "+str(Global.current_level)
+	
+func hide_buttons():
+	$Button.visible = false
+	
+func show_buttons():
+	$Button.visible = true

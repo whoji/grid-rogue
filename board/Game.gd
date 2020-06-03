@@ -273,6 +273,7 @@ func show_shop():
 	Global.prevous_scene = "game_board"
 	shop = ShopScene.instance()
 	$ShopOverlay.add_child(shop)
+	$HUD.hide_buttons()
 
 func close_shop():
 	print("Closing the SHOP display...")
@@ -282,6 +283,7 @@ func close_shop():
 	$Player.set_process_input(true)	
 	self.shop.queue_free()
 	shop_on = false
+	$HUD.show_buttons()
 
 func dark_out(sec=0.2):
 	#$CanvasLayer/ColorRect.color = Color(0,0,0,0.9)
