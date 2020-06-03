@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://board/GameTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://asset/hero/hero_0.png" type="Texture" id=2]
 [ext_resource path="res://shop/shop.gd" type="Script" id=3]
 [ext_resource path="res://UI/ShopHUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/HeroInfoDisplay.tscn" type="PackedScene" id=5]
 
 [node name="shop" type="Control"]
 anchor_right = 1.0
@@ -21,7 +22,7 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color( 0, 0, 0, 0.352941 )
-margin_left = 24.0
+margin_left = 86.0
 margin_top = 24.0
 margin_right = 296.0
 margin_bottom = 225.0
@@ -31,6 +32,9 @@ __meta__ = {
 }
 
 [node name="Labels" type="Node" parent="."]
+
+[node name="HeroInfoDisplay" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, 32 )
 
 [node name="Heroes" type="Control" parent="."]
 visible = false
@@ -254,9 +258,9 @@ __meta__ = {
 }
 
 [node name="SelectorRect" type="ColorRect" parent="."]
-margin_left = 35.0
+margin_left = 105.0
 margin_top = 35.0
-margin_right = 67.0
+margin_right = 137.0
 margin_bottom = 67.0
 color = Color( 0.741176, 0.552941, 0.552941, 0.266667 )
 __meta__ = {

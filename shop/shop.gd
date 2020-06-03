@@ -1,9 +1,9 @@
 extends Control
 
 const TILE_SIZE = 35
-const TILE_OFFSET = Vector2(1,1)
+const TILE_OFFSET = Vector2(3,1)
 const ROWS = 5
-const COLS = 7
+const COLS = 5
 const ShopItemGrayOutBox = preload("res://UI/ShopItemGrayOutBox.tscn")
 const EquipedFrame = preload("res://UI/EquipedFrame.tscn")
 const HERO_TEXTURE_PATH_PREFIX = "res://asset/_hero_23x32_0525_PIPOYA/tile"
@@ -87,6 +87,8 @@ func move_grid(dx, dy):
 	tween.start()
 	selector.rect_position = selector_gpos * TILE_SIZE
 	# print(get_hero_id(selector_gpos))
+	
+	$HeroInfoDisplay.update_hero_info_display(get_hero_id(selector_gpos))
 	
 func buy_hero():
 	var hero_id = get_hero_id(selector_gpos)
