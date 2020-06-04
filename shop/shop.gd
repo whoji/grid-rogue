@@ -113,11 +113,7 @@ func buy_hero():
 		# Buy hero
 		if Global.gold >= Conf.hero[hero_id]["cost"]:
 			print("YOU BOUGHT THIS SHITTY HERO !!!...")
-			Global.gold -= hero["cost"]
-			Global.player_progression["owned_heroes"][hero_id] = "1"
-			print(Global.player_progression)
-			## TODO check if already bought....
-			Conf.save_player_progression()	
+			Global.buy_hero_blue_print(hero_id)
 			remove_grey_out(hero_id)
 		else:
 			print("YOU CANNOT AFFORD BUY THIS THING !!!...")

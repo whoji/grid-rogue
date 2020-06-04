@@ -112,3 +112,13 @@ func find_hero_blue_print(hero_id):
 	print(Global.player_progression)
 	Conf.save_player_progression()	
 	# TODO add some effects maybe ??
+
+func buy_hero_blue_print(hero_id):
+	assert(Global.player_progression["found_heroes"][hero_id] == "1")
+	assert(Global.player_progression["owned_heroes"][hero_id] == "0")	
+	Global.gold -= Conf.hero[hero_id]["cost"]  #hero["cost"]
+	Global.player_progression["owned_heroes"][hero_id] = "1"
+	print(Global.player_progression)
+	## TODO check if already bought....
+	Conf.save_player_progression()
+	
