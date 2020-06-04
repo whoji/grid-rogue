@@ -105,3 +105,10 @@ func go_to_title_screen(from_scene=""):
 	Conf.save_player_progression()		
 	get_tree().change_scene(TitleScreen)
 	
+func find_hero_blue_print(hero_id):
+	assert(Global.player_progression["found_heroes"][hero_id] == "0")
+	assert(Global.player_progression["owned_heroes"][hero_id] == "0")
+	Global.player_progression["found_heroes"][hero_id] = "1"
+	print(Global.player_progression)
+	Conf.save_player_progression()	
+	# TODO add some effects maybe ??

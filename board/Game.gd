@@ -187,7 +187,7 @@ func post_player_move_fill(x,y, dx, dy):
 				print("adding token type-",token_type," at ",i,j)
 				if token_type == 0: # for enemy
 					add_rand_enemy(i,j)
-				elif token_type == 1 or token_type == 2: # for buji (HP)
+				elif token_type == 1 or token_type == 2 or token_type == 5: # for buji (HP)
 					add_buji(i,j,token_type)
 				elif token_type == 4 and not has_stair: # for stair
 					has_stair = 1

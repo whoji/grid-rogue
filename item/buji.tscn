@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://asset/tiles_tiny_sample_2.png" type="Texture" id=1]
 [ext_resource path="res://item/buji.gd" type="Script" id=2]
 [ext_resource path="res://asset/item/roguelikeitems.png" type="Texture" id=3]
+[ext_resource path="res://asset/enemy/enemy_0.png" type="Texture" id=4]
 
 [node name="buji" type="Node2D"]
 script = ExtResource( 2 )
@@ -11,6 +12,12 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
+region_rect = Rect2( 128, 224, 32, 32 )
+
+[node name="SpriteHero" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )
+centered = false
 region_rect = Rect2( 128, 224, 32, 32 )
 
 [node name="SpriteHP" type="Sprite" parent="."]

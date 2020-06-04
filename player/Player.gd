@@ -126,6 +126,9 @@ func fight_with(tgpos_x, tgpos_y):
 		game.has_stair = false
 		Global.next_level()
 		return 1
+	elif token.token_type == 5: # hero_blueprint
+		Global.find_hero_blue_print(token.val)
+		return 1
 			
 func die():
 	is_alive = false

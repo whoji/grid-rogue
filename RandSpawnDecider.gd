@@ -3,8 +3,8 @@ extends Node
 class_name RandSpawnDecider
 
 #const SPAWN_CHANCE = [10, 5, 5, 1] # enemy / HP / gold / relic
-const SPAWN_TYPE = [0, 1, 2, 3, 4] # enemy / HP / gold / relic / stair
-const SPAWN_CHANCE = [10, 5, 5, 0, 5] # enemy / HP / gold / relic / stair
+const SPAWN_TYPE = [0, 1, 2, 3, 4, 5] # enemy / HP / gold / relic / stair / hero_blueprint
+const SPAWN_CHANCE = [10, 5, 5, 0, 5, 1] # enemy / HP / gold / relic / stair / hero_blueprint
 const REAPER_START_STEPS = 10
 
 func get_random_spawn_type(spawn_type, spawn_chance):
@@ -56,3 +56,5 @@ func get_reaper_spawn_chance(steps):
 		# assert(false)
 		push_error("reaper chance error")
 		
+func get_new_hero_blueprint():
+	return 16

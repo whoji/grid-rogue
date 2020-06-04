@@ -11,6 +11,9 @@ onready var game = get_tree().get_root().get_node("Game")
 var val = 5
 var buji_type = 1 # FIXME: later change to enum type. [1 hp; 2 gold]
 
+const RandSpawnDecider = preload("res://RandSpawnDecider.gd")
+onready var rand_spawn_decider = RandSpawnDecider.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# grid_position = position / TILE_SIZE
@@ -24,6 +27,11 @@ func _ready():
 		#$Sprite.region_rect = Rect2(128, 224, 32, 32)
 		$Sprite.visible = false
 		$SpriteGold.visible = true
+	elif buji_type == 5: # hero_blueprint
+		$Sprite.visible = false
+		$SpriteHero.visible = true
+		val = rand_spawn_decider.get_new_hero_blueprint()
+		
 	position = (grid_position + game.MAP_OFFSET) * TILE_SIZE
 	
 func move_grid_simple(dir):
