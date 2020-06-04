@@ -12,6 +12,7 @@ func _ready():
 	texture_path = HERO_TEXTURE_PATH_PREFIX + ("%03d"%hero_id) +".png"
 	print(texture_path)
 	$CenterContainer/Sprite.texture = load(texture_path)
+	update_hero_info_display(Global.equiped_hero)
 
 func update_hero_info_display(_hero_id):
 	hero_id = _hero_id
