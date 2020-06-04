@@ -12,14 +12,16 @@ func get_random_spawn_type(spawn_type, spawn_chance):
 	var chance_sum = 0
 	for chance_weight in spawn_chance:
 		chance_sum += chance_weight
-	var random_int = randi() % chance_sum
+	# var random_int = randi() % chance_sum
+	var random_float = rand_range(0, chance_sum)
 	
 	var SPAWN_CHANCE_cumulative = [spawn_chance[0]]
 	for i in range(1,spawn_chance.size()):
 		SPAWN_CHANCE_cumulative.append(SPAWN_CHANCE_cumulative[-1] + spawn_chance[i])
 	
 	for i in range(SPAWN_CHANCE_cumulative.size()):
-		if random_int < SPAWN_CHANCE_cumulative[i]:
+		# if random_int < SPAWN_CHANCE_cumulative[i]:
+		if random_float < SPAWN_CHANCE_cumulative[i]:
 			# return i
 			return spawn_type[i]
 	return spawn_type[SPAWN_CHANCE_cumulative.size() - 1]
