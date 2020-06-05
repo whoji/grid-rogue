@@ -7,6 +7,9 @@ const SPAWN_TYPE = [0, 1, 2, 3, 4, 5] # enemy / HP / gold / relic / stair / hero
 const SPAWN_CHANCE = [10, 5, 5, 0, 5, 1] # enemy / HP / gold / relic / stair / hero_blueprint
 const REAPER_START_STEPS = 10
 
+func _ready():
+	randomize()
+
 func get_random_spawn_type(spawn_type, spawn_chance):
 	assert (len(spawn_type) == len(spawn_chance),	"%d != %d " % [len(spawn_type),len(spawn_chance)])
 	var chance_sum = 0
@@ -59,4 +62,36 @@ func get_reaper_spawn_chance(steps):
 		push_error("reaper chance error")
 		
 func get_new_hero_blueprint():
-	return 16
+	"""
+	HERE is the hero blueprint drop rate logic. 
+	(6.4.2020 this function is NOT tested yet)
+	"""
+	var _max_floors = 100 # this should go to conf or global. temp put here.
+	var _max_hero = 21 # this should go to conf or global. temp put here.
+	var _base_chace_weight = 0.5 # this should go to conf or global. temp put here.
+	var hero_id_list = []
+	var hero_chance_list = []
+	for _i in range(_max_hero):
+		hero_id_list.append(_i)
+		if _i < _max_hero / 2:
+			hero_chance_list.append(_base_chace_weight)
+		else:
+			hero_chance_list.append(_base_chace_weight / 2)
+	var _level = Global.current_level
+	var center_ind = max(int(_level / _max_floors * _max_hero) - 1, 0)
+	
+	hero_chance_list[center_ind] += 20
+	if center_ind+1 < _max_hero:
+		hero_chance_list[center_ind+1] += 10 
+	if center_ind+2 < _max_hero:
+		hero_chance_list[center_ind+2] += 5 
+	if center_ind-1 >= 0:
+		hero_chance_list[center_ind-1] += 10 
+	if center_ind-2 >= 0:
+		hero_chance_list[center_ind-2] += 5 
+	
+	var ret_hero_id = get_random_spawn_type(hero_id_list, hero_chance_list)
+	print("RANDOM_HERO_BLUEPRINT_DROP: ", center_ind)
+	print("RANDOM_HERO_BLUEPRINT_DROP: ", hero_chance_list)
+	print("RANDOM_HERO_BLUEPRINT_DROP: ", ret_hero_id)
+	return ret_hero_id

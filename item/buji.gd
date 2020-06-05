@@ -31,6 +31,8 @@ func _ready():
 		$Sprite.visible = false
 		$SpriteHero.visible = true
 		val = rand_spawn_decider.get_new_hero_blueprint()
+		# $Label.visible = false # NOTE: For test purpose, we don't hide it for me
+		$Label.text = "["+str(val)+"]"
 		
 	position = (grid_position + game.MAP_OFFSET) * TILE_SIZE
 	
