@@ -8,6 +8,7 @@ var current_level = 0 #setget set_current_level
 var gold = 0 setget set_gold
 var exp_ = 0
 var levels = null
+var found_heroes = [1,2,13]
 var TitleScreen = "res://UI/TitleScreen.tscn"
 var GameOverScreen = "res://UI/GameOverScreen.tscn"
 var GameFinishedScreen = "res://UI/GameFinishedScreen.tscn"
