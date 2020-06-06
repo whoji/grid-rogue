@@ -116,9 +116,19 @@ func get_default_owned_heroes_string():
 
 func save_player_progression():
 	print("save_player_progression()")
+	save_player_basics()
 	#saveValue(player_save, "unlocks", "test001","1234")
 	player_save.set_value("unlocks", "owned_heroes",player_progression["owned_heroes"])
 	player_save.set_value("unlocks", "found_heroes",player_progression["found_heroes"])
 	player_save.set_value("unlocks", "owned_items",player_progression["owned_items"])
 	player_save.set_value("unlocks", "equiped_hero",Global.equiped_hero)
 	player_save.save(save_file)
+
+func save_player_basics():
+	player_save.set_value("basics", "gold", Global.gold)
+	player_save.set_value("basics", "exp_", Global.exp_)
+	player_save.set_value("basics", "found_heroes", Global.found_heroes)
+	player_save.set_value("basics", "equiped_hero", Global.equiped_hero)
+	player_save.save(save_file)
+	
+	

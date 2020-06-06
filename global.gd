@@ -57,6 +57,7 @@ func game_start():
 	current_level = 0
 	gold = 0
 	exp_ = 0
+	found_heroes = []
 	get_tree().change_scene(GameScene)
 
 func game_finish():
@@ -72,6 +73,7 @@ func game_restart():
 	current_level = 0
 	gold = 0
 	exp_ = 0
+	found_heroes = []	
 	get_tree().change_scene(GameOverScreen)
 
 func game_over():
