@@ -61,4 +61,9 @@ __meta__ = {
 [node name="FoundHeroes" type="Node2D" parent="."]
 
 [node name="FoundHeroBlueprintDisplay" parent="FoundHeroes" instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 24, 48 )
+
+[node name="FoundHeroBlueprintDisplay2" parent="FoundHeroes" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 72, 48 )

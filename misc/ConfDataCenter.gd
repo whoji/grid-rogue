@@ -100,11 +100,13 @@ func load_save_file():
 	var owned_heroes = player_save.get_value("unlocks", "owned_heroes" , get_default_owned_heroes_string())
 	var found_heroes = player_save.get_value("unlocks", "found_heroes" , get_default_owned_heroes_string())
 	var owned_items = player_save.get_value("unlocks", "owned_items" , get_default_owned_heroes_string())
-	var equiped_hero = player_save.get_value("unlocks", "equiped_hero" , 0)
 	player_progression["owned_heroes"] = owned_heroes
 	player_progression["found_heroes"] = found_heroes
 	player_progression["owned_items"] = owned_items
-	Global.equiped_hero = equiped_hero
+	Global.equiped_hero =  player_save.get_value("basics", "equiped_hero" , 0)
+	Global.gold =  player_save.get_value("basics", "gold" , 0)
+	Global.exp_ =  player_save.get_value("basics", "exp_" , 0)
+	Global.found_heroes =  player_save.get_value("basics", "found_heroes =" , [])
 	#print("xx")
 	#print(player_progression)
 
@@ -121,7 +123,6 @@ func save_player_progression():
 	player_save.set_value("unlocks", "owned_heroes",player_progression["owned_heroes"])
 	player_save.set_value("unlocks", "found_heroes",player_progression["found_heroes"])
 	player_save.set_value("unlocks", "owned_items",player_progression["owned_items"])
-	player_save.set_value("unlocks", "equiped_hero",Global.equiped_hero)
 	player_save.save(save_file)
 
 func save_player_basics():

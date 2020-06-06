@@ -29,6 +29,13 @@ func _ready():
 	print("--------------")
 	var ret_type = get_random_spawn_type([0,1,2],[10,5,0.5])
 	print(ret_type)
+	
+	print("--------------2")
+	var alist = [1,2,3,4]
+	if 1 in alist:
+		print("1 is in alist")
+	if not 8 in alist:
+		print("8 is not in alist")
 
 func get_random_spawn_type(spawn_type, spawn_chance):
 	assert (len(spawn_type) == len(spawn_chance),	"%d != %d " % [len(spawn_type),len(spawn_chance)])

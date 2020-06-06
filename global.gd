@@ -109,14 +109,6 @@ func go_to_title_screen(from_scene=""):
 	Conf.save_player_progression()		
 	get_tree().change_scene(TitleScreen)
 	
-func find_hero_blue_print(hero_id):
-	#assert(Global.player_progression["found_heroes"][hero_id] == "0")
-	#assert(Global.player_progression["owned_heroes"][hero_id] == "0")
-	Global.player_progression["found_heroes"][hero_id] = "1"
-	print(Global.player_progression)
-	Conf.save_player_progression()	
-	# TODO add some effects maybe ??
-
 func buy_hero_blue_print(hero_id):
 	assert(Global.player_progression["found_heroes"][hero_id] == "1")
 	assert(Global.player_progression["owned_heroes"][hero_id] == "0")	
@@ -126,10 +118,26 @@ func buy_hero_blue_print(hero_id):
 	## TODO check if already bought....
 	Conf.save_player_progression()
 	
-func unpack_all_found_hero_blue_prints():
+#func find_hero_blue_print(hero_id):
+#	#assert(Global.player_progression["found_heroes"][hero_id] == "0")
+#	#assert(Global.player_progression["owned_heroes"][hero_id] == "0")
+#	Global.player_progression["found_heroes"][hero_id] = "1"
+#	print(Global.player_progression)
+#	Conf.save_player_progression()	
+#	# TODO add some effects maybe ??
+#
+#func unpack_all_found_hero_blue_prints():
+#	print("=========================")	
+#	print("FOUND HEROES: ", found_heroes)
+#	for hero_id in found_heroes:
+#		Global.player_progression["found_heroes"][hero_id] = "1"
+#	print(Global.player_progression)
+#	Conf.save_player_progression()	
+
+func unpack_uinque_found_hero_blue_prints(uniq_found_heroes):
 	print("=========================")	
-	print("FOUND HEROES: ", found_heroes)
-	for hero_id in found_heroes:
+	print("UNIQUE FOUND HEROES: ", uniq_found_heroes)
+	for hero_id in uniq_found_heroes:
 		Global.player_progression["found_heroes"][hero_id] = "1"
 	print(Global.player_progression)
 	Conf.save_player_progression()	
