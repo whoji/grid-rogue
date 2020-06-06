@@ -134,7 +134,7 @@ func buy_hero_blue_print(hero_id):
 #	print(Global.player_progression)
 #	Conf.save_player_progression()	
 
-func unpack_uinque_found_hero_blue_prints(uniq_found_heroes):
+func unpack_unique_found_hero_blue_prints(uniq_found_heroes):
 	print("=========================")	
 	print("UNIQUE FOUND HEROES: ", uniq_found_heroes)
 	for hero_id in uniq_found_heroes:

@@ -15,7 +15,8 @@ func _ready():
 	# Global.found_heroes = [17, 18, 19,20]
 	jiesuan_all_found_hero_blue_prints()
 	#Global.unpack_all_found_hero_blue_prints()
-	Global.unpack_uinque_found_hero_blue_prints(new_found_list)
+	Global.unpack_unique_found_hero_blue_prints(new_found_list)
+	Global.found_heroes = []
 
 func _input(event):
 	if event.is_action_pressed("ui_select"):
