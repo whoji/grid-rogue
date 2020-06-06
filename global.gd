@@ -8,7 +8,8 @@ var current_level = 0 #setget set_current_level
 var gold = 0 setget set_gold
 var exp_ = 0
 var levels = null
-var found_heroes = [1,2,13]
+# var found_heroes = [1,2,13]
+var found_heroes = []
 var TitleScreen = "res://UI/TitleScreen.tscn"
 var GameOverScreen = "res://UI/GameOverScreen.tscn"
 var GameFinishedScreen = "res://UI/GameFinishedScreen.tscn"
@@ -123,3 +124,10 @@ func buy_hero_blue_print(hero_id):
 	## TODO check if already bought....
 	Conf.save_player_progression()
 	
+func unpack_all_found_hero_blue_prints():
+	print("=========================")	
+	print("FOUND HEROES: ", found_heroes)
+	for hero_id in found_heroes:
+		Global.player_progression["found_heroes"][hero_id] = "1"
+	print(Global.player_progression)
+	Conf.save_player_progression()	

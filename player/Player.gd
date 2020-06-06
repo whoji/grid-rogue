@@ -127,7 +127,8 @@ func fight_with(tgpos_x, tgpos_y):
 		Global.next_level()
 		return 1
 	elif token.token_type == 5: # hero_blueprint
-		Global.find_hero_blue_print(token.val)
+		# Global.find_hero_blue_print(token.val)
+		Global.found_heroes.append(token.val)
 		return 1
 			
 func die():
