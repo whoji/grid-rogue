@@ -37,6 +37,12 @@ func _ready():
 	if not 8 in alist:
 		print("8 is not in alist")
 
+func _input(event):
+	if event.is_action_pressed("ui_right"):
+		$ScrollContainer.scroll_horizontal += 30
+	elif event.is_action_pressed("ui_left"):
+		$ScrollContainer.scroll_horizontal -= 30
+
 func get_random_spawn_type(spawn_type, spawn_chance):
 	assert (len(spawn_type) == len(spawn_chance),	"%d != %d " % [len(spawn_type),len(spawn_chance)])
 	var chance_sum = 0
