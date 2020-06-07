@@ -42,3 +42,23 @@ texture = ExtResource( 4 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 2, 8, 19, 15 )
+
+[node name="GoldValLabel" type="Label" parent="."]
+visible = false
+margin_top = 128.0
+margin_right = 40.0
+margin_bottom = 142.0
+text = "+100g"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DupLabel" type="Label" parent="."]
+visible = false
+margin_top = 64.0
+margin_right = 40.0
+margin_bottom = 78.0
+text = "Dup !"
+__meta__ = {
+"_edit_use_anchors_": false
+}

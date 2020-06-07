@@ -16,3 +16,7 @@ func update_hero_icon(_hero_id):
 func show_money():
 	$SpriteGold.visible = true
 	$SpriteArrow2.visible = true
+	var gold_val = round(Conf.hero[self.hero_id]["cost"] / Global.DUPLICATE_HERO_WORTH_FACTOR)
+	$GoldValLabel.text = "+"+str(gold_val)+"g"
+	$GoldValLabel.visible = true
+	$DupLabel.visible = true

@@ -15,8 +15,8 @@ func _ready():
 	# Global.found_heroes = [17, 18, 19,20]
 	jiesuan_all_found_hero_blue_prints()
 	#Global.unpack_all_found_hero_blue_prints()
+	Global.found_heroes = []	
 	Global.unpack_unique_found_hero_blue_prints(new_found_list)
-	Global.found_heroes = []
 
 func _input(event):
 	if event.is_action_pressed("ui_select"):
@@ -35,6 +35,7 @@ func jiesuan_all_found_hero_blue_prints():
 		if Global.player_progression["found_heroes"][hero_id] == "0" and not hero_id in new_found_list:
 			new_found_list.append(hero_id)
 		else:
-			found_hero_bp_display.show_money()		
+			found_hero_bp_display.show_money()
+			Global.gold += round(Conf.hero[hero_id]["cost"] / Global.DUPLICATE_HERO_WORTH_FACTOR)
 	#print(Global.player_progression)
 	#Conf.save_player_progression()	
