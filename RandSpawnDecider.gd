@@ -90,6 +90,7 @@ func get_new_hero_blueprint():
 	if center_ind-2 >= 0:
 		hero_chance_list[center_ind-2] += 5 
 	
+	hero_chance_list[0] = 0
 	var ret_hero_id = get_random_spawn_type(hero_id_list, hero_chance_list)
 	print("RANDOM_HERO_BLUEPRINT_DROP: ", center_ind)
 	print("RANDOM_HERO_BLUEPRINT_DROP: ", hero_chance_list)
