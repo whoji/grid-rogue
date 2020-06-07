@@ -59,6 +59,7 @@ __meta__ = {
 }
 
 [node name="FoundHeroes" type="Node2D" parent="."]
+position = Vector2( 16, 56 )
 
 [node name="FoundHeroBlueprintDisplay" parent="FoundHeroes" instance=ExtResource( 3 )]
 visible = false
@@ -67,3 +68,14 @@ position = Vector2( 24, 48 )
 [node name="FoundHeroBlueprintDisplay2" parent="FoundHeroes" instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 72, 48 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="FoundHeroes"]
+margin_right = 272.0
+margin_bottom = 160.0
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FoundHeroes/ScrollContainer"]
+custom_constants/separation = 48
