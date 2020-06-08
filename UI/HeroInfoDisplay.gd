@@ -27,6 +27,6 @@ func update_hero_info_display_in_shop(_hero_id):
 
 func update_hero_info_display_in_game():
 	$CenterContainer/VBoxContainer/NameLabel.text = 'Lvl: '+str(Global.game.player.level)
-	$CenterContainer/VBoxContainer/ATKLabel.text = 'ATK: '+str(Global.game.player.level)
+	$CenterContainer/VBoxContainer/ATKLabel.text = 'ATK: '+str(Global.game.player.atk)
 	$CenterContainer/VBoxContainer/HPLabel.text = 'HP: '+str(max(Global.game.player.hp,0))+'/'+str(Global.game.player.max_hp)
 	
