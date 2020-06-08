@@ -87,10 +87,10 @@ func load_hero_conf():
 		#var lvl = conf_hero.get_value(section_key, "level" , -1)
 		var id = conf_hero.get_value(section_key, "id" , -1)
 		var atk = conf_hero.get_value(section_key, "atk" , -1)
-		var hp  = conf_hero.get_value(section_key, "hp" , -1)
+		var max_hp = conf_hero.get_value(section_key, "max_hp" , -1)
 		var cost  = conf_hero.get_value(section_key, "cost" , -1)
 		#self.enemy.append({"level":lvl, "atk":atk, "hp":hp})
-		self.hero[id] = {"id":id, "atk":atk, "hp":hp, "cost":cost}
+		self.hero[id] = {"id":id, "atk":atk, "max_hp":max_hp, "cost":cost}
 	#print(self.hero.size())
 			
 func load_save_file():

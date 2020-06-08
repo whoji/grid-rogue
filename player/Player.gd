@@ -12,7 +12,9 @@ onready var game = get_tree().get_root().get_node("Game")
 onready var is_alive = true
 onready var anim = $anim
 
+var level = 1
 var hp = 16
+var max_hp = 16
 var atk = 4
 var hero_id = 0
 
@@ -22,7 +24,8 @@ signal dead
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hero_id = Global.equiped_hero
-	hp = Conf.hero[hero_id]['hp']
+	max_hp = Conf.hero[hero_id]['max_hp']
+	hp = max_hp
 	atk = Conf.hero[hero_id]['atk']
 	print("Equiped hero: %d (atk: %d, hp: %d)" % [hero_id, atk, hp])
 	var texture_path="res://asset/hero/hero_0.png"
@@ -116,6 +119,7 @@ func fight_with(tgpos_x, tgpos_y):
 		
 	elif token.token_type == 1: # red potion
 		hp += token.val
+		hp = min(hp, max_hp)
 		$HP_Label.text = str(hp)
 		return 1
 	elif token.token_type == 2: # gold
