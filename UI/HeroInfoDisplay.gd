@@ -12,11 +12,21 @@ func _ready():
 	texture_path = HERO_TEXTURE_PATH_PREFIX + ("%03d"%hero_id) +".png"
 	print(texture_path)
 	$CenterContainer/Sprite.texture = load(texture_path)
-	update_hero_info_display(Global.equiped_hero)
+	update_hero_info_display_in_shop(Global.equiped_hero)
 
-func update_hero_info_display(_hero_id):
+func update_hero_info_display_in_shop(_hero_id):
 	hero_id = _hero_id
 	var texture_path="res://asset/hero/hero_0.png"
 	texture_path = HERO_TEXTURE_PATH_PREFIX + ("%03d"%hero_id) +".png"
 	print(texture_path)
 	$CenterContainer/Sprite.texture = load(texture_path)
+	$CenterContainer/VBoxContainer/NameLabel.text = 'No: '+str(hero_id)
+	$CenterContainer/VBoxContainer/ATKLabel.text = 'ATK: '+str(Conf.hero[hero_id]['atk'])
+	$CenterContainer/VBoxContainer/HPLabel.text = 'MaxHP: '+str(Conf.hero[hero_id]['max_hp'])
+	
+
+func update_hero_info_display_in_game():
+	$CenterContainer/VBoxContainer/NameLabel.text = 'Lvl: '+str(Global.game.player.level)
+	$CenterContainer/VBoxContainer/ATKLabel.text = 'ATK: '+str(Global.game.player.level)
+	$CenterContainer/VBoxContainer/HPLabel.text = 'HP: '+str(max(Global.game.player.hp,0))+'/'+str(Global.game.player.max_hp)
+	

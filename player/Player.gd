@@ -9,6 +9,7 @@ var grid_position = Vector2(1,1) setget set_grid_position
 
 onready var tween = get_node("Tween")
 onready var game = get_tree().get_root().get_node("Game")
+onready var hero_info_display = get_tree().get_root().get_node("Game/HeroInfoDisplay")
 onready var is_alive = true
 onready var anim = $anim
 
@@ -59,10 +60,12 @@ func move_grid(dx, dy):
 	if fight_result == 2:
 		print("FIGHT_RESULT: TIE !!!!")
 		play_shake_anim(dx, dy)
+		hero_info_display.update_hero_info_display_in_game()
 		return	
 	elif fight_result == 0:
 		print("FIGHT_RESULT: LOSE !!!!")
 		play_shake_anim(dx, dy)
+		hero_info_display.update_hero_info_display_in_game()
 		die()
 		return	
 		

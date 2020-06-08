@@ -88,7 +88,7 @@ func move_grid(dx, dy):
 	selector.rect_position = selector_gpos * TILE_SIZE
 	# print(get_hero_id(selector_gpos))
 	
-	$HeroInfoDisplay.update_hero_info_display(get_hero_id(selector_gpos))
+	$HeroInfoDisplay.update_hero_info_display_in_shop(get_hero_id(selector_gpos))
 	
 func buy_hero():
 	var hero_id = get_hero_id(selector_gpos)

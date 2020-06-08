@@ -33,6 +33,7 @@ func _ready():
 	restart_board()
 	player.connect("player_moved",self, "post_player_move_fill")
 	Global.game = self
+	$HeroInfoDisplay.update_hero_info_display_in_game()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -195,9 +196,12 @@ func post_player_move_fill(x,y, dx, dy):
 				else:
 					add_rand_enemy(i,j)
 					
+	# STEP 5: update the hero info display
+	$HeroInfoDisplay.update_hero_info_display_in_game()
 	
 	# STEP 5: check if player die
 	if player.hp <= 0:
+		$HeroInfoDisplay.update_hero_info_display_in_game()
 		player.die()
 	print("---------------------")
 
