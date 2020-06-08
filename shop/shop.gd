@@ -7,6 +7,8 @@ const COLS = 5
 const ShopItemGrayOutBox = preload("res://UI/ShopItemGrayOutBox.tscn")
 const EquipedFrame = preload("res://UI/EquipedFrame.tscn")
 const HERO_TEXTURE_PATH_PREFIX = "res://asset/_hero_23x32_0525_PIPOYA/tile"
+const IF_SELECTOR_RECT_INTIAL_ON_EQUIPED = true
+
 onready var total_items = Conf.hero.size()
 onready var selector = $SelectorRect
 onready var selector_gpos = Vector2(0,0)
@@ -37,6 +39,8 @@ func _ready():
 			var hero_id = get_hero_id(Vector2(i,j))
 			var hero_texure_path = HERO_TEXTURE_PATH_PREFIX + ("%03d"%hero_id) +".png"
 			if item_id == Global.equiped_hero:
+				if IF_SELECTOR_RECT_INTIAL_ON_EQUIPED:
+					selector_gpos = Vector2(i,j)
 				add_item(i,j, hero_texure_path, false, true)
 			else:			
 				add_item(i,j, hero_texure_path, false, false)
@@ -44,7 +48,10 @@ func _ready():
 		if i >= COLS:
 			j += 1
 			i = 0
-			
+	
+	if IF_SELECTOR_RECT_INTIAL_ON_EQUIPED:
+		selector.rect_position = (selector_gpos + TILE_OFFSET) * TILE_SIZE
+	
 	if Global.prevous_scene == "game_board":
 		$ShopHUD.queue_free()
 		$SelectorRect.visible = false
