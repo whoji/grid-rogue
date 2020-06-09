@@ -92,4 +92,4 @@ func get_hp_amount():
 	var a = randi()%10+2
 	var b = randi()%3
 	var _hp = Global.game.player.hp
-	return int(_hp/a + b)
+	return max(int(_hp/a + b),1)
