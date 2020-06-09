@@ -96,6 +96,11 @@
 	* prevent player grind at a low level too long
 	* reaper can be an unlockable!
 
+## 局内成长
+* exp 100 then go up 1 lvl
+* only 100, that 100 will not change by hero level or game level
+* 1 kill 1 exp. will not change. fixed. so kill 100 enemies gain 1 level 
+
 ## between runs player progression
 * level up all from the shop.
 * or buy power-up for owned heroes
