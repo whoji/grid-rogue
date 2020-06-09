@@ -23,7 +23,11 @@ func update_hero_info_display_in_shop(_hero_id):
 	$CenterContainer/VBoxContainer/NameLabel.text = 'No: '+str(hero_id)
 	$CenterContainer/VBoxContainer/ATKLabel.text = 'ATK: '+str(Conf.hero[hero_id]['atk'])
 	$CenterContainer/VBoxContainer/HPLabel.text = 'MaxHP: '+str(Conf.hero[hero_id]['max_hp'])
-	
+	if Global.player_progression['found_heroes'][hero_id] == '1' \
+			and Global.player_progression['owned_heroes'][hero_id] == '0':
+		$CenterContainer/SpriteLock.visible = true
+	else:
+		$CenterContainer/SpriteLock.visible = false
 
 func update_hero_info_display_in_game():
 	$CenterContainer/VBoxContainer/NameLabel.text = 'Lvl: '+str(Global.game.player.level)

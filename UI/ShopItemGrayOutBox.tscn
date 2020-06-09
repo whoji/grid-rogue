@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://asset/Lock-Lock-icon.png" type="Texture" id=1]
 
 [node name="ShopItemGrayOutBox" type="ColorRect"]
 margin_right = 34.0
@@ -7,3 +9,9 @@ color = Color( 0.0196078, 0.0196078, 0.0196078, 0.682353 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 7.84828, 9.03741 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+centered = false

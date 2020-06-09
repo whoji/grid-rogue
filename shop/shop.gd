@@ -122,10 +122,12 @@ func buy_hero():
 			print("YOU BOUGHT THIS SHITTY HERO !!!...")
 			Global.buy_hero_blue_print(hero_id)
 			remove_grey_out(hero_id)
+			$HeroInfoDisplay.update_hero_info_display_in_shop(hero_id)
 		else:
 			print("YOU CANNOT AFFORD BUY THIS THING !!!...")
 			$PopupDialog/ColorRect.visible = true
 			flag_if_dialog_on = true
+			
 	
 func get_hero_id(_selector_gpos):
 	var adj_selector_gpos = _selector_gpos #- TILE_OFFSET
