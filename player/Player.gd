@@ -18,6 +18,7 @@ var hp = 16
 var max_hp = 16
 var atk = 4
 var hero_id = 0
+var expr = 0
 
 signal player_moved
 signal dead
@@ -28,6 +29,7 @@ func _ready():
 	max_hp = Conf.hero[hero_id]['max_hp']
 	hp = max_hp
 	atk = Conf.hero[hero_id]['atk']
+	expr = 0
 	print("Equiped hero: %d (atk: %d, hp: %d)" % [hero_id, atk, hp])
 	var texture_path="res://asset/hero/hero_0.png"
 	texture_path = HERO_TEXTURE_PATH_PREFIX + ("%03d"%hero_id) +".png"
@@ -68,8 +70,11 @@ func move_grid(dx, dy):
 		hero_info_display.update_hero_info_display_in_game()
 		die()
 		return	
-		
-	print("FIGHT_RESULT: WIN !!!!")
+	elif fight_result == 1: # kill enemy
+		print("FIGHT_RESULT: WIN !!!!")
+		expr += 1
+		if expr == 100:
+			player_level_up()
 		
 	emit_signal("player_moved",grid_position.x, grid_position.y, dx, dy)
 	
@@ -159,3 +164,9 @@ func play_shake_anim(dx, dy):
 		anim.play("shake_down")
 	yield(anim,"animation_finished")
 	return
+	
+func player_level_up():
+	expr = 0
+	level += 1
+	max_hp += 1 # TODO: use some conf val
+	atk += 1 # TODO: use some conf val

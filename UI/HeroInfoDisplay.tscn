@@ -67,3 +67,10 @@ margin_top = 36.0
 margin_right = 30.0
 margin_bottom = 50.0
 text = "HP"
+
+[node name="ExpLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+visible = false
+margin_top = 54.0
+margin_right = 30.0
+margin_bottom = 68.0
+text = "exp"
