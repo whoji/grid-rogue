@@ -105,7 +105,6 @@ func load_save_file():
 	player_progression["owned_items"] = owned_items
 	Global.equiped_hero =  player_save.get_value("basics", "equiped_hero" , 0)
 	Global.gold =  player_save.get_value("basics", "gold" , 0)
-	Global.exp_ =  player_save.get_value("basics", "exp_" , 0)
 	Global.found_heroes =  player_save.get_value("basics", "found_heroes =" , [])
 	#print("xx")
 	#print(player_progression)
@@ -127,7 +126,6 @@ func save_player_progression():
 
 func save_player_basics():
 	player_save.set_value("basics", "gold", Global.gold)
-	player_save.set_value("basics", "exp_", Global.exp_)
 	player_save.set_value("basics", "found_heroes", Global.found_heroes)
 	player_save.set_value("basics", "equiped_hero", Global.equiped_hero)
 	player_save.save(save_file)

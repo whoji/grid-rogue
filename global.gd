@@ -7,7 +7,6 @@ const DUPLICATE_HERO_WORTH_FACTOR = 2
 
 var current_level = 0 #setget set_current_level
 var gold = 0 setget set_gold
-var exp_ = 0
 var levels = null
 # var found_heroes = [1,2,13]
 var found_heroes = []
@@ -57,7 +56,6 @@ func game_start():
 	print("game starting ...")
 	current_level = 0
 	gold = 0
-	exp_ = 0
 	found_heroes = []
 	get_tree().change_scene(GameScene)
 
@@ -65,7 +63,6 @@ func game_finish():
 	print("game finished ...")
 	# current_level = 0
 	# gold = 0
-	# exp_ = 0
 	get_tree().change_scene(GameFinishedScreen)
 
 func game_restart():
@@ -73,7 +70,6 @@ func game_restart():
 	Conf.save_player_progression()
 	current_level = 0
 	gold = 0
-	exp_ = 0
 	found_heroes = []	
 	get_tree().change_scene(GameOverScreen)
 
@@ -82,7 +78,6 @@ func game_over():
 	Conf.save_player_progression()		
 	# current_level = 0
 	# gold = 0
-	# exp_ = 0
 	get_tree().change_scene(GameOverScreen)
 	
 func set_gold(val):
