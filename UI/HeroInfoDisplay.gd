@@ -6,6 +6,7 @@ var atk
 var hp
 var max_hp
 var level
+var cost = 23
 
 func _ready():
 	var texture_path="res://asset/hero/hero_0.png"
@@ -23,11 +24,15 @@ func update_hero_info_display_in_shop(_hero_id):
 	$CenterContainer/VBoxContainer/NameLabel.text = 'No: '+str(hero_id)
 	$CenterContainer/VBoxContainer/ATKLabel.text = 'ATK: '+str(Conf.hero[hero_id]['atk'])
 	$CenterContainer/VBoxContainer/HPLabel.text = 'MaxHP: '+str(Conf.hero[hero_id]['max_hp'])
+	$CenterContainer/LabelCost.text = "$"+str(Conf.hero[hero_id]['cost'])
 	if Global.player_progression['found_heroes'][hero_id] == '1' \
 			and Global.player_progression['owned_heroes'][hero_id] == '0':
 		$CenterContainer/SpriteLock.visible = true
+		$CenterContainer/LabelCost.visible = true
 	else:
 		$CenterContainer/SpriteLock.visible = false
+		$CenterContainer/LabelCost.visible = false
+		
 
 func update_hero_info_display_in_game():
 	$CenterContainer/VBoxContainer/NameLabel.text = 'Lvl: '+str(Global.game.player.level)
