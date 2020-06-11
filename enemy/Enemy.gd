@@ -8,6 +8,7 @@ var grid_position = Vector2(0,0)
 
 onready var tween = get_node("Tween")
 onready var game = get_tree().get_root().get_node("Game")
+onready var blinkShader = preload("res://effects/slow_blink.shader")
 
 var hp = 5
 var atk = 2
@@ -20,11 +21,14 @@ func _ready():
 		atk = (Global.current_level+1) * 1313
 		# grid_position = position / TILE_SI
 		$Sprite.texture = load("res://asset/_enemy_32x32_0525_andhegames/reaper_1313.png")
+		$Sprite.material = ShaderMaterial.new()
+		$Sprite.material.shader = blinkShader
 	else:
 		hp = Conf.enemy[enemy_type]["hp"]
 		atk = Conf.enemy[enemy_type]["atk"]
 		# grid_position = position / TILE_SIZE
 		$Sprite.texture = load(ENEMY_TEXTURE_PATH_PREFIX+str(enemy_type)+".png")
+		
 	$HP_Label.text = str(hp)
 	$ATK_Label.text = str(atk)
 	print(enemy_type)
