@@ -125,3 +125,18 @@
 * a passive skill can be enhance stair chance
 	* hp chance / amount
 	* gold chance / amnout
+
+## hero basic attribute design (6.10.2020)
+```
+[hero_0]
+id=0
+max_hp=10
+atk=5
+cost=100
+exp_gain=25     ; that means kill 4 enemies -> level up
+max_hp_gain=[10,10,20,20,50,50,100,200,300]
+atk_gain=[10,10,20,20,50,50,100,200,300]
+cap_level=10
+gold_reward_after_reach_max_level=1000
+```
+* once reached cap level, you can buy this hero again(x2 cost), to x2 everything(hp,atk)
