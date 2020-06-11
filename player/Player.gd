@@ -72,8 +72,8 @@ func move_grid(dx, dy):
 		return	
 	elif fight_result == 1: # kill enemy
 		print("FIGHT_RESULT: WIN !!!!")
-		expr += 1
-		if expr == 100:
+		expr += 1 * Conf.hero[hero_id]['exp_gain']
+		if expr >= 100:
 			player_level_up()
 		
 	emit_signal("player_moved",grid_position.x, grid_position.y, dx, dy)
@@ -166,6 +166,9 @@ func play_shake_anim(dx, dy):
 	return
 	
 func player_level_up():
+	if level >= Conf.hero[hero_id]['cap_level']:
+		expr=100
+		return
 	expr = 0
 	level += 1
 	max_hp += 1 # TODO: use some conf val
