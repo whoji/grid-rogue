@@ -1,6 +1,7 @@
 extends Node2D
 
 const HERO_TEXTURE_PATH_PREFIX = "res://asset/_hero_23x32_0525_PIPOYA/tile"
+const HERO_TEXTURE_PATH_DEFAULT = "res://asset/enemy/enemy_0.png"
 var hero_id = 0
 var atk
 var hp
@@ -29,6 +30,14 @@ func update_hero_info_display_in_shop(_hero_id):
 			and Global.player_progression['owned_heroes'][hero_id] == '0':
 		$CenterContainer/SpriteLock.visible = true
 		$CenterContainer/LabelCost.visible = true
+	elif Global.player_progression['found_heroes'][hero_id] == '0' \
+			and Global.player_progression['owned_heroes'][hero_id] == '0':
+		texture_path=HERO_TEXTURE_PATH_DEFAULT
+		$CenterContainer/Sprite.texture = load(texture_path)
+		$CenterContainer/VBoxContainer/NameLabel.text = 'No: ???'
+		$CenterContainer/VBoxContainer/ATKLabel.text = 'ATK: ???'
+		$CenterContainer/VBoxContainer/HPLabel.text = 'MaxHP: ???'
+		$CenterContainer/LabelCost.text = "$???"
 	else:
 		$CenterContainer/SpriteLock.visible = false
 		$CenterContainer/LabelCost.visible = false
