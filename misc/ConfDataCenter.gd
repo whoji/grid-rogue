@@ -89,7 +89,6 @@ func load_hero_conf():
 		var keys = conf_hero.get_section_keys(section)
 		for key in keys:
 			self.hero[id][key] = conf_hero.get_value(section, key , -1)
-		
 	#print(self.hero.size())
 			
 func load_save_file():

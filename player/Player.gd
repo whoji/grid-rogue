@@ -173,7 +173,13 @@ func player_level_up():
 	if level >= Conf.hero[hero_id]['cap_level']:
 		expr=100
 		return
+	var max_hp_inc = 1
+	var atk_inc = 1
+	if Conf.hero[hero_id]['atk_gain'].size() >= level-1:
+		atk_inc = Conf.hero[hero_id]['atk_gain'][level-1]
+	if Conf.hero[hero_id]['max_hp_gain'].size() >= level-1:
+		max_hp_inc = Conf.hero[hero_id]['max_hp_gain'][level-1]
 	expr = 0
 	level += 1
-	max_hp += 1 # TODO: use some conf val
-	atk += 1 # TODO: use some conf val
+	max_hp += max_hp_inc # TODO: use some conf val
+	atk += atk_inc # TODO: use some conf val
