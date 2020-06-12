@@ -6,6 +6,7 @@ extends Node
 # var a = 2
 # var b = "text"
 
+enum TEST1 {GAME, BOY, ADVANCED}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,6 +37,14 @@ func _ready():
 		print("1 is in alist")
 	if not 8 in alist:
 		print("8 is not in alist")
+		
+	print("---enum test --------")
+	print(TEST1.GAME)
+	print(TEST1.BOY)
+	print(TEST1.GAME == 0)
+	print(TEST1.BOY == 1)
+	print(TEST1)
+	
 
 func _input(event):
 	if event.is_action_pressed("ui_right"):

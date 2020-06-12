@@ -2,10 +2,14 @@ extends Node
 
 class_name RandSpawnDecider
 
-#const SPAWN_CHANCE = [10, 5, 5, 1] # enemy / HP / gold / relic
+enum SPAWN  {
+	ENEMY, HP, GOLD, RELIC, STAIR, HERO_BP 
+}
+
 const SPAWN_TYPE = [0, 1, 2, 3, 4, 5] # enemy / HP / gold / relic / stair / hero_blueprint
 const SPAWN_CHANCE = [10, 5, 5, 0, 5, 1] # enemy / HP / gold / relic / stair / hero_blueprint
 const REAPER_START_STEPS = 10
+
 
 func _ready():
 	randomize()
@@ -67,7 +71,7 @@ func get_new_hero_blueprint():
 	(6.4.2020 this function is NOT tested yet)
 	"""
 	var _max_floors = 100 # this should go to conf or global. temp put here.
-	var _max_hero = 21 # this should go to conf or global. temp put here.
+	var _max_hero = Conf.hero.size() # this should go to conf or global. temp put here.
 	var _base_chace_weight = 0.5 # this should go to conf or global. temp put here.
 	var hero_id_list = []
 	var hero_chance_list = []

@@ -2,6 +2,10 @@
 
 extends Node2D
 
+enum TOKEN_TYPE  {
+	ENEMY, HP, GOLD, BUJI, STAIR, HERO_BP 
+}
+
 const TILE_SIZE = 32
 const HERO_TEXTURE_PATH_PREFIX = "res://asset/_hero_23x32_0525_PIPOYA/tile"
 
@@ -113,7 +117,7 @@ func fight_with(tgpos_x, tgpos_y):
 	# fight_result: [0,1,2,3] == player lose / player win / tie / other case
 	var token = game.map_enemy[tgpos_x][tgpos_y]
 	print("token type :", token.token_type)
-	if token.token_type == 0: # enemy
+	if token.token_type == TOKEN_TYPE.ENEMY: # enemy
 		hp -= token.atk
 		$HP_Label.text = str(max(0, hp))
 		token.take_damage(atk)
@@ -125,20 +129,20 @@ func fight_with(tgpos_x, tgpos_y):
 		elif hp <= 0: # player lose, but this case should trigger gg mechanism
 			return 0 
 		
-	elif token.token_type == 1: # red potion
+	elif token.token_type == TOKEN_TYPE.HP: # red potion
 		hp += token.val
 		hp = min(hp, max_hp)
 		$HP_Label.text = str(hp)
 		return 1
-	elif token.token_type == 2: # gold
+	elif token.token_type == TOKEN_TYPE.GOLD: # gold
 		Global.gold += token.val
 		#$HP_Label.text = str(hp)
 		return 1
-	elif token.token_type == 4: # stair
+	elif token.token_type == TOKEN_TYPE.STAIR: # stair
 		game.has_stair = false
 		Global.next_level()
 		return 1
-	elif token.token_type == 5: # hero_blueprint
+	elif token.token_type == TOKEN_TYPE.HERO_BP: # hero_blueprint
 		# Global.find_hero_blue_print(token.val)
 		Global.found_heroes.append(token.val)
 		return 1

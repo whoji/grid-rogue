@@ -1,13 +1,12 @@
 extends Node2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+enum TOKEN_TYPE  {
+	ENEMY, HP, GOLD, RELIC, STAIR, HERO_BP 
+}
 
 const MAP_SIZE = Vector2(4,4)
 const MAP_OFFSET = Vector2(3,2)
-const ENEMY = [1, 2, 4, 8]
 const EnemyScene = preload("res://enemy/Enemy.tscn")
 const BujiScene = preload("res://item/buji.tscn")
 const StairScene = preload("res://item/Stair.tscn")
@@ -82,12 +81,10 @@ func fill_enemy_to_map():
 	for i in range(MAP_SIZE.x):
 		for j in range(MAP_SIZE.y):
 			if map[i][j] == 0:
-				#map[i][j] = ENEMY[randi()%4]
 				add_rand_enemy(i,j)
 	
 func add_rand_enemy(i,j):
 	print("adding enemey ...")
-	#var enemy_type = ENEMY[randi()%4]
 	var enemy_type = rand_spawn_decider.get_random_spawn_enemy_type(steps)
 	var enemy_node = EnemyScene.instance()
 	map[i][j] = enemy_type
@@ -98,7 +95,7 @@ func add_rand_enemy(i,j):
 
 func add_buji(i,j, token_type):
 	print("adding buji ...")	
-	var buji_type = token_type # ENEMY[randi()%4]
+	var buji_type = token_type
 	var buji_node = BujiScene.instance()
 	map[i][j] = 1000 + buji_type
 	buji_node.token_type = token_type
@@ -186,11 +183,12 @@ func post_player_move_fill(x,y, dx, dy):
 			if map_enemy[i][j] == null and Vector2(i,j)!= player_dest_grid_pos:
 				var token_type = rand_spawn_decider.get_random_spawn_token_type()
 				print("adding token type-",token_type," at ",i,j)
-				if token_type == 0: # for enemy
+				if token_type == TOKEN_TYPE.ENEMY: # for enemy
 					add_rand_enemy(i,j)
-				elif token_type == 1 or token_type == 2 or token_type == 5: # for buji (HP)
+				elif token_type == TOKEN_TYPE.HP or token_type == TOKEN_TYPE.HP \
+						or token_type == TOKEN_TYPE.HERO_BP: # for buji (HP)
 					add_buji(i,j,token_type)
-				elif token_type == 4 and not has_stair: # for stair
+				elif token_type == TOKEN_TYPE.STAIR and not has_stair: # for stair
 					has_stair = 1
 					add_stair(i,j)
 				else:
@@ -297,7 +295,6 @@ func dark_out(sec=0.2):
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
-	
 func light_on(sec=0.2):
 	#$CanvasLayer/ColorRect.color = Color(0,0,0,0)
 	# yield(get_tree().create_timer(1.0), "timeout")
