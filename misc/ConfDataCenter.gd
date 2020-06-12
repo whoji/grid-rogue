@@ -83,17 +83,13 @@ func load_hero_conf():
 	var sections = conf_hero.get_sections()
 	#print(sections)
 	for i in range(sections.size()):
-		var section_key = "hero_"+str(i)
-		#var lvl = conf_hero.get_value(section_key, "level" , -1)
-		var id = conf_hero.get_value(section_key, "id" , -1)
-		var atk = conf_hero.get_value(section_key, "atk" , -1)
-		var max_hp = conf_hero.get_value(section_key, "max_hp" , -1)
-		var cost  = conf_hero.get_value(section_key, "cost" , -1)
-		var cap_level = conf_hero.get_value(section_key, "cap_level" , 99)
-		var exp_gain = conf_hero.get_value(section_key, "exp_gain" , 10)
-		#self.enemy.append({"level":lvl, "atk":atk, "hp":hp})
-		self.hero[id] = {"id":id, "atk":atk, "max_hp":max_hp, "cost":cost, 
-				"cap_level":cap_level, "exp_gain":exp_gain}
+		var section = "hero_"+str(i)
+		var id = conf_hero.get_value(section, "id" , -1)
+		self.hero[id] = {}
+		var keys = conf_hero.get_section_keys(section)
+		for key in keys:
+			self.hero[id][key] = conf_hero.get_value(section, key , -1)
+		
 	#print(self.hero.size())
 			
 func load_save_file():
