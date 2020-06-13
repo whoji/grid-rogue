@@ -195,9 +195,13 @@ func player_level_up():
 		max_hp_inc = Conf.hero[hero_id]['max_hp_gain'][level-1]
 	expr = 0
 	level += 1
-	max_hp += max_hp_inc # TODO: use some conf val
-	atk += atk_inc # TODO: use some conf val
-
+	max_hp += max_hp_inc
+	atk += atk_inc
+	$HP_Label.text = str(hp)
+	$ATK_Label.text = str(atk)
+	if mod_atk > 1:
+		$ATK_Label.text = str(atk)+"x"+str(mod_atk)
+		
 func apply_rune_effect(rune_type=null):
 	"""
 	put some of these conf into a conf file
@@ -213,6 +217,7 @@ func apply_rune_effect(rune_type=null):
 				$HP_Label.text = str(hp)
 			RUNE.BLUE:
 				mod_atk = 2
+				$ATK_Label.text = str(atk)+"x"+str(mod_atk)
 			RUNE.PURPLE:
 				mod_dmg_taken = 0
 			RUNE.RED:
@@ -231,6 +236,7 @@ func apply_rune_effect(rune_type=null):
 				if self.rune_movement_counter == 0:
 					self.rune_effect = null
 					mod_atk = 1
+					$ATK_Label.text = str(atk)
 			RUNE.RED:
 				if self.rune_movement_counter == 0:
 					self.rune_effect = null
