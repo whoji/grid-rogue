@@ -3,7 +3,11 @@
 extends Node2D
 
 enum TOKEN_TYPE  {
-	ENEMY, HP, GOLD, BUJI, STAIR, HERO_BP 
+	ENEMY, HP, GOLD, RUNE, STAIR, HERO_BP 
+}
+
+enum RUNE {
+	GREEN, BLUE, PURPLE, RED
 }
 
 const TILE_SIZE = 32
@@ -23,6 +27,11 @@ var max_hp = 16
 var atk = 4
 var hero_id = 0
 var expr = 0
+var rune_movement_counter = 0
+var rune_effect = null
+var mod_atk = 1 # modifier
+var mod_dmg_taken = 1 # modifier
+var mod_expr_gain = 1 # modifier
 
 signal player_moved
 signal dead
@@ -76,7 +85,7 @@ func move_grid(dx, dy):
 		return	
 	elif fight_result == 1: # kill enemy
 		print("FIGHT_RESULT: WIN !!!!")
-		expr += 1 * Conf.hero[hero_id]['exp_gain']
+		expr += 1 * Conf.hero[hero_id]['exp_gain'] * mod_expr_gain
 		if expr >= 100:
 			player_level_up()
 		
@@ -114,13 +123,14 @@ func check_move_valid(dx, dy):
 		return true
 
 func fight_with(tgpos_x, tgpos_y):
+	apply_rune_effect()
 	# fight_result: [0,1,2,3] == player lose / player win / tie / other case
 	var token = game.map_enemy[tgpos_x][tgpos_y]
 	print("token type :", token.token_type)
 	if token.token_type == TOKEN_TYPE.ENEMY: # enemy
-		hp -= token.atk
+		hp -= token.atk * mod_dmg_taken
 		$HP_Label.text = str(max(0, hp))
-		token.take_damage(atk)
+		token.take_damage(atk * mod_atk)
 		
 		if hp > 0 and token.hp <=0: # case player win
 			return 1
@@ -146,7 +156,11 @@ func fight_with(tgpos_x, tgpos_y):
 		# Global.find_hero_blue_print(token.val)
 		Global.found_heroes.append(token.val)
 		return 1
+	elif token.token_type == TOKEN_TYPE.RUNE:
+		self.apply_rune_effect(token.rune_type)
+		return 1
 			
+	
 func die():
 	is_alive = false
 	emit_signal("dead")
@@ -183,3 +197,47 @@ func player_level_up():
 	level += 1
 	max_hp += max_hp_inc # TODO: use some conf val
 	atk += atk_inc # TODO: use some conf val
+
+func apply_rune_effect(rune_type=null):
+	"""
+	put some of these conf into a conf file
+	"""
+	print("RUNE status: ", rune_effect, " ",rune_movement_counter)
+	if rune_type != null: # new rune
+		self.rune_effect = rune_type
+		self.rune_movement_counter = 6 # actually allow 5 times effect
+		match rune_type:
+			RUNE.GREEN:
+				hp += (0.1*hp) 
+				hp = min(hp, max_hp)
+				$HP_Label.text = str(hp)
+			RUNE.BLUE:
+				mod_atk = 2
+			RUNE.PURPLE:
+				mod_dmg_taken = 0
+			RUNE.RED:
+				mod_expr_gain = 2
+				
+	elif self.rune_movement_counter > 0: # effecting rune
+		self.rune_movement_counter -= 1
+		match self.rune_effect:
+			RUNE.GREEN:
+				hp += (0.1*max_hp) 
+				hp = min(hp, max_hp)
+				$HP_Label.text = str(hp)
+				if self.rune_movement_counter == 0:
+					self.rune_effect = null
+			RUNE.BLUE:
+				if self.rune_movement_counter == 0:
+					self.rune_effect = null
+					mod_atk = 1
+			RUNE.RED:
+				if self.rune_movement_counter == 0:
+					self.rune_effect = null
+					mod_expr_gain = 1
+			RUNE.PURPLE:
+				if self.rune_movement_counter == 0:
+					self.rune_effect = null
+					mod_dmg_taken = 1
+					
+			
