@@ -1,5 +1,9 @@
 extends Node2D
 
+enum SPAWN  {
+	ENEMY, HP, GOLD, RUNE, STAIR, HERO_BP 
+}
+
 const TILE_SIZE = 32
 var token_type = 1
 
@@ -9,7 +13,7 @@ onready var tween = get_node("Tween")
 onready var game = get_tree().get_root().get_node("Game")
 
 var val = 5
-var buji_type = 1 # FIXME: later change to enum type. [1 hp; 2 gold]
+var buji_type = SPAWN.HP
 
 const RandSpawnDecider = preload("res://RandSpawnDecider.gd")
 onready var rand_spawn_decider = RandSpawnDecider.new()
@@ -17,17 +21,17 @@ onready var rand_spawn_decider = RandSpawnDecider.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# grid_position = position / TILE_SIZE
-	if buji_type == 1:  # HP
+	if buji_type == SPAWN.HP:  # HP
 		val = get_hp_amount()
 		$Label.text = str(val)
 		$Sprite.region_rect = Rect2(32, 224, 32, 32)
-	elif buji_type == 2:  # GOLD
+	elif buji_type == SPAWN.GOLD:  # GOLD
 		val = get_gold_amount()
 		$Label.text = str(val)
 		#$Sprite.region_rect = Rect2(128, 224, 32, 32)
 		$Sprite.visible = false
 		$SpriteGold.visible = true
-	elif buji_type == 5: # hero_blueprint
+	elif buji_type == SPAWN.HERO_BP: # hero_blueprint
 		$Sprite.visible = false
 		$SpriteHero.visible = true
 		val = rand_spawn_decider.get_new_hero_blueprint()
