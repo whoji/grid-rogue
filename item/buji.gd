@@ -3,6 +3,9 @@ extends Node2D
 enum SPAWN  {
 	ENEMY, HP, GOLD, RUNE, STAIR, HERO_BP 
 }
+enum RUNE {
+	GREEN, BLUE, PURPLE, RED
+}
 
 const TILE_SIZE = 32
 var token_type = 1
@@ -14,6 +17,7 @@ onready var game = get_tree().get_root().get_node("Game")
 
 var val = 5
 var buji_type = SPAWN.HP
+var rune_type = RUNE.GREEN
 
 const RandSpawnDecider = preload("res://RandSpawnDecider.gd")
 onready var rand_spawn_decider = RandSpawnDecider.new()
@@ -21,22 +25,34 @@ onready var rand_spawn_decider = RandSpawnDecider.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# grid_position = position / TILE_SIZE
-	if buji_type == SPAWN.HP:  # HP
+	if buji_type == SPAWN.HP:
 		val = get_hp_amount()
 		$Label.text = str(val)
 		$Sprite.region_rect = Rect2(32, 224, 32, 32)
-	elif buji_type == SPAWN.GOLD:  # GOLD
+	elif buji_type == SPAWN.GOLD:
 		val = get_gold_amount()
 		$Label.text = str(val)
 		#$Sprite.region_rect = Rect2(128, 224, 32, 32)
 		$Sprite.visible = false
 		$SpriteGold.visible = true
-	elif buji_type == SPAWN.HERO_BP: # hero_blueprint
+	elif buji_type == SPAWN.HERO_BP:
 		$Sprite.visible = false
 		$SpriteHero.visible = true
 		val = rand_spawn_decider.get_new_hero_blueprint()
 		# $Label.visible = false # NOTE: For test purpose, we don't hide it for me
 		$Label.text = "["+str(val)+"]"
+	elif buji_type == SPAWN.RUNE:
+		rune_type = rand_spawn_decider.get_random_spawn_run_type()
+		$Label.visible = false
+		match rune_type:
+			RUNE.GREEN:
+				$Rune/Green.visible = true
+			RUNE.RED:
+				$Rune/Red.visible = true
+			RUNE.PURPLE:
+				$Rune/Purple.visible = true
+			RUNE.BLUE:
+				$Rune/Blue.visible = true
 		
 	position = (grid_position + game.MAP_OFFSET) * TILE_SIZE
 	

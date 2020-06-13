@@ -3,11 +3,13 @@ extends Node
 class_name RandSpawnDecider
 
 enum SPAWN  {
-	ENEMY, HP, GOLD, RELIC, STAIR, HERO_BP 
+	ENEMY, HP, GOLD, RUNE, STAIR, HERO_BP 
 }
 
-const SPAWN_TYPE = [0, 1, 2, 3, 4, 5] # enemy / HP / gold / relic / stair / hero_blueprint
-const SPAWN_CHANCE = [10, 5, 5, 0, 5, 1] # enemy / HP / gold / relic / stair / hero_blueprint
+const SPAWN_TYPE = [0, 1, 2, 3, 4, 5] # enemy / HP / gold / rune / stair / hero_blueprint
+const SPAWN_CHANCE = [10, 5, 5, 1, 5, 1] # enemy / HP / gold / rune / stair / hero_blueprint
+const RUNE_TYPE = [0, 1, 2, 3] 
+const RUNE_CHANCE = [1, 1, 1, 1]
 const REAPER_START_STEPS = 10
 
 
@@ -35,6 +37,9 @@ func get_random_spawn_type(spawn_type, spawn_chance):
 
 func get_random_spawn_token_type():
 	return get_random_spawn_type(SPAWN_TYPE, SPAWN_CHANCE)
+
+func get_random_spawn_run_type():
+	return get_random_spawn_type(RUNE_TYPE, RUNE_CHANCE)
 
 func get_random_spawn_enemy_type(steps=0):
 	#var enemy_spawn = [] + Conf.level[Global.current_level]["spawn_enemy"]

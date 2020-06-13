@@ -2,7 +2,7 @@ extends Node2D
 
 
 enum TOKEN_TYPE  {
-	ENEMY, HP, GOLD, RELIC, STAIR, HERO_BP 
+	ENEMY, HP, GOLD, RUNE, STAIR, HERO_BP 
 }
 
 const MAP_SIZE = Vector2(4,4)
@@ -186,6 +186,7 @@ func post_player_move_fill(x,y, dx, dy):
 				if token_type == TOKEN_TYPE.ENEMY: # for enemy
 					add_rand_enemy(i,j)
 				elif token_type == TOKEN_TYPE.HP or token_type == TOKEN_TYPE.HP \
+						or token_type == TOKEN_TYPE.RUNE \
 						or token_type == TOKEN_TYPE.HERO_BP: # for buji (HP)
 					add_buji(i,j,token_type)
 				elif token_type == TOKEN_TYPE.STAIR and not has_stair: # for stair
