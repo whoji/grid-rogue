@@ -47,7 +47,8 @@ func _input(event):
 		Global.gold += 10
 	elif event.is_action_pressed("ui_shop") and not shop_on:
 		show_shop()
-	elif event.is_action_pressed("ui_cancel") and shop_on:
+	elif (event.is_action_pressed("ui_cancel") or event.is_action_pressed("ui_shop")) \
+			and shop_on:
 		close_shop()
 
 func clear_board():
@@ -185,7 +186,7 @@ func post_player_move_fill(x,y, dx, dy):
 				print("adding token type-",token_type," at ",i,j)
 				if token_type == TOKEN_TYPE.ENEMY: # for enemy
 					add_rand_enemy(i,j)
-				elif token_type == TOKEN_TYPE.HP or token_type == TOKEN_TYPE.HP \
+				elif token_type == TOKEN_TYPE.HP or token_type == TOKEN_TYPE.GOLD \
 						or token_type == TOKEN_TYPE.RUNE \
 						or token_type == TOKEN_TYPE.HERO_BP: # for buji (HP)
 					add_buji(i,j,token_type)
