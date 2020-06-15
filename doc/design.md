@@ -125,6 +125,16 @@
 * a passive skill can be enhance stair chance
 	* hp chance / amount
 	* gold chance / amnout
+* hero set
+	* if you find 3 hero. you can create / fuse into a new hero
+		* can keep or not keep the origin three heroes
+	* or if these three hero all reached to certain level.
+	* or green hero set concept (like in diabloe).
+		* with several hero found / purchased. get buff attributes ...
+	* how about you can actually equiped different hero
+		* to get different effects 
+		* for example you can equipied 2 extra hero for their buff...
+
 
 ## hero basic attribute design (6.10.2020)
 ```
