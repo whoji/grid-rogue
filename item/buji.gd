@@ -6,6 +6,9 @@ enum SPAWN  {
 enum RUNE {
 	GREEN, BLUE, PURPLE, RED
 }
+enum BP_RARITY {
+	COMMON, RARE, EPIC, LEGENDARY
+}
 
 const TILE_SIZE = 32
 var token_type = 1
@@ -18,6 +21,7 @@ onready var game = get_tree().get_root().get_node("Game")
 var val = 5
 var buji_type = SPAWN.HP
 var rune_type = RUNE.GREEN
+var hero_bp_rarity = BP_RARITY.COMMON
 
 const RandSpawnDecider = preload("res://RandSpawnDecider.gd")
 onready var rand_spawn_decider = RandSpawnDecider.new()
@@ -37,10 +41,18 @@ func _ready():
 		$SpriteGold.visible = true
 	elif buji_type == SPAWN.HERO_BP:
 		$Sprite.visible = false
-		$SpriteHeroBP/CommonHeroBP.visible = true
+		if hero_bp_rarity == BP_RARITY.COMMON:
+			$SpriteHeroBP/CommonHeroBP.visible = true
+		elif hero_bp_rarity == BP_RARITY.RARE:
+			$SpriteHeroBP/RareHeroBP.visible = true
+		elif hero_bp_rarity == BP_RARITY.EPIC:
+			$SpriteHeroBP/EpicHeroBP.visible = true
+		elif hero_bp_rarity == BP_RARITY.LEGENDARY:
+			$SpriteHeroBP/LegendaryHeroBP.visible = true			
 		val = rand_spawn_decider.get_new_hero_blueprint()
 		# $Label.visible = false # NOTE: For test purpose, we don't hide it for me
 		$Label.text = "["+str(val)+"]"
+		self.hero_bp_rarity = get_hero_bp_rarity(val)
 	elif buji_type == SPAWN.RUNE:
 		rune_type = rand_spawn_decider.get_random_spawn_run_type()
 		$Label.visible = false
@@ -113,3 +125,15 @@ func get_hp_amount():
 	var b = randi()%3
 	var _hp = Global.game.player.hp
 	return max(int(_hp/a + b),1)
+
+func get_hero_bp_rarity(hero_id):
+	if hero_id <= 6:
+		return BP_RARITY.COMMON
+	elif hero_id <= 12:
+		return BP_RARITY.RARE
+	elif hero_id <= 18:
+		return BP_RARITY.EPIC
+	elif hero_id <= 24:
+		return BP_RARITY.LEGENDARY	
+	else:
+		return BP_RARITY.COMMON
