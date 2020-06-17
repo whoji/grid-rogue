@@ -37,7 +37,7 @@ func _ready():
 		$SpriteGold.visible = true
 	elif buji_type == SPAWN.HERO_BP:
 		$Sprite.visible = false
-		$SpriteHero.visible = true
+		$SpriteHeroBP/CommonHeroBP.visible = true
 		val = rand_spawn_decider.get_new_hero_blueprint()
 		# $Label.visible = false # NOTE: For test purpose, we don't hide it for me
 		$Label.text = "["+str(val)+"]"
