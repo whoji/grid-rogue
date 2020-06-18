@@ -41,6 +41,11 @@ func _ready():
 		$SpriteGold.visible = true
 	elif buji_type == SPAWN.HERO_BP:
 		$Sprite.visible = false
+		val = rand_spawn_decider.get_new_hero_blueprint()
+		# $Label.visible = false # NOTE: For test purpose, we don't hide it for me
+		$Label.text = "["+str(val)+"]"
+		self.hero_bp_rarity = get_hero_bp_rarity(val)
+		print("RARITY ",self.hero_bp_rarity)
 		if hero_bp_rarity == BP_RARITY.COMMON:
 			$SpriteHeroBP/CommonHeroBP.visible = true
 		elif hero_bp_rarity == BP_RARITY.RARE:
@@ -48,11 +53,7 @@ func _ready():
 		elif hero_bp_rarity == BP_RARITY.EPIC:
 			$SpriteHeroBP/EpicHeroBP.visible = true
 		elif hero_bp_rarity == BP_RARITY.LEGENDARY:
-			$SpriteHeroBP/LegendaryHeroBP.visible = true			
-		val = rand_spawn_decider.get_new_hero_blueprint()
-		# $Label.visible = false # NOTE: For test purpose, we don't hide it for me
-		$Label.text = "["+str(val)+"]"
-		self.hero_bp_rarity = get_hero_bp_rarity(val)
+			$SpriteHeroBP/LegendaryHeroBP.visible = true
 	elif buji_type == SPAWN.RUNE:
 		rune_type = rand_spawn_decider.get_random_spawn_run_type()
 		$Label.visible = false
