@@ -1,10 +1,68 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://asset/enemy/enemy_0.png" type="Texture" id=1]
 [ext_resource path="res://asset/enemy/enemy_6.png" type="Texture" id=2]
 [ext_resource path="res://asset/item/roguelikeitems.png" type="Texture" id=3]
 [ext_resource path="res://asset/misc/Pointer.png" type="Texture" id=4]
 [ext_resource path="res://UI/FoundHeroBlueprintDisplay.gd" type="Script" id=5]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec3 color1 = vec3(0.1, 0.6, 0.8);
+
+void fragment(){
+	vec3 text_color = texture(TEXTURE, UV).rgb;
+	vec3 final_color = mix(color1, text_color, 0.65);
+	COLOR.rgb = final_color;
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/color1 = Vector3( 0.1, 0.6, 0.8 )
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform vec3 color1 = vec3(0.5, 0.05, 0.5);
+uniform vec3 color2 = vec3(0.85, 0.25, 0.90);
+
+void fragment(){
+	vec3 text_color = texture(TEXTURE, UV).rgb;
+	vec3 final_color = vec3(0.0);
+	float pct = abs(sin(TIME));
+	final_color = mix(color1, color2, pct);
+	final_color = mix(final_color, text_color, 0.6);
+	COLOR.rgb = final_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/color1 = Vector3( 0.5, 0.05, 0.5 )
+shader_param/color2 = Vector3( 0.85, 0.25, 0.9 )
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform vec3 color1 = vec3(0.5, 0.25, 0.05);
+uniform vec3 color2 = vec3(0.95, 0.55, 0.1);
+
+void fragment(){
+	vec3 text_color = texture(TEXTURE, UV).rgb;
+	vec3 final_color = vec3(0.0);
+	float pct = abs(sin(TIME));
+	final_color = mix(color1, color2, pct);
+	final_color = mix(final_color, text_color, 0.6);
+	COLOR.rgb = final_color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+shader_param/color1 = Vector3( 0.5, 0.25, 0.05 )
+shader_param/color2 = Vector3( 0.95, 0.55, 0.1 )
 
 [node name="FoundHeroBlueprintDisplay" type="Node2D"]
 script = ExtResource( 5 )
@@ -18,16 +76,19 @@ centered = false
 
 [node name="RareHeroBP" type="Sprite" parent="SpriteMysteryHero"]
 visible = false
+material = SubResource( 2 )
 texture = ExtResource( 1 )
 centered = false
 
 [node name="EpicHeroBP" type="Sprite" parent="SpriteMysteryHero"]
 visible = false
+material = SubResource( 4 )
 texture = ExtResource( 1 )
 centered = false
 
 [node name="LegendaryHeroBP" type="Sprite" parent="SpriteMysteryHero"]
 visible = false
+material = SubResource( 6 )
 texture = ExtResource( 1 )
 centered = false
 
