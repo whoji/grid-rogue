@@ -21,7 +21,7 @@ void fragment(){
 shader = SubResource( 1 )
 shader_param/color1 = Vector3( 0.1, 0.6, 0.8 )
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 
 uniform vec3 color1 = vec3(0.5, 0.05, 0.5);
@@ -36,12 +36,12 @@ void fragment(){
 	COLOR.rgb = final_color;
 }"
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
 shader_param/color1 = Vector3( 0.5, 0.05, 0.5 )
 shader_param/color2 = Vector3( 0.85, 0.25, 0.9 )
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
 
 uniform vec3 color1 = vec3(0.5, 0.25, 0.05);
@@ -57,8 +57,8 @@ void fragment(){
 }
 "
 
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
 shader_param/color1 = Vector3( 0.5, 0.25, 0.05 )
 shader_param/color2 = Vector3( 0.95, 0.55, 0.1 )
 
@@ -88,14 +88,14 @@ region_rect = Rect2( 128, 224, 32, 32 )
 
 [node name="EpicHeroBP" type="Sprite" parent="SpriteHeroBP"]
 visible = false
-material = SubResource( 6 )
+material = SubResource( 4 )
 texture = ExtResource( 4 )
 centered = false
 region_rect = Rect2( 128, 224, 32, 32 )
 
 [node name="LegendaryHeroBP" type="Sprite" parent="SpriteHeroBP"]
 visible = false
-material = SubResource( 4 )
+material = SubResource( 6 )
 texture = ExtResource( 4 )
 centered = false
 region_rect = Rect2( 128, 224, 32, 32 )

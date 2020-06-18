@@ -9,7 +9,25 @@
 [node name="FoundHeroBlueprintDisplay" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="SpriteMystery" type="Sprite" parent="."]
+[node name="SpriteMysteryHero" type="Node2D" parent="."]
+
+[node name="CommonHeroBP" type="Sprite" parent="SpriteMysteryHero"]
+visible = false
+texture = ExtResource( 1 )
+centered = false
+
+[node name="RareHeroBP" type="Sprite" parent="SpriteMysteryHero"]
+visible = false
+texture = ExtResource( 1 )
+centered = false
+
+[node name="EpicHeroBP" type="Sprite" parent="SpriteMysteryHero"]
+visible = false
+texture = ExtResource( 1 )
+centered = false
+
+[node name="LegendaryHeroBP" type="Sprite" parent="SpriteMysteryHero"]
+visible = false
 texture = ExtResource( 1 )
 centered = false
 

@@ -7,7 +7,7 @@ enum SPAWN  {
 }
 
 const SPAWN_TYPE = [0, 1, 2, 3, 4, 5] # enemy / HP / gold / rune / stair / hero_blueprint
-const SPAWN_CHANCE = [10, 5, 5, 1, 5, 1] # enemy / HP / gold / rune / stair / hero_blueprint
+const SPAWN_CHANCE = [10, 5, 5, 1, 5, 100] # enemy / HP / gold / rune / stair / hero_blueprint
 const RUNE_TYPE = [0, 1, 2, 3] 
 const RUNE_CHANCE = [1, 1, 1, 1]
 const REAPER_START_STEPS = 10
