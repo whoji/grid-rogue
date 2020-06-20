@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://board/GameTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://asset/hero/hero_0.png" type="Texture" id=2]
 [ext_resource path="res://shop/shop.gd" type="Script" id=3]
 [ext_resource path="res://UI/ShopHUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/HeroInfoDisplay.tscn" type="PackedScene" id=5]
+[ext_resource path="res://effects/shadow_out.shader" type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 6 )
+shader_param/color1 = Vector3( 0.1, 0.1, 0.1 )
 
 [node name="shop" type="Control"]
 anchor_right = 1.0
@@ -22,9 +27,9 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color( 0, 0, 0, 0.352941 )
-margin_left = 86.0
+margin_left = 96.0
 margin_top = 24.0
-margin_right = 296.0
+margin_right = 306.0
 margin_bottom = 225.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
@@ -251,6 +256,24 @@ position = Vector2( 313.623, 228.443 )
 texture = ExtResource( 2 )
 centered = false
 offset = Vector2( -68.6232, -53.4428 )
+
+[node name="Heroes_TEST" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Heroes_TEST"]
+position = Vector2( 512, 89 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -278.623, -53.4428 )
+
+[node name="Sprite2" type="Sprite" parent="Heroes_TEST"]
+material = SubResource( 2 )
+position = Vector2( 448, 89 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -278.623, -53.4428 )
 
 [node name="DisplayedItems" type="Control" parent="."]
 __meta__ = {
