@@ -70,6 +70,9 @@ func move_grid(dx, dy):
 	if not check_move_valid(dx, dy):
 		return
 	
+	if not Global.STEPS_INC_IF_ONLY_MOVED:
+		game.increase_steps()
+	
 	var fight_result = fight_with(grid_position.x+dx, grid_position.y+dy)
 	
 	if fight_result == 2:
@@ -90,7 +93,6 @@ func move_grid(dx, dy):
 			player_level_up()
 	elif fight_result == -1: # non-enemy (e.g. eat the hp bottle)
 		print("FIGHT_RESULT: NOT ENEMY !!!!")
-		
 		
 	emit_signal("player_moved",grid_position.x, grid_position.y, dx, dy)
 	

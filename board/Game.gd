@@ -114,8 +114,8 @@ func add_stair(i,j):
 	map_enemy[i][j] = stair_node
 
 func post_player_move_fill(x,y, dx, dy):
-	steps +=  1
-	$HUD/StepLabel.text = "Step: "+str(steps)
+	if Global.STEPS_INC_IF_ONLY_MOVED:
+		self.increase_steps()
 	print("steps:  "+str(steps))
 	var player_dest_grid_pos = Vector2(player.grid_position.x+dx, player.grid_position.y+dy)
 	# STEP -1: check if player_die
@@ -260,6 +260,10 @@ func get_valid_enemy_behind_gpos_orth_set(empty_gpos, player_dest_grid_pos):
 #				print("already 1 stair on board !!!")
 #				return true
 #	return false
+
+func increase_steps():
+	steps +=  1
+	$HUD/StepLabel.text = "Step: "+str(steps)
 
 func _on_Player_dead():
 	dark_out(0.6)

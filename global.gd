@@ -4,6 +4,7 @@ const MAP_SIZE = Vector2(4,4)
 const TOTAL_HEROES_NUM = 25
 const IF_USE_GRIM_REAPER = true
 const DUPLICATE_HERO_WORTH_FACTOR = 2
+const STEPS_INC_IF_ONLY_MOVED = false
 
 var current_level = 0 #setget set_current_level
 var gold = 0 setget set_gold
