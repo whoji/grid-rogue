@@ -88,6 +88,9 @@ func move_grid(dx, dy):
 		expr += 1 * Conf.hero[hero_id]['exp_gain'] * mod_expr_gain
 		if expr >= 100:
 			player_level_up()
+	elif fight_result == -1: # non-enemy (e.g. eat the hp bottle)
+		print("FIGHT_RESULT: NOT ENEMY !!!!")
+		
 		
 	emit_signal("player_moved",grid_position.x, grid_position.y, dx, dy)
 	
@@ -143,22 +146,22 @@ func fight_with(tgpos_x, tgpos_y):
 		hp += token.val
 		hp = min(hp, max_hp)
 		$HP_Label.text = str(hp)
-		return 1
+		return -1
 	elif token.token_type == TOKEN_TYPE.GOLD: # gold
 		Global.gold += token.val
 		#$HP_Label.text = str(hp)
-		return 1
+		return -1
 	elif token.token_type == TOKEN_TYPE.STAIR: # stair
 		game.has_stair = false
 		Global.next_level()
-		return 1
+		return -1
 	elif token.token_type == TOKEN_TYPE.HERO_BP: # hero_blueprint
 		# Global.find_hero_blue_print(token.val)
 		Global.found_heroes.append(token.val)
-		return 1
+		return -1
 	elif token.token_type == TOKEN_TYPE.RUNE:
 		self.apply_rune_effect(token.rune_type)
-		return 1
+		return -1
 			
 	
 func die():
