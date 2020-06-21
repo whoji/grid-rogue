@@ -5,6 +5,8 @@ const TILE_OFFSET = Vector2(3,1)
 const ROWS = 5
 const COLS = 5
 const ShopItemGrayOutBox = preload("res://UI/ShopItemGrayOutBox.tscn")
+const GrayOutShader = preload("res://effects/shadow_out.shader")
+
 const EquipedFrame = preload("res://UI/EquipedFrame.tscn")
 const HERO_TEXTURE_PATH_PREFIX = "res://asset/_hero_23x32_0525_PIPOYA/tile"
 const IF_SELECTOR_RECT_INTIAL_ON_EQUIPED = true
@@ -142,7 +144,11 @@ func add_item(i,j,texture_path="res://asset/hero/hero_0.png",greyed_out=false,eq
 	item_node.texture = load(texture_path)
 	if greyed_out:
 		var graybox = ShopItemGrayOutBox.instance()
+		print(graybox.color)
+		graybox.color[-1] = 0 # remove the shawdow box completely, if used the grayout shader
 		#graybox.rect_position = item_node.position
+		item_node.material= ShaderMaterial.new()
+		item_node.material.shader = GrayOutShader
 		item_node.add_child(graybox)
 	if equiped:
 		item_node.add_child(EquipedFrame.instance())

@@ -5,7 +5,7 @@
 [node name="ShopItemGrayOutBox" type="ColorRect"]
 margin_right = 34.0
 margin_bottom = 34.0
-color = Color( 0.0196078, 0.0196078, 0.0196078, 0.682353 )
+color = Color( 0.0196078, 0.0196078, 0.0196078, 0.2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
