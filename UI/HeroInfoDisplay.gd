@@ -38,6 +38,7 @@ func update_hero_info_display_in_shop(_hero_id):
 		$CenterContainer/VBoxContainer/ATKLabel.text = 'ATK: ???'
 		$CenterContainer/VBoxContainer/HPLabel.text = 'MaxHP: ???'
 		$CenterContainer/LabelCost.text = "$???"
+		$CenterContainer/SpriteLock.visible = false
 	else:
 		$CenterContainer/SpriteLock.visible = false
 		$CenterContainer/LabelCost.visible = false
