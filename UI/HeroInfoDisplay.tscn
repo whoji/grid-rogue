@@ -34,7 +34,7 @@ margin_bottom = 14.0
 text = "$100"
 
 [node name="SpriteLock" type="Sprite" parent="CenterContainer"]
-position = Vector2( 21, 20 )
+position = Vector2( 48, 16 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
