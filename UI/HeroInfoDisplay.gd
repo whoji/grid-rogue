@@ -63,7 +63,7 @@ func update_rune_effect():
 		return 
 	else:
 		$CenterContainer/SpriteRuneEffect.visible = true		
-	var turns_left = Global.game.player.rune_movement_counter
+	var turns_left = Global.game.player.rune_movement_counter - 1
 	match rune_type:
 		RUNE.GREEN:
 			$CenterContainer/SpriteRuneEffect.region_rect = Rect2(32,48,16,16)
