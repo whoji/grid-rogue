@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://asset/enemy/enemy_0.png" type="Texture" id=1]
 [ext_resource path="res://UI/HeroInfoDisplay.gd" type="Script" id=2]
 [ext_resource path="res://asset/Lock-Lock-icon.png" type="Texture" id=3]
+[ext_resource path="res://asset/item/roguelikeitems.png" type="Texture" id=4]
 
 [node name="HeroInfoDisplay" type="Node2D"]
 script = ExtResource( 2 )
@@ -34,9 +35,26 @@ margin_bottom = 14.0
 text = "$100"
 
 [node name="SpriteLock" type="Sprite" parent="CenterContainer"]
+visible = false
 position = Vector2( 48, 16 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
+
+[node name="SpriteRuneEffect" type="Sprite" parent="CenterContainer"]
+position = Vector2( 50, 11 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 33.4997, 47.5174, 14.5242, 15.4044 )
+
+[node name="Label" type="Label" parent="CenterContainer/SpriteRuneEffect"]
+margin_left = -4.0
+margin_top = 8.0
+margin_right = 36.0
+margin_bottom = 22.0
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 anchor_left = -0.21875

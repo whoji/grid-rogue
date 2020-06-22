@@ -1,5 +1,9 @@
 extends Node2D
 
+enum RUNE {
+	GREEN, BLUE, PURPLE, RED
+}
+
 const HERO_TEXTURE_PATH_PREFIX = "res://asset/_hero_23x32_0525_PIPOYA/tile"
 const HERO_TEXTURE_PATH_DEFAULT = "res://asset/enemy/enemy_0.png"
 var hero_id = 0
@@ -50,3 +54,24 @@ func update_hero_info_display_in_game():
 	$CenterContainer/VBoxContainer/HPLabel.text = 'HP: '+str(max(Global.game.player.hp,0))+'/'+str(Global.game.player.max_hp)
 	$CenterContainer/VBoxContainer/ExpLabel.text = 'exp: '+str(Global.game.player.expr)+'/'+str(100)
 	$CenterContainer/VBoxContainer/ExpLabel.visible = true
+	update_rune_effect()
+
+func update_rune_effect():
+	var rune_type = Global.game.player.rune_effect
+	if rune_type == null:
+		$CenterContainer/SpriteRuneEffect.visible = false
+		return 
+	else:
+		$CenterContainer/SpriteRuneEffect.visible = true		
+	var turns_left = Global.game.player.rune_movement_counter
+	match rune_type:
+		RUNE.GREEN:
+			$CenterContainer/SpriteRuneEffect.region_rect = Rect2(32,48,16,16)
+		RUNE.RED:
+			$CenterContainer/SpriteRuneEffect.region_rect = Rect2(48,48,16,16)
+		RUNE.PURPLE:
+			$CenterContainer/SpriteRuneEffect.region_rect = Rect2(64,48,16,16)
+		RUNE.BLUE:
+			$CenterContainer/SpriteRuneEffect.region_rect = Rect2(16,48,16,16)
+	$CenterContainer/SpriteRuneEffect/Label.text = str(turns_left)
+		
