@@ -138,6 +138,7 @@ func fight_with(tgpos_x, tgpos_y):
 		token.take_damage(atk * mod_atk)
 		
 		if hp > 0 and token.hp <=0: # case player win
+			Global.killed_enemies.append(token.enemy_type)
 			return 1
 		elif hp > 0 and token.hp > 0: # case tie
 			return 2
