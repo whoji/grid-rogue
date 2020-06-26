@@ -35,7 +35,19 @@ func count_killed_enemies():
 func display_killed_enemies():
 	for enemy_killed in killed_enemies_count:
 		print(enemy_killed)
+		var control_node_enemy_killed = Control.new()
 		var sprite_enemy_killed = Sprite.new()
+		var label_enemy_killed = Label.new()
 		sprite_enemy_killed.texture = load(ENEMY_TEXTURE_PATH_PREFIX+str(enemy_killed)+".png")
-		$ScrollContainer/GridContainer.add_child(sprite_enemy_killed)
+		sprite_enemy_killed.centered = false
+		label_enemy_killed.text = "x"+str(killed_enemies_count[enemy_killed])
+		label_enemy_killed.set_position(Vector2(32,16))
+		control_node_enemy_killed.add_child(sprite_enemy_killed)
+		control_node_enemy_killed.add_child(label_enemy_killed)
+		$ScrollContainer/GridContainer.add_child(control_node_enemy_killed)
 		#self.add_child(sprite_enemy_killed)
+	
+	## to add some empty control node. so that scroll can function correctly...
+	for i in range(4):
+		var useless_control_node = Control.new()
+		$ScrollContainer/GridContainer.add_child(useless_control_node)

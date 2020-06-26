@@ -23,7 +23,7 @@ margin_left = 8.0
 margin_top = 24.0
 margin_right = 68.0
 margin_bottom = 38.0
-text = "Summary"
+text = "Summary: Enemies Killed"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -31,24 +31,242 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 24.0
 margin_top = 64.0
-margin_right = 304.0
-margin_bottom = 224.0
+margin_right = 296.0
+margin_bottom = 208.0
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
-margin_right = 250.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 250, 150 )
-columns = 3
+margin_right = 272.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 48
+custom_constants/hseparation = 64
+columns = 4
 
-[node name="Control" type="Control" parent="ScrollContainer/GridContainer"]
-margin_right = 83.0
+[node name="ScrollContainer3_TEST" type="ScrollContainer" parent="."]
+visible = false
+margin_left = 24.0
+margin_top = 64.0
+margin_right = 292.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 0, 152 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer3_TEST"]
+margin_right = 280.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 268, 144 )
+size_flags_horizontal = 3
+custom_constants/vseparation = 48
+custom_constants/hseparation = 32
+columns = 4
+
+[node name="Control" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_right = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
 
-[node name="Sprite" type="Sprite" parent="ScrollContainer/GridContainer/Control"]
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control2" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_left = 75.0
+margin_right = 118.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control2"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control3" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_left = 150.0
+margin_right = 193.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control3"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control4" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_left = 225.0
+margin_right = 268.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control4"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control5" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_top = 48.0
+margin_right = 43.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control5"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control6" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_left = 75.0
+margin_top = 48.0
+margin_right = 118.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control6"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control7" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_left = 150.0
+margin_top = 48.0
+margin_right = 193.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control7"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control8" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_left = 225.0
+margin_top = 48.0
+margin_right = 268.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control8"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control9" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_top = 96.0
+margin_right = 43.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control9"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control10" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_left = 75.0
+margin_top = 96.0
+margin_right = 118.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control10"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control11" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_left = 150.0
+margin_top = 96.0
+margin_right = 193.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control11"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control12" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_left = 225.0
+margin_top = 96.0
+margin_right = 268.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control12"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control13" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_top = 144.0
+margin_right = 43.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control13"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control14" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_left = 75.0
+margin_top = 144.0
+margin_right = 118.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control14"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control15" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_left = 150.0
+margin_top = 144.0
+margin_right = 193.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control15"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control16" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_left = 225.0
+margin_top = 144.0
+margin_right = 268.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control16"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control17" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_top = 192.0
+margin_right = 43.0
+margin_bottom = 192.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control17"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Control18" type="Control" parent="ScrollContainer3_TEST/GridContainer"]
+margin_left = 75.0
+margin_top = 192.0
+margin_right = 118.0
+margin_bottom = 192.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Sprite" type="Sprite" parent="ScrollContainer3_TEST/GridContainer/Control18"]
 texture = ExtResource( 3 )
 centered = false
