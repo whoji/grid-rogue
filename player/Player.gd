@@ -34,7 +34,14 @@ var mod_dmg_taken = 1 # modifier
 var mod_expr_gain = 1 # modifier
 
 signal player_moved
+signal tie
+signal power_up
+signal eat_gold
+signal eat_blood_bottle
+signal reached_stair
 signal dead
+signal levelup
+signal eat_hero_bp
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -141,6 +148,7 @@ func fight_with(tgpos_x, tgpos_y):
 			Global.killed_enemies.append(token.enemy_type)
 			return 1
 		elif hp > 0 and token.hp > 0: # case tie
+			emit_signal("tie")
 			return 2
 		elif hp <= 0: # player lose, but this case should trigger gg mechanism
 			return 0 
@@ -149,18 +157,22 @@ func fight_with(tgpos_x, tgpos_y):
 		hp += token.val
 		hp = min(hp, max_hp)
 		$HP_Label.text = str(hp)
+		emit_signal("eat_blood_bottle")
 		return -1
 	elif token.token_type == TOKEN_TYPE.GOLD: # gold
 		Global.gold += token.val
 		#$HP_Label.text = str(hp)
+		emit_signal("eat_gold")
 		return -1
 	elif token.token_type == TOKEN_TYPE.STAIR: # stair
 		game.has_stair = false
 		Global.next_level()
+		emit_signal("reached_stair")
 		return -1
 	elif token.token_type == TOKEN_TYPE.HERO_BP: # hero_blueprint
 		# Global.find_hero_blue_print(token.val)
 		Global.found_heroes.append(token.val)
+		emit_signal("eat_hero_bp")
 		return -1
 	elif token.token_type == TOKEN_TYPE.RUNE:
 		self.apply_rune_effect(token.rune_type)
@@ -207,6 +219,7 @@ func player_level_up():
 	$ATK_Label.text = str(atk)
 	if mod_atk > 1:
 		$ATK_Label.text = str(atk)+"x"+str(mod_atk)
+	emit_signal("levelup")	
 		
 func apply_rune_effect(rune_type=null):
 	"""
@@ -214,6 +227,7 @@ func apply_rune_effect(rune_type=null):
 	"""
 	print("RUNE status: ", rune_effect, " ",rune_movement_counter)
 	if rune_type != null: # new rune
+		emit_signal("power_up")
 		self.rune_effect = rune_type
 		self.rune_movement_counter = 6 # actually allow 5 times effect
 		match rune_type:
