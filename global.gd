@@ -26,7 +26,6 @@ onready var player_progression = Conf.player_progression
 signal gold_changed
 signal level_changed
 
-
 func next_level():
 	game = get_tree().get_root().get_node("Game")
 	print(game)
@@ -59,6 +58,7 @@ func game_start():
 	current_level = 0
 	gold = 0
 	found_heroes = []
+	killed_enemies = []
 	get_tree().change_scene(GameScene)
 
 func game_finish():
@@ -72,7 +72,8 @@ func game_restart():
 	Conf.save_player_progression()
 	current_level = 0
 	gold = 0
-	found_heroes = []	
+	found_heroes = []
+	killed_enemies = []
 	get_tree().change_scene(GameOverScreen)
 
 func game_over():
