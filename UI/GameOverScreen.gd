@@ -59,3 +59,9 @@ func jiesuan_all_found_hero_blue_prints():
 	
 	#print(Global.player_progression)
 	#Conf.save_player_progression()	
+
+func _on_Button_pressed():
+	if $ShowEnemiesKilled.visible:
+		$ShowEnemiesKilled.visible = false
+	else:
+		$ShowEnemiesKilled.visible = true

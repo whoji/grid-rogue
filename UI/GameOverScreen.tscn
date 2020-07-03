@@ -97,3 +97,4 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 24.0
 margin_bottom = 24.0
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

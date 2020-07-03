@@ -18,9 +18,9 @@ func _input(event):
 		pass
 		#get_tree().change_scene(TitleScreen)	
 	elif event.is_action_pressed("ui_up"):
-		$ScrollContainer.scroll_vertical -= 30
+		$ScrollContainer.scroll_vertical -= 10
 	elif event.is_action_pressed("ui_down"):
-		$ScrollContainer.scroll_vertical += 30
+		$ScrollContainer.scroll_vertical += 10
 	
 
 func count_killed_enemies():
