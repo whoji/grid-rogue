@@ -27,7 +27,15 @@ func _input(event):
 		$FoundHeroes/ScrollContainer.scroll_horizontal += 30
 	elif event.is_action_pressed("ui_left"):
 		$FoundHeroes/ScrollContainer.scroll_horizontal -= 30
-
+#	elif event.is_action_pressed("ui_up"):
+#		$ShowEnemiesKilled/ScrollContainer.scroll_vertical -= 10
+#	elif event.is_action_pressed("ui_down"):
+#		$ShowEnemiesKilled/ScrollContainer.scroll_vertical += 10
+	elif event.is_action_pressed("ui_show_kills"):
+		if $ShowEnemiesKilled.visible:
+			$ShowEnemiesKilled.visible = false
+		else:
+			$ShowEnemiesKilled.visible = true
 
 func jiesuan_all_found_hero_blue_prints():
 	print("========================= JIESUAN ==============")	
