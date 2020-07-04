@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://asset/sound/jump.wav" type="AudioStream" id=1]
+[ext_resource path="res://asset/sound/reward.wav" type="AudioStream" id=2]
+[ext_resource path="res://asset/sound/death.wav" type="AudioStream" id=3]
+[ext_resource path="res://effects/SoundCenter.gd" type="Script" id=4]
+
+[node name="SoundCenter" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="DieSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="GoldSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+
+[node name="PickUpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )

@@ -65,6 +65,7 @@ func restart_board(): # restart or initialize the board when the game start. or 
 	# fill the player
 	if player == null:
 		player = $Player
+		$SoundCenter.connect_player(player)
 		player.grid_position = Global.get_rand_gpos()
 	map = []
 	for i in range(MAP_SIZE.x):
