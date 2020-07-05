@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://asset/enemy/enemy_0.png" type="Texture" id=2]
+[ext_resource path="res://UI/new2_theme_sm.tres" type="Theme" id=3]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 1 )
@@ -35,9 +36,11 @@ region_rect = Rect2( 256, 96, 32, 32 )
 
 [node name="HP_Label" type="Label" parent="."]
 anchor_bottom = 1.0
-margin_top = 17.7904
-margin_right = 16.0
-margin_bottom = 31.7904
+margin_left = 1.8
+margin_top = 20.5
+margin_right = 16.8
+margin_bottom = 35.5
+theme = ExtResource( 3 )
 text = "hp"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -46,8 +49,11 @@ __meta__ = {
 [node name="ATK_Label" type="Label" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_right = 19.0
-margin_bottom = 14.0
+margin_left = 1.8
+margin_top = 0.5
+margin_right = 21.8
+margin_bottom = 15.5
+theme = ExtResource( 3 )
 text = "atk"
 __meta__ = {
 "_edit_use_anchors_": false

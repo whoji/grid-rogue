@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://asset/hero/hero_4.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
+[ext_resource path="res://UI/new2_theme_sm.tres" type="Theme" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "shake_down"
@@ -115,10 +116,11 @@ region_rect = Rect2( 256, 96, 32, 32 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="HP_Label" type="Label" parent="."]
-margin_left = -0.122086
-margin_top = 17.9467
-margin_right = 15.8779
-margin_bottom = 31.9467
+margin_left = 2.31964
+margin_top = 20.8768
+margin_right = 18.3196
+margin_bottom = 34.8768
+theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0.247059, 1, 0.027451, 1 )
 text = "99"
 __meta__ = {
@@ -126,8 +128,11 @@ __meta__ = {
 }
 
 [node name="ATK_Label" type="Label" parent="."]
-margin_right = 16.0
-margin_bottom = 14.0
+margin_left = 0.779133
+margin_top = 1.09878
+margin_right = 15.7791
+margin_bottom = 26.0988
+theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0.00392157, 0.643137, 0.92549, 1 )
 text = "10
 "
