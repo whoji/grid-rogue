@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://board/GameTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://asset/hero/hero_0.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://UI/ShopHUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/HeroInfoDisplay.tscn" type="PackedScene" id=5]
 [ext_resource path="res://effects/shadow_out.shader" type="Shader" id=6]
+[ext_resource path="res://UI/new2_theme.tres" type="Theme" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 6 )
@@ -37,8 +38,10 @@ __meta__ = {
 }
 
 [node name="HeroInfoDisplay" parent="." instance=ExtResource( 5 )]
-margin_top = 24.0
-margin_bottom = 24.0
+margin_left = 13.4127
+margin_top = 35.5572
+margin_right = 13.4127
+margin_bottom = 35.5572
 
 [node name="Heroes" type="Control" parent="."]
 visible = false
@@ -306,12 +309,13 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="PopupDialog/ColorRect"]
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 146.0
-margin_bottom = 63.0
+margin_top = 31.0
+margin_right = 175.0
+margin_bottom = 72.0
+theme = ExtResource( 7 )
 text = "You DO NOT have
 enough gold..."
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

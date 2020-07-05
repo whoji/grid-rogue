@@ -1,13 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://board/GameTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://UI/GameOverScreen.gd" type="Script" id=2]
 [ext_resource path="res://UI/FoundHeroBlueprintDisplay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/ShowEnemiesKilled.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/new2_theme.tres" type="Theme" id=5]
+[ext_resource path="res://asset/font/Montserrat-Medium.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 11
+font_data = ExtResource( 6 )
 
 [node name="GameOverScreen" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
+theme = ExtResource( 5 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -39,20 +46,21 @@ __meta__ = {
 
 [node name="msg_gold" type="Label" parent="."]
 margin_left = 8.0
-margin_top = 24.0
+margin_top = 29.0
 margin_right = 200.0
-margin_bottom = 56.0
+margin_bottom = 61.0
 rect_pivot_offset = Vector2( -112, 0 )
+custom_fonts/font = SubResource( 1 )
 text = "Gold Earned This Run: 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 88.0
-margin_top = 224.0
-margin_right = 280.0
-margin_bottom = 256.0
+margin_left = 74.0
+margin_top = 218.0
+margin_right = 266.0
+margin_bottom = 250.0
 rect_pivot_offset = Vector2( -112, 0 )
 text = "[ Press SPACE to restart ]"
 __meta__ = {
@@ -82,10 +90,10 @@ __meta__ = {
 custom_constants/separation = 48
 
 [node name="Button" type="Button" parent="."]
-margin_left = 216.0
+margin_left = 200.0
 margin_top = 8.0
 margin_right = 311.0
-margin_bottom = 28.0
+margin_bottom = 33.0
 text = "show kills (K)"
 __meta__ = {
 "_edit_use_anchors_": false
