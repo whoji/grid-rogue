@@ -36,10 +36,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Labels" type="Node" parent="."]
-
 [node name="HeroInfoDisplay" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0, 32 )
+margin_top = 24.0
+margin_bottom = 24.0
 
 [node name="Heroes" type="Control" parent="."]
 visible = false

@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://asset/enemy/enemy_0.png" type="Texture" id=1]
 [ext_resource path="res://UI/HeroInfoDisplay.gd" type="Script" id=2]
 [ext_resource path="res://asset/Lock-Lock-icon.png" type="Texture" id=3]
 [ext_resource path="res://asset/item/roguelikeitems.png" type="Texture" id=4]
+[ext_resource path="res://UI/new2_theme_sm.tres" type="Theme" id=5]
 
-[node name="HeroInfoDisplay" type="Node2D"]
+[node name="HeroInfoDisplay" type="Control"]
+theme = ExtResource( 5 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BG" type="Node2D" parent="."]
 
@@ -68,23 +73,23 @@ margin_right = 44.0
 margin_bottom = 73.0
 
 [node name="NameLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 30.0
-margin_bottom = 14.0
+margin_right = 24.0
+margin_bottom = 11.0
 text = "H.no"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ATKLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 18.0
-margin_right = 30.0
-margin_bottom = 32.0
+margin_top = 15.0
+margin_right = 24.0
+margin_bottom = 26.0
 text = "ATK"
 
 [node name="HPLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 36.0
-margin_right = 30.0
-margin_bottom = 50.0
+margin_top = 30.0
+margin_right = 24.0
+margin_bottom = 41.0
 text = "HP"
 
 [node name="ExpLabel" type="Label" parent="CenterContainer/VBoxContainer"]

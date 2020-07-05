@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 enum RUNE {
 	GREEN, BLUE, PURPLE, RED

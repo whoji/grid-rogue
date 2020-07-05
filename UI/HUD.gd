@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 
 onready var game = get_tree().get_root().get_node("Game")

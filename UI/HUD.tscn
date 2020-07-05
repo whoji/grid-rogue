@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://UI/HUD.gd" type="Script" id=1]
+[ext_resource path="res://UI/new2_theme.tres" type="Theme" id=2]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="Control"]
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 320.0
@@ -14,9 +19,10 @@ __meta__ = {
 }
 
 [node name="LevelLabel" type="Label" parent="."]
-margin_top = 8.0
-margin_right = 64.0
-margin_bottom = 24.0
+margin_left = 7.14157
+margin_top = 1.82691
+margin_right = 71.1416
+margin_bottom = 20.8269
 text = "Level: "
 valign = 1
 __meta__ = {
@@ -24,10 +30,10 @@ __meta__ = {
 }
 
 [node name="GoldLabel" type="Label" parent="."]
-margin_left = 80.0
-margin_top = 8.0
-margin_right = 120.0
-margin_bottom = 24.0
+margin_left = 84.1626
+margin_top = 1.82691
+margin_right = 124.163
+margin_bottom = 20.8269
 text = "Gold:"
 valign = 1
 __meta__ = {
@@ -47,10 +53,10 @@ __meta__ = {
 }
 
 [node name="StepLabel" type="Label" parent="."]
-margin_left = 240.0
-margin_top = 8.0
-margin_right = 280.0
-margin_bottom = 24.0
+margin_left = 237.849
+margin_top = 1.82691
+margin_right = 277.849
+margin_bottom = 20.8269
 text = "Step:"
 valign = 1
 __meta__ = {
@@ -58,10 +64,10 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 256.0
-margin_top = 216.0
-margin_right = 312.0
-margin_bottom = 236.0
+margin_left = 250.636
+margin_top = 205.759
+margin_right = 312.636
+margin_bottom = 230.759
 text = "heroes"
 __meta__ = {
 "_edit_use_anchors_": false

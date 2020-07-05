@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://UI/ShopHUD.gd" type="Script" id=1]
+[ext_resource path="res://UI/new2_theme.tres" type="Theme" id=2]
 
-[node name="ShopHUD" type="CanvasLayer"]
+[node name="ShopHUD" type="Control"]
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 320.0
@@ -14,10 +19,10 @@ __meta__ = {
 }
 
 [node name="GoldLabel" type="Label" parent="."]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 48.0
-margin_bottom = 24.0
+margin_left = 7.41266
+margin_top = 1.85316
+margin_right = 47.4127
+margin_bottom = 20.8532
 text = "Gold:"
 valign = 1
 __meta__ = {
