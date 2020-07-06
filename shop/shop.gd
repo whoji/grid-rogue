@@ -65,26 +65,28 @@ func gpos_2_pos(gpos):
 	
 func _input(event):
 	if Global.prevous_scene != "game_board":
-		if !event.is_pressed(): 
-			return
-		if event.is_action("ui_left") and selector_gpos.x > 0:
-			move_grid(-1, 0)
-		elif event.is_action("ui_right") and selector_gpos.x < COLS-1:
-			move_grid(1, 0)
-		elif event.is_action("ui_up") and selector_gpos.y > 0:
-			move_grid(0, -1)
-		elif event.is_action("ui_down")  and selector_gpos.y < ROWS-1:
-			move_grid(0, 1)
-		elif event.is_action("ui_select"):
-			if flag_if_dialog_on:
+		if not flag_if_dialog_on:
+			if !event.is_pressed(): 
+				return
+			if event.is_action("ui_left") and selector_gpos.x > 0:
+				move_grid(-1, 0)
+			elif event.is_action("ui_right") and selector_gpos.x < COLS-1:
+				move_grid(1, 0)
+			elif event.is_action("ui_up") and selector_gpos.y > 0:
+				move_grid(0, -1)
+			elif event.is_action("ui_down")  and selector_gpos.y < ROWS-1:
+				move_grid(0, 1)
+			elif event.is_action("ui_select"):
+				buy_hero()
+			elif event.is_action("ui_cancel"):
+				Global.go_to_title_screen()
+		else:
+			if !event.is_pressed(): 
+				return
+			if event.is_action("ui_select") or event.is_action("ui_cancel"):
 				$PopupDialog/ColorRect.visible = false
 				flag_if_dialog_on = false	
-			else:
-				buy_hero()
-		elif event.is_action("ui_cancel"):
-			Global.go_to_title_screen()
 
-			
 func move_grid(dx, dy):
 	selector_gpos.x += dx 
 	selector_gpos.y += dy
