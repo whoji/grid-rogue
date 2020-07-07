@@ -25,6 +25,12 @@ var hero = {}
 var player_progression = {}
 
 func _ready():
+	if Global.debug_mode:
+		save_file = "res://misc/save_file_debug.cfg"
+		conf_file_hero = "res://conf/hero_debug.cfg"
+		err_hero = conf_hero.load(conf_file_hero)
+		err_save = player_save.load(save_file)
+
 	if err != OK or err_enemy != OK or err_level != OK or err_hero != OK:
 		print("CANNOT OPEN THE config file !!!")
 		print(err)

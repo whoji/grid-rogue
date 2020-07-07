@@ -1,5 +1,6 @@
 extends Node
 
+const debug_mode = false
 const MAP_SIZE = Vector2(4,4)
 const TOTAL_HEROES_NUM = 25
 const IF_USE_GRIM_REAPER = true

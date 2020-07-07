@@ -29,6 +29,12 @@ func _input(event):
 			get_tree().quit()
 		elif cursor_pos_idx == 1:
 			Global.go_to_shop("title")
+	elif event.is_action("ui_secret_dev"):
+		print("SECRET KEY PRESSED !!!!")
+		print("SECRET KEY PRESSED !!!!")
+		Global.gold = 0
+		Global.found_heroes = []
+		Global.killed_enemies = []
 
 func move_rect():
 	print(cursor_pos_idx)
