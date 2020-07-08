@@ -113,6 +113,9 @@
 		* then you discard them
 		* or you can upgrade once got three same item. (<--- if go that route then no need to purchase the hero, then what's the point of gold ????)
 		* all convert to the same gold amount . or 50% gold amount
+* [7/8/2020] 按照现在的设计，感觉找不到hero bp或者买到hero bp的话，一个run之后，就没有任何progression
+	* 想设计一个祭坛，或者储蓄罐。每次run之后消失的钱都存到那个里面去。
+	* 存满了(max cap可以进阶升高)之后，可以有一次抽奖的机会
 
 ## hero design concept
 * not upgrade, but different!
