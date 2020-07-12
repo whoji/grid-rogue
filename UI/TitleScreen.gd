@@ -35,6 +35,9 @@ func _input(event):
 		Global.gold = 0
 		Global.found_heroes = []
 		Global.killed_enemies = []
+		Global.equiped_hero = 1
+		Conf.player_progression["owned_heroes"] = "0100000000000000000000000"
+		Conf.player_progression["found_heroes"] = "0100000000000000000000000"
 
 func move_rect():
 	print(cursor_pos_idx)
