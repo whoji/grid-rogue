@@ -175,3 +175,5 @@ func equip_hero(hero_id):
 	
 func remove_grey_out(hero_id):
 	$DisplayedItems.get_child(hero_id).get_child(0).queue_free()
+	$DisplayedItems.get_child(hero_id).material= null
+	
