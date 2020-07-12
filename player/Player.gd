@@ -228,6 +228,7 @@ func apply_rune_effect(rune_type=null):
 	print("RUNE status: ", rune_effect, " ",rune_movement_counter)
 	if rune_type != null: # new rune
 		emit_signal("power_up")
+		$ATK_Label.text = str(atk) # to ensure that old rune effect will not relfect on the text
 		self.rune_effect = rune_type
 		self.rune_movement_counter = 6 # actually allow 5 times effect
 		match rune_type:
