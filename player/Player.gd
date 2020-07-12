@@ -21,9 +21,9 @@ onready var hero_info_display = get_tree().get_root().get_node("Game/HeroInfoDis
 onready var is_alive = true
 onready var anim = $anim
 
-var level = 1
-var hp = 16
-var max_hp = 16
+var level : int = 1
+var hp : int = 16
+var max_hp : int = 16
 var atk = 4
 var hero_id = 0
 var expr = 0
@@ -232,7 +232,7 @@ func apply_rune_effect(rune_type=null):
 		self.rune_movement_counter = 6 # actually allow 5 times effect
 		match rune_type:
 			RUNE.GREEN:
-				hp += (0.1*hp) 
+				hp += int((0.1*hp) )
 				hp = min(hp, max_hp)
 				$HP_Label.text = str(hp)
 			RUNE.BLUE:
